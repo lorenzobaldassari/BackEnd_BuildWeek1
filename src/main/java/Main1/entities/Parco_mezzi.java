@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @DiscriminatorColumn(name="tipo_di_mezzo")
 public abstract class Parco_mezzi {
 @Id

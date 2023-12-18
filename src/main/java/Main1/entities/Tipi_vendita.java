@@ -1,6 +1,7 @@
 package Main1.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -12,8 +13,13 @@ public abstract class Tipi_vendita {
     protected long id;
 
 
+
     @Column(name="punto_di_emissione")
     protected String puntoDiEmissione;
+
+    @OneToMany(mappedBy = "tipi_vendita")
+    private List<Biglietto> biglietti;
+
 
 
     public Tipi_vendita() {
