@@ -2,16 +2,22 @@ package Main1.entities;
 
 import Main1.entities.Enum.Stato;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
-
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="tipo_di_mezzo")
 public abstract class Parco_mezzi {
-
+@Id
+@GeneratedValue
     protected long id;
-
+    @Column(name="stato")
+    @Enumerated(EnumType.STRING)
     protected Stato stato;
-
+    @Transient
     protected List<LocalDate> giorniDiServizio;
+    @Transient
     protected List<LocalDate> giorniDiManutenzione;
 
     public Parco_mezzi() {

@@ -1,11 +1,20 @@
 package Main1.entities;
 
+import javax.persistence.*;
+
+
+@Entity
+@Table(name="tratta")
 public class Tratta {
-
+    @Id
+    @GeneratedValue
     private long id;
-
+    @Column(name="zona_partenza")
     private String zona_partenza;
+    @Column(name="capolinea")
     private String capolinea;
+
+    @Column(name="tempo_percorso_in_minuti")
     private int tempoPercoreenzaInMinuti;
 
 

@@ -1,15 +1,18 @@
 package Main1.entities;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="tipologia_venditore")
 public abstract class Tipi_vendita {
-
+    @Id
+    @GeneratedValue
     protected long id;
 
 
-
+    @Column(name="punto_di_emissione")
     protected String puntoDiEmissione;
 
 
