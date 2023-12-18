@@ -4,9 +4,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 
-public class Tipi_vendita {
+public abstract class Tipi_vendita {
 
     protected long id;
+
+
 
     protected String puntoDiEmissione;
 
