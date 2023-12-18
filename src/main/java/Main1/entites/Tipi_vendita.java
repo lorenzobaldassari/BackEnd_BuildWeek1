@@ -1,0 +1,42 @@
+package Main1.entites;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+
+public class Tipi_vendita {
+
+    protected long id;
+
+    protected String puntoDiEmissione;
+
+
+    public Tipi_vendita() {
+    }
+
+
+
+    public Tipi_vendita(String puntoDiEmissione) {
+        this.puntoDiEmissione = puntoDiEmissione;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getPuntoDiEmissione() {
+        return puntoDiEmissione;
+    }
+
+    public void setPuntoDiEmissione(String puntoDiEmissione) {
+        this.puntoDiEmissione = puntoDiEmissione;
+    }
+
+    @Override
+    public String toString() {
+        return "Tipi_vendita{" +
+                "id=" + id +
+                ", puntoDiEmissione='" + puntoDiEmissione + '\'' +
+                '}';
+    }
+}
