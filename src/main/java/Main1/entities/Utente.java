@@ -67,6 +67,14 @@ public class Utente {
         this.data_nascita = data_nascita;
     }
 
+    public Tessera getTessera() {
+        return tessera;
+    }
+
+    public void setTessera(Tessera tessera) {
+        this.tessera = tessera;
+    }
+
     @Override
     public String toString() {
         return "Utente{" +

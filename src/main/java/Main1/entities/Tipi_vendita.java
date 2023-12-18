@@ -22,6 +22,8 @@ public abstract class Tipi_vendita {
 
     @OneToMany(mappedBy = "tipi_vendita")
     private List<Biglietto> biglietti;
+ @OneToMany(mappedBy = "tipi_vendita")
+    private List<Abbonamento> abbonamenti;
 
 
 
@@ -40,6 +42,22 @@ public abstract class Tipi_vendita {
 
     public String getPuntoDiEmissione() {
         return puntoDiEmissione;
+    }
+
+    public List<Biglietto> getBiglietti() {
+        return biglietti;
+    }
+
+    public List<Abbonamento> getAbbonamenti() {
+        return abbonamenti;
+    }
+
+    public void setBiglietti(List<Biglietto> biglietti) {
+        this.biglietti = biglietti;
+    }
+
+    public void setAbbonamenti(List<Abbonamento> abbonamenti) {
+        this.abbonamenti = abbonamenti;
     }
 
     public void setPuntoDiEmissione(String puntoDiEmissione) {

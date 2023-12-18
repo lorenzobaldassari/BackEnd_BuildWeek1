@@ -52,4 +52,12 @@ public class Biglietto {
     public long getId() {
         return id;
     }
+
+    public Tipi_vendita getTipi_vendita() {
+        return tipi_vendita;
+    }
+
+    public void setTipi_vendita(Tipi_vendita tipi_vendita) {
+        this.tipi_vendita = tipi_vendita;
+    }
 }

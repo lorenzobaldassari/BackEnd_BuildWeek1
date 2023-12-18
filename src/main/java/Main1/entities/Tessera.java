@@ -45,6 +45,14 @@ public class Tessera {
         this.scadenza = scadenza;
     }
 
+    public Utente getUtente() {
+        return utente;
+    }
+
+    public void setUtente(Utente utente) {
+        this.utente = utente;
+    }
+
     @Override
     public String toString() {
         return "Tessera{" +

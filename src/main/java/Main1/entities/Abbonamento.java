@@ -2,10 +2,7 @@ package Main1.entities;
 
 import Main1.entities.Enum.Periodicità;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -19,6 +16,10 @@ public class Abbonamento extends Tessera {
 
     private LocalDate data_inizio;
     private LocalDate data_fine;
+
+    @ManyToOne
+    @JoinColumn(name="abbonamento_id")
+    private Tipi_vendita tipi_vendita;
 
 
     public Abbonamento(LocalDate emissione, LocalDate scadenza, boolean validità, Periodicità periodicità, LocalDate data_inizio, LocalDate data_fine) {

@@ -19,6 +19,10 @@ public abstract class Parco_mezzi {
     protected List<LocalDate> giorniDiServizio;
     @Transient
     protected List<LocalDate> giorniDiManutenzione;
+    @ManyToMany
+    @JoinTable(name="mezzi_tratta",joinColumns =@JoinColumn(name="mezzi_id"),
+    inverseJoinColumns = @JoinColumn(name="tratta_id"))
+    private List<Tratta> tratte;
 
     public Parco_mezzi() {
     }
@@ -59,6 +63,14 @@ public abstract class Parco_mezzi {
 
     public List<LocalDate> getGiorniDiManutenzione() {
         return giorniDiManutenzione;
+    }
+
+    public List<Tratta> getTratte() {
+        return tratte;
+    }
+
+    public void setTratte(List<Tratta> tratte) {
+        this.tratte = tratte;
     }
 
     @Override
