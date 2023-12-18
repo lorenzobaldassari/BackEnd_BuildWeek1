@@ -1,7 +1,10 @@
 package Main1.entities;
 
+
 import javax.persistence.*;
 import java.util.List;
+
+
 
 
 @Entity

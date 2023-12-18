@@ -1,10 +1,14 @@
 package Main1.entities;
 
+
 import javax.persistence.*;
 import java.time.LocalDate;
 @Entity
 @Table(name="biglietti")
 public class Biglietto {
+
+
+
     @Id
     @GeneratedValue
     private long id;
