@@ -1,0 +1,15 @@
+
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÎÌ»·ıÿÿÿÿ8Œ´éÇ1
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÎÌ»·ıÿÿÿÿ8´éÇ1
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÎÌ»·ıÿÿÿÿ8´éÇ1
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÎÌ»·ıÿÿÿÿ8´éÇ1
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚ôŞª8“´éÇ1
+m	java:S117%"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Öœ²¿8–´éÇ1
+m	java:S117-"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼ïÀÿ8˜´éÇ1
+m	java:S1175"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(À¹Ã³8™´éÇ1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤éæªûÿÿÿÿ8 ´éÇ1
+p	java:S116	"TRename this field "validitÃ " to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö•ìÌ8»´éÇ1
+s	java:S116
+"WRename this field "periodicitÃ " to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(îù–İ8¼´éÇ1
+q	java:S116"VRename this field "data_inizio" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±â…C8½´éÇ1
+u	java:S116"TRename this field "data_fine" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•Òƒ§ûÿÿÿÿ8½´éÇ1
