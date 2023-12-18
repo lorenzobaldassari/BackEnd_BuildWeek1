@@ -1,14 +1,23 @@
 package Main1.entities;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "utenti")
 public class Utente {
 
+    @Id
+    @GeneratedValue
     private long id;
     private String nome;
     private String cognome;
     private String email;
     private LocalDate data_nascita;
+
+    @OneToOne
+    @JoinColumn(name = "numero_tessera")
+    private Tessera tessera;
 
     public Utente() {
     }
@@ -56,5 +65,25 @@ public class Utente {
 
     public void setData_nascita(LocalDate data_nascita) {
         this.data_nascita = data_nascita;
+    }
+
+    public Tessera getTessera() {
+        return tessera;
+    }
+
+    public void setTessera(Tessera tessera) {
+        this.tessera = tessera;
+    }
+
+    @Override
+    public String toString() {
+        return "Utente{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cognome='" + cognome + '\'' +
+                ", email='" + email + '\'' +
+                ", data_nascita=" + data_nascita +
+                ", tessera=" + tessera +
+                '}';
     }
 }

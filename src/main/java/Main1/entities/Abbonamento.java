@@ -2,15 +2,24 @@ package Main1.entities;
 
 import Main1.entities.Enum.Periodicità;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "abbonamenti")
 public class Abbonamento extends Tessera {
 
     private boolean validità;
+
+    @Enumerated(EnumType.STRING)
     private Periodicità periodicità;
 
     private LocalDate data_inizio;
     private LocalDate data_fine;
+
+    @ManyToOne
+    @JoinColumn(name="abbonamento_id")
+    private Tipi_vendita tipi_vendita;
 
 
     public Abbonamento(LocalDate emissione, LocalDate scadenza, boolean validità, Periodicità periodicità, LocalDate data_inizio, LocalDate data_fine) {
@@ -55,4 +64,13 @@ public class Abbonamento extends Tessera {
     }
 
 
+    @Override
+    public String toString() {
+        return "Abbonamento{" +
+                "validità=" + validità +
+                ", periodicità=" + periodicità +
+                ", data_inizio=" + data_inizio +
+                ", data_fine=" + data_fine +
+                '}';
+    }
 }

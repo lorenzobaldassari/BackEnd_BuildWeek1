@@ -2,8 +2,13 @@ package Main1.entities;
 
 import Main1.entities.Enum.Condizione;
 
-public class Distributore_automatico extends  Tipi_vendita{
+import javax.persistence.*;
 
+@Entity
+@DiscriminatorValue("distributore_automatico")
+public class Distributore_automatico extends  Tipi_vendita{
+    @Column(name="condizione")
+    @Enumerated(EnumType.STRING)
     protected Condizione condizione;
 
     public Distributore_automatico(String puntoDiEmissione, Condizione condizione) {
