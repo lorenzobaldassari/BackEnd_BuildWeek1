@@ -1,8 +1,5 @@
-package Main1.entites;
+package Main1.entities;
 
-import Main1.entites.Enum.Stato;
-
-import javax.persistence.Id;
 import java.time.LocalDate;
 import java.util.List;
 

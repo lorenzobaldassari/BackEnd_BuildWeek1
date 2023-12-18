@@ -1,7 +1,5 @@
 package Main1.entities;
 
-import Main1.enums.Periodicità;
-
 import java.time.LocalDate;
 
 public class Abbonamento extends Tessera {

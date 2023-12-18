@@ -1,4 +1,4 @@
-package Main1.entites.Enum;
+package Main1.entities;
 
 public enum Stato {
 

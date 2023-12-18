@@ -1,6 +1,4 @@
-package Main1.entites;
-
-import Main1.entites.Enum.Condizione;
+package Main1.entities;
 
 public class Distributore_automatico extends  Tipi_vendita{
 

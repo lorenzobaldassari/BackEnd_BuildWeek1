@@ -1,4 +1,4 @@
-package Main1.enums;
+package Main1.entities;
 
 public enum Periodicità {
 
