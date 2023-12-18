@@ -1,14 +1,17 @@
 package Main1.entities;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-
-public class Tipi_vendita {
+@Entity
+public abstract class Tipi_vendita {
 
     protected long id;
 
     protected String puntoDiEmissione;
+
+
 
 
     public Tipi_vendita() {
