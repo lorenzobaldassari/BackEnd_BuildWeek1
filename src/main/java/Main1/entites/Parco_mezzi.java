@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import java.time.LocalDate;
 import java.util.List;
 
-public class Parco_mezzi {
+public abstract class Parco_mezzi {
 
     protected long id;
 
@@ -32,12 +32,12 @@ public class Parco_mezzi {
         this.stato = stato;
     }
 
-    public void setGiorniDiServizio(List<LocalDate> giorniDiServizio) {
-        this.giorniDiServizio = giorniDiServizio;
+    public void setGiorniDiServizio(LocalDate giorniDiServizio) {
+        this.giorniDiServizio.add(giorniDiServizio);
     }
 
-    public void setGiorniDiManutenzione(List<LocalDate> giorniDiManutenzione) {
-        this.giorniDiManutenzione = giorniDiManutenzione;
+    public void setGiorniDiManutenzione(LocalDate giorniDiManutenzione) {
+        this.giorniDiManutenzione.add(giorniDiManutenzione);
     }
 
     public long getId() {

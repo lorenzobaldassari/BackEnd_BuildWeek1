@@ -11,12 +11,12 @@ public class Tram extends Parco_mezzi{
 
     public Tram(Stato stato, List<LocalDate> giorniDiServizio, List<LocalDate> giorniDiManutenzione) {
         super(stato, giorniDiServizio, giorniDiManutenzione);
-        this.capienza = 50;
+        this.capienza = 30;
     }
 
     public Tram(Stato stato) {
         super(stato);
-        this.capienza = 50;
+        this.capienza = 30;
     }
 
     public long getCapienza() {

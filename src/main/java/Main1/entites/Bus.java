@@ -11,12 +11,12 @@ public class Bus extends Parco_mezzi{
 
     public Bus(Stato stato, List<LocalDate> giorniDiServizio, List<LocalDate> giorniDiManutenzione) {
         super(stato, giorniDiServizio, giorniDiManutenzione);
-        this.capienza = 25;
+        this.capienza = 50;
     }
 
     public Bus(Stato stato) {
         super(stato);
-        this.capienza = 25;
+        this.capienza = 50;
     }
 
     public long getCapienza() {
