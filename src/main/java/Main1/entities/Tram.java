@@ -1,5 +1,7 @@
 package Main1.entities;
 
+import Main1.entities.Enum.Stato;
+
 import java.time.LocalDate;
 import java.util.List;
 

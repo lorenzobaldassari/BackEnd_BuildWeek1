@@ -1,5 +1,7 @@
 package Main1.entities;
 
+import Main1.entities.Enum.Condizione;
+
 public class Distributore_automatico extends  Tipi_vendita{
 
     protected Condizione condizione;
