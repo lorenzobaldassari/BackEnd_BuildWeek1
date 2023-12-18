@@ -1,11 +1,19 @@
 package Main1.entities;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "tessere")
 public class Tessera {
+    @Id
+    @GeneratedValue
     private long numero_tessera;
     private LocalDate emissione;
     private LocalDate scadenza;
+
+    @OneToOne(mappedBy = "tessere")
+    private Utente utente;
 
     public Tessera() {
     }

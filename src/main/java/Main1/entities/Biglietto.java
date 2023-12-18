@@ -1,8 +1,17 @@
 package Main1.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDate;
 
+@Entity
+@Table
 public class Biglietto {
+
+    @Id
+    @GeneratedValue
     private long id;
     private LocalDate emissione;
     private LocalDate scadenza;

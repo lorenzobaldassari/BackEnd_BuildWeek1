@@ -2,8 +2,12 @@ package Main1.entities;
 
 import Main1.entities.Enum.Periodicità;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "abbonamenti")
 public class Abbonamento extends Tessera {
 
     private boolean validità;

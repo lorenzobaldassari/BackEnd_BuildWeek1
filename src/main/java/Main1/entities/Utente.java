@@ -1,14 +1,23 @@
 package Main1.entities;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "utenti")
 public class Utente {
 
+    @Id
+    @GeneratedValue
     private long id;
     private String nome;
     private String cognome;
     private String email;
     private LocalDate data_nascita;
+
+    @OneToOne
+    @JoinColumn(name = "numero_tessera")
+    private Tessera tessera;
 
     public Utente() {
     }
