@@ -5,6 +5,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "tessere")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Tessera {
     @Id
     @GeneratedValue
@@ -12,7 +13,7 @@ public class Tessera {
     private LocalDate emissione;
     private LocalDate scadenza;
 
-    @OneToOne(mappedBy = "tessere")
+    @OneToOne(mappedBy = "tessera")
     private Utente utente;
 
     public Tessera() {
@@ -42,5 +43,15 @@ public class Tessera {
 
     public void setScadenza(LocalDate scadenza) {
         this.scadenza = scadenza;
+    }
+
+    @Override
+    public String toString() {
+        return "Tessera{" +
+                "numero_tessera=" + numero_tessera +
+                ", emissione=" + emissione +
+                ", scadenza=" + scadenza +
+                ", utente=" + utente +
+                '}';
     }
 }

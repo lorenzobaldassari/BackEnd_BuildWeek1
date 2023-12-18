@@ -3,6 +3,8 @@ package Main1.entities;
 import Main1.entities.Enum.Periodicità;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
 import java.time.LocalDate;
 
@@ -11,6 +13,8 @@ import java.time.LocalDate;
 public class Abbonamento extends Tessera {
 
     private boolean validità;
+
+    @Enumerated(EnumType.STRING)
     private Periodicità periodicità;
 
     private LocalDate data_inizio;
@@ -59,4 +63,13 @@ public class Abbonamento extends Tessera {
     }
 
 
+    @Override
+    public String toString() {
+        return "Abbonamento{" +
+                "validità=" + validità +
+                ", periodicità=" + periodicità +
+                ", data_inizio=" + data_inizio +
+                ", data_fine=" + data_fine +
+                '}';
+    }
 }

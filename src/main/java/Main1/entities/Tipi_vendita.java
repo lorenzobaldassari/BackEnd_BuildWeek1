@@ -2,6 +2,7 @@ package Main1.entities;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
 
 
 public class Tipi_vendita {

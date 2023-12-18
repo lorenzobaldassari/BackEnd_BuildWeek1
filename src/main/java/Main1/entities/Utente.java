@@ -66,4 +66,16 @@ public class Utente {
     public void setData_nascita(LocalDate data_nascita) {
         this.data_nascita = data_nascita;
     }
+
+    @Override
+    public String toString() {
+        return "Utente{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cognome='" + cognome + '\'' +
+                ", email='" + email + '\'' +
+                ", data_nascita=" + data_nascita +
+                ", tessera=" + tessera +
+                '}';
+    }
 }
