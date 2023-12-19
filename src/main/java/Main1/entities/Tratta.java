@@ -19,7 +19,7 @@ public class Tratta {
     private int tempoPercoreenzaInMinuti;
     @ManyToMany
     @JoinTable(name="mezzi_tratta",joinColumns =@JoinColumn(name="tratta_id"),
-            inverseJoinColumns = @JoinColumn(name="mezzi_id "))
+            inverseJoinColumns = @JoinColumn(name="mezzi_id"))
     private List<Parco_mezzi> mezzi;
 
 

@@ -13,9 +13,9 @@ public class Tram extends Parco_mezzi{
     @Column(name="capienza")
     protected long capienza;
 
-    public Tram(Stato stato, List<LocalDate> giorniDiServizio, List<LocalDate> giorniDiManutenzione) {
-        super(stato, giorniDiServizio, giorniDiManutenzione);
-        this.capienza = 30;
+    public Tram(Stato stato, LocalDate data_inizio_servizio, long capienza) {
+        super(stato, data_inizio_servizio);
+        this.capienza = capienza;
     }
 
     public Tram(Stato stato) {
@@ -36,8 +36,7 @@ public class Tram extends Parco_mezzi{
                 "capienza=" + capienza +
                 ", id=" + id +
                 ", stato=" + stato +
-                ", giorniDiServizio=" + giorniDiServizio +
-                ", giorniDiManutenzione=" + giorniDiManutenzione +
+                ", data_inizio_servizio=" + data_inizio_servizio +
                 '}';
     }
 }
