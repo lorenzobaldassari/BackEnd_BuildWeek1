@@ -15,12 +15,12 @@ public class BigliettoDao {
         this.em= em;
     }
 
-    public void save(Biglietto prestito){
+    public void save(Biglietto biglietto){
         EntityTransaction transaction=em.getTransaction();
         transaction.begin();
-        em.persist(prestito);
+        em.persist(biglietto);
         transaction.commit();
-        System.out.println("il prestito con id  "+ prestito.getId()+" salvato con successo");
+        System.out.println("il biglietto con id  "+ biglietto.getId()+" salvato con successo");
     }
 
     public Biglietto findById(long id){

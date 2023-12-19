@@ -22,13 +22,33 @@ public class Application {
         EntityManager em = emf.createEntityManager();
         TrattaDAO trd=new TrattaDAO(em);
         Parco_mezziDAO pmd=new Parco_mezziDAO(em);
-        Parco_mezzi bus1=new Bus(Stato.IN_SEVIZIO);
 
-        Tratta uno= new Tratta("Milano","Roma",120);
-//        bus1.insertTratta(uno);
-//        trd.save(uno);
+        // creazione mezzi
+//        Parco_mezzi bus1=new Bus(Stato.IN_SEVIZIO);
+//        Parco_mezzi bus2=new Bus(Stato.IN_SEVIZIO);
+
+        //creazione tratte
+//        Tratta tratta1= new Tratta("Milano","Roma",120);
+//        Tratta tratta2= new Tratta("Milano","Roma",120);
+//        Tratta tratta3= new Tratta("Milano","Palermo",120);
+
+        //inresimento tratte ni mezzi
+//        bus1.insertTratta(tratta1);
+//        bus2.insertTratta(tratta1);
+//        bus1.insertTratta(tratta2);
+//        bus1.insertTratta(tratta3);
+
+        //salvataggio in database
+//        trd.save(tratta1);
+//        trd.save(tratta2);
+//        trd.save(tratta3);
 //        pmd.save(bus1);
-        trd.NummeroDiTrattaSingolMezzo("Milano","Roma");
+//        pmd.save(bus2);
+
+        //prova metodi
+
+        //metodo quante volte un mezzo percorre una tratta
+        System.out.println(trd.NummeroDiTrattaSingolMezzo("Milano","Roma",7));
 
         System.out.println("Hello World1!");
 
