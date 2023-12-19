@@ -50,8 +50,8 @@ public class TrattaDAO {
         getNummeroDiTrattaSingolMezzo.setParameter("partenza",partenza);
         getNummeroDiTrattaSingolMezzo.setParameter("capolinea",capolinea);
        List<Parco_mezzi> mezzo=getNummeroDiTrattaSingolMezzo.getResultList();
-       //mezzo.forEach(elm->System.out.println("ciao"+elm.getId()));
-       System.out.println(mezzo);
+       mezzo.forEach(elm->System.out.println("ciao"+elm.getId()));
+//       System.out.println(mezzo);
     }
 
 }

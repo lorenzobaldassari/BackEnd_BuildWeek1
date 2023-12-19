@@ -4,10 +4,13 @@ import Main1.entities.Enum.Stato;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 @Entity
+
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="tipo_di_mezzo")
+
 public abstract class Parco_mezzi {
 @Id
 @GeneratedValue
@@ -19,9 +22,12 @@ public abstract class Parco_mezzi {
     @ManyToMany
     @JoinTable(name="mezzi_tratta",joinColumns =@JoinColumn(name="mezzi_id"),
     inverseJoinColumns = @JoinColumn(name="tratta_id"))
-    private List<Tratta> tratte;
+    private List<Tratta> tratte=new ArrayList<>();
     @OneToMany(mappedBy = "parco_mezzi")
     private List<Manutenzione> manutenzioni;
+
+    @OneToMany(mappedBy = "parco_mezzi")
+    private List<Biglietto> biglietto;
 
     public Parco_mezzi() {
     }
@@ -39,6 +45,7 @@ public abstract class Parco_mezzi {
         this.data_inizio_servizio = data_inizio_servizio;
     }
 
+
     public Parco_mezzi(Stato stato) {
         this.stato = stato;
     }
@@ -51,8 +58,13 @@ public abstract class Parco_mezzi {
         return id;
     }
 
+
+
     public Stato getStato() {
         return stato;
+    }
+    public void insertTratta( Tratta tratta) {
+        this.tratte.add(tratta);
     }
 
     public List<Tratta> getTratte() {

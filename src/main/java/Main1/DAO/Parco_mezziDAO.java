@@ -1,5 +1,6 @@
 package Main1.DAO;
 
+
 import Main1.entities.Parco_mezzi;
 
 import javax.persistence.EntityManager;
