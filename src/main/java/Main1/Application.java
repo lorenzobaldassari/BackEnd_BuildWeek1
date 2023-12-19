@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.time.LocalDate;
+import java.util.Random;
 
 
 public class Application {
@@ -20,8 +21,8 @@ public class Application {
 
     public static void main(String[] args) {
         EntityManager em = emf.createEntityManager();
-        TrattaDAO trd=new TrattaDAO(em);
-        Parco_mezziDAO pmd=new Parco_mezziDAO(em);
+        TrattaDAO trd = new TrattaDAO(em);
+        Parco_mezziDAO pmd = new Parco_mezziDAO(em);
 
         // creazione mezzi
 //        Parco_mezzi bus1=new Bus(Stato.IN_SEVIZIO);
@@ -48,19 +49,33 @@ public class Application {
         //prova metodi
 
         //metodo quante volte un mezzo percorre una tratta
-        System.out.println(trd.NummeroDiTrattaSingolMezzo("Milano","Roma",7));
+        System.out.println(trd.NummeroDiTrattaSingolMezzo("Milano", "Roma", 7));
 
-        TesseraDAO elemento = new TesseraDAO(em);
+        TesseraDAO tesseraDAO = new TesseraDAO(em);
 
-        Abbonamento abbonamento1 = new Abbonamento(
-                LocalDate.of(2023, 10, 16),
-                true,
-                Periodicità.Mensile,
-                LocalDate.of(2023, 10, 16)
+
+        Random random = new Random();
+        Abbonamento abbonamento = new Abbonamento(
+                LocalDate.of(2023, random.nextInt(1, 12), random.nextInt(1, 30)),
+                Periodicità.getRandomPeriodicità(),
+                LocalDate.of(2023, random.nextInt(1, 12), random.nextInt(1, 30))
         );
 
-//        abbonamento1.calcolaDataFine();
-//        elemento.save(abbonamento1);
+//        abbonamento.calcolaDataFine();
+//        tesseraDAO.save(abbonamento);
+
+
+        LocalDate checkDate = LocalDate.of(2023, 7, 24);
+        long numeroTessera = abbonamento.getNumero_tessera();
+
+
+        boolean isValid1 = tesseraDAO.isValidAbbonamento(checkDate, 1);
+        boolean isValid2 = tesseraDAO.isValidAbbonamento(checkDate, 2);
+
+
+        System.out.println("L'abbonamento è valido? " + isValid1);
+        System.out.println("L'abbonamento è valido? " + isValid2);
+
 
         em.close();
         emf.close();

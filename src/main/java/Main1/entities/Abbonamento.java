@@ -10,8 +10,6 @@ import java.time.LocalDate;
 public class Abbonamento extends Tessera {
 
 
-    private boolean validità;
-
     @Enumerated(EnumType.STRING)
     private Periodicità periodicità;
 
@@ -23,9 +21,8 @@ public class Abbonamento extends Tessera {
     private Tipi_vendita tipi_vendita;
 
 
-    public Abbonamento(LocalDate emissione, boolean validità, Periodicità periodicità, LocalDate data_inizio) {
+    public Abbonamento(LocalDate emissione, Periodicità periodicità, LocalDate data_inizio) {
         super(emissione);
-        this.validità = validità;
         this.periodicità = periodicità;
         this.data_inizio = data_inizio;
         calcolaDataFine();
@@ -43,14 +40,6 @@ public class Abbonamento extends Tessera {
     public Abbonamento() {
     }
 
-
-    public boolean isValidità() {
-        return validità;
-    }
-
-    public void setValidità(boolean validità) {
-        this.validità = validità;
-    }
 
     public Periodicità getPeriodicità() {
         return periodicità;
@@ -77,11 +66,9 @@ public class Abbonamento extends Tessera {
     }
 
 
-
-
     public String toString() {
         return "Abbonamento{" +
-                "validità=" + validità +
+
                 ", periodicità=" + periodicità +
                 ", data_inizio=" + data_inizio +
                 ", data_fine=" + data_fine +
