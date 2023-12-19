@@ -25,10 +25,9 @@ public class Application {
         Parco_mezzi bus1=new Bus(Stato.IN_SEVIZIO);
 
         Tratta uno= new Tratta("Milano","Roma",120);
-
-        //trd.save(uno);
-        //pmd.save(bus1);
-
+//        bus1.insertTratta(uno);
+//        trd.save(uno);
+//        pmd.save(bus1);
         trd.NummeroDiTrattaSingolMezzo("Milano","Roma");
 
         System.out.println("Hello World1!");

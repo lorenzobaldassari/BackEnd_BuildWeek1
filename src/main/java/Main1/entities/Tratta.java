@@ -33,6 +33,7 @@ public class Tratta {
     public Tratta() {
     }
 
+
     public void setZona_partenza(String zona_partenza) {
         this.zona_partenza = zona_partenza;
     }
