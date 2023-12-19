@@ -1,7 +1,6 @@
 package Main1.DAO;
 
 import Main1.entities.Tessera;
-import Main1.entities.Utente;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -29,13 +28,13 @@ public class TesseraDAO {
 
     }
 
-    public Tessera findById(long numero_tessera) {
+    public Tessera findByUUID(UUID numero_tessera) {
 
         return (Tessera) this.em.find(Tessera.class, numero_tessera);
 
     }
 
-    public void findByIdAndDelete(long numero_tessera) {
+    public void findByUUIDAndDelete(UUID numero_tessera) {
         try {
             EntityTransaction t = this.em.getTransaction();
             Tessera found = (Tessera) this.em.find(Tessera.class, numero_tessera);
@@ -52,7 +51,7 @@ public class TesseraDAO {
         }
     }
 
-    public boolean isValidAbbonamento(LocalDate checkDate, long numero_tessera) {
+    public boolean isValidAbbonamento(LocalDate checkDate, UUID numero_tessera) {
         Query query = em.createQuery("SELECT 1 FROM Abbonamento a " +
                 "WHERE a.emissione <= :checkDate " +
                 "AND a.data_inizio <= :checkDate " +

@@ -108,3 +108,5 @@ G.idea/sonarlint/issuestore/3/3/334d80d15c0a7b722b35c339b981e8299ea1f840,2\9\29
 Q.idea/sonarlint/securityhotspotstore/d/6/d628a2db2bb25bd4e4b8e741ce8bdf2731a70c2e,0\a\0a578e94bf0d6b75e4aada7a25f2908187a9ee23
 X
 (src/test/java/Main1/ApplicationTest.java,b\a\ba1964b02651382de51f288d3a984f21568a98db
+V
+&src/main/java/Main1/DAO/TrattaDAO.java,2\7\27a135c8185921d4d1a6fed21291307ecd7fcd1a

@@ -1,4 +1,6 @@
 
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤éæªûÿÿÿÿ8ãÛ“È1
-t	java:S116"YRename this field "numero_tessera" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ì™¡|8ëÛ“È1
-o	java:S100 "NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì²³‚ÿÿÿÿÿ8òÛ“È1
+l	java:S117-"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²ÒÀ/8áÒŸÈ1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤éæªûÿÿÿÿ8áÒŸÈ1
+u	java:S116"YRename this field "numero_tessera" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€êö‡8—áÒŸÈ1
+o	java:S100)"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚ÓÂ¨ùÿÿÿÿ8šáÒŸÈ1
+i	java:S100-"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(²ÒÀ/8šáÒŸÈ1

@@ -2,35 +2,52 @@ package Main1.entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
 @Table(name = "tessere")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Tessera {
+public  class Tessera {
+
     @Id
-    @GeneratedValue
-    private long numero_tessera;
+
+    private UUID numero_tessera;
     private LocalDate emissione;
     private LocalDate scadenza;
 
-    @OneToOne(mappedBy = "tessera")
+    @OneToOne
+    @JoinColumn(name = "utente_id") // Aggiungi questa riga
     private Utente utente;
 
     public Tessera() {
     }
 
     public Tessera(LocalDate emissione) {
+        this.numero_tessera = UUID.randomUUID();
         this.emissione = emissione;
         this.scadenza = emissione.plusDays(365);
     }
 
+    @Override
+    public String toString() {
+        return "Tessera{" +
+                "numero_tessera=" + numero_tessera +
+                ", emissione=" + emissione +
+                ", scadenza=" + scadenza +
+                ", utente=" + utente +
+                '}';
+    }
+
+    public UUID getNumero_tessera() {
+        return numero_tessera;
+    }
+
+    public void setNumero_tessera(UUID numero_tessera) {
+        this.numero_tessera = numero_tessera;
+    }
 
     public LocalDate getEmissione() {
         return emissione;
-    }
-
-    public long getNumero_tessera() {
-        return numero_tessera;
     }
 
     public void setEmissione(LocalDate emissione) {
@@ -51,15 +68,5 @@ public class Tessera {
 
     public void setUtente(Utente utente) {
         this.utente = utente;
-    }
-
-    @Override
-    public String toString() {
-        return "Tessera{" +
-                "numero_tessera=" + numero_tessera +
-                ", emissione=" + emissione +
-                ", scadenza=" + scadenza +
-                ", utente=" + utente +
-                '}';
     }
 }

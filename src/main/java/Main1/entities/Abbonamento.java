@@ -4,11 +4,11 @@ import Main1.entities.Enum.Periodicità;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
 @Table(name = "abbonamenti")
 public class Abbonamento extends Tessera {
-
 
     @Enumerated(EnumType.STRING)
     private Periodicità periodicità;
@@ -19,7 +19,6 @@ public class Abbonamento extends Tessera {
     @ManyToOne
     @JoinColumn(name = "abbonamento_id")
     private Tipi_vendita tipi_vendita;
-
 
     public Abbonamento(LocalDate emissione, Periodicità periodicità, LocalDate data_inizio) {
         super(emissione);
@@ -35,11 +34,6 @@ public class Abbonamento extends Tessera {
             this.data_fine = data_inizio.plusDays(7);
         }
     }
-
-
-    public Abbonamento() {
-    }
-
 
     public Periodicità getPeriodicità() {
         return periodicità;
@@ -65,11 +59,10 @@ public class Abbonamento extends Tessera {
         this.data_fine = data_fine;
     }
 
-
+    @Override
     public String toString() {
         return "Abbonamento{" +
-
-                ", periodicità=" + periodicità +
+                "periodicità=" + periodicità +
                 ", data_inizio=" + data_inizio +
                 ", data_fine=" + data_fine +
                 '}';

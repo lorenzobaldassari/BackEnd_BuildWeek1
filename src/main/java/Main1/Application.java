@@ -1,13 +1,9 @@
 package Main1;
 
-
 import Main1.DAO.TesseraDAO;
 import Main1.DAO.UtenteDAO;
 import Main1.entities.Abbonamento;
 import Main1.entities.Enum.Periodicità;
-
-import Main1.DAO.Parco_mezziDAO;
-import Main1.DAO.TrattaDAO;
 import Main1.entities.Utente;
 import com.github.javafaker.Faker;
 
@@ -17,7 +13,7 @@ import javax.persistence.Persistence;
 import java.time.LocalDate;
 import java.util.Locale;
 import java.util.Random;
-
+import java.util.UUID;
 
 public class Application {
 
@@ -25,8 +21,9 @@ public class Application {
 
     public static void main(String[] args) {
         EntityManager em = emf.createEntityManager();
-        TrattaDAO trd = new TrattaDAO(em);
-        Parco_mezziDAO pmd = new Parco_mezziDAO(em);
+
+//        TrattaDAO trd = new TrattaDAO(em);
+//        Parco_mezziDAO pmd = new Parco_mezziDAO(em);
 
         // creazione mezzi
 //        Parco_mezzi bus1=new Bus(Stato.IN_SEVIZIO);
@@ -37,7 +34,7 @@ public class Application {
 //        Tratta tratta2= new Tratta("Milano","Roma",120);
 //        Tratta tratta3= new Tratta("Milano","Palermo",120);
 
-        //inresimento tratte ni mezzi
+        //inserimento tratte nei mezzi
 //        bus1.insertTratta(tratta1);
 //        bus2.insertTratta(tratta1);
 //        bus1.insertTratta(tratta2);
@@ -53,46 +50,49 @@ public class Application {
         //prova metodi
 
         //metodo quante volte un mezzo percorre una tratta
-        System.out.println(trd.NummeroDiTrattaSingolMezzo("Milano", "Roma", 7));
+//        System.out.println(trd.NummeroDiTrattaSingolMezzo("Milano", "Roma", 7));
 
 
-        Faker faker = new Faker(Locale.ITALY);
-
+        // daos utente e tessera/abbonamento
 
         UtenteDAO utenteDAO = new UtenteDAO(em);
-        Random randomnascita = new Random();
-
-        Utente utente = new Utente(faker.name().firstName(), faker.name().lastName(), faker.internet().emailAddress(), LocalDate.of(randomnascita.nextInt(1930, 2022), randomnascita.nextInt(1, 12), randomnascita.nextInt(1, 30)));
-
-
-        utenteDAO.save(utente);
-
-
         TesseraDAO tesseraDAO = new TesseraDAO(em);
 
-
+        // faker e random per numeri e parole
+        Faker faker = new Faker(Locale.ITALY);
         Random random = new Random();
+
+
         Abbonamento abbonamento = new Abbonamento(
                 LocalDate.of(2023, random.nextInt(1, 12), random.nextInt(1, 30)),
                 Periodicità.getRandomPeriodicità(),
                 LocalDate.of(2023, random.nextInt(1, 12), random.nextInt(1, 30))
         );
 
-        abbonamento.calcolaDataFine();
+        Utente utente = new Utente(
+                faker.name().firstName(),
+                faker.name().lastName(),
+                faker.internet().emailAddress(),
+                LocalDate.of(random.nextInt(1930, 2022), random.nextInt(1, 12), random.nextInt(1, 30))
+        );
+
+        // Associa la tessera all'utente
+        utente.setTessera(abbonamento);
+
+        UUID numeroTessera = UUID.randomUUID();
+        abbonamento.setNumero_tessera(numeroTessera);
+        utente.setTessera(abbonamento);
+
+
+        // Salvataggio
         tesseraDAO.save(abbonamento);
+        utenteDAO.save(utente);
+
 
 
         LocalDate checkDate = LocalDate.of(2023, 7, 24);
-        long numeroTessera = abbonamento.getNumero_tessera();
-
-
-        boolean isValid1 = tesseraDAO.isValidAbbonamento(checkDate, 1);
-        boolean isValid2 = tesseraDAO.isValidAbbonamento(checkDate, 7);
-
-
-        System.out.println("L'abbonamento è valido? " + isValid1);
-        System.out.println("L'abbonamento è valido? " + isValid2);
-
+        boolean isValid = tesseraDAO.isValidAbbonamento(checkDate, numeroTessera);
+        System.out.println("L'abbonamento è valido? " + isValid);
 
         em.close();
         emf.close();

@@ -1,7 +1,9 @@
 
-l	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰ù]8È…éÇ1
-m	java:S117B"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯¬­8Œ½‰éÇ1
+l	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰ù]8àº¾ŸÈ1
+m	java:S117K"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯¬­8ô€İŸÈ1
 {	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤éæªûÿÿÿÿ8ø€„éÇ1
-s	java:S116"WRename this field "data_nascita" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÙÅéî8‹„éÇ1
-o	java:S100>"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£À·—ùÿÿÿÿ8ÉŸ…éÇ1
-j	java:S100B"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯¬­8ÏŸ…éÇ1
+s	java:S116"WRename this field "data_nascita" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÙÅéî8»´€¡È1
+o	java:S100G"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£À·—ùÿÿÿÿ8ƒİŸÈ1
+j	java:S100K"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯¬­8…İŸÈ1
+M
+java:S1128"+Remove this unused import 'java.util.UUID'.(ÀãÄ£úÿÿÿÿ8àï£ È1

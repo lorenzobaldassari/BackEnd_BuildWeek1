@@ -1,17 +1,9 @@
 
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(»Ûšİşÿÿÿÿ8ÇÄ¯–È1
-^
-java:S1854V"ARemove this useless assignment to local variable "numeroTessera".(’œÎâ8ÕÄ¯–È1
-Y
-java:S1854"7Remove this useless assignment to local variable "pmd".(§ø®µûÿÿÿÿ8ÕÄ¯–È1
-J
-java:S1481"(Remove this unused "pmd" local variable.(§ø®µûÿÿÿÿ8ØÄ¯–È1
-F	java:S1068"+Replace this use of System.out by a logger.(Ï‰Ü08ØÄ¯–È1
-W	java:S125 "<This block of commented-out lines of code should be removed.(×ã“b8ØÄ¯–È1
-X	java:S125$"<This block of commented-out lines of code should be removed.(ÁÜÙ•8ØÄ¯–È1
-W	java:S125)"<This block of commented-out lines of code should be removed.(šÓğe8ÙÄ¯–È1
-X	java:S125/"<This block of commented-out lines of code should be removed.(™ËôÓ8ÙÄ¯–È1
-O
-java:S1481V"2Remove this unused "numeroTessera" local variable.(’œÎâ8ìÄ¯–È1
-G	java:S106]"+Replace this use of System.out by a logger.(ŞºÙŸ8ìÄ¯–È1
-G	java:S106^"+Replace this use of System.out by a logger.(ôÛı˜8ìÄ¯–È1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(»Ûšİşÿÿÿÿ8—ª È1
+X	java:S125"<This block of commented-out lines of code should be removed.(™Ö…’8­ª È1
+W	java:S125"<This block of commented-out lines of code should be removed.(×ã“b8­ª È1
+X	java:S125!"<This block of commented-out lines of code should be removed.(ÁÜÙ•8®ª È1
+W	java:S125&"<This block of commented-out lines of code should be removed.(šÓğe8®ª È1
+X	java:S125,"<This block of commented-out lines of code should be removed.(™ËôÓ8®ª È1
+W	java:S1255"<This block of commented-out lines of code should be removed.(»‚‰68®ª È1
+L	java:S106_"+Replace this use of System.out by a logger.(Ÿœ°Óúÿÿÿÿ8Ãª È1
