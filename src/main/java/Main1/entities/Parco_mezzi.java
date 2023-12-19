@@ -24,6 +24,9 @@ public abstract class Parco_mezzi {
     @OneToMany(mappedBy = "parco_mezzi")
     private List<Manutenzione> manutenzioni;
 
+    @OneToMany(mappedBy = "parco_mezzi")
+    private List<Biglietto> biglietto;
+
     public Parco_mezzi() {
     }
 

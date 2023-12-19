@@ -20,14 +20,14 @@ public class Application {
 
     public static void main(String[] args) {
         EntityManager em = emf.createEntityManager();
-        TrattaDAO trd=new TrattaDAO(em);
-        Parco_mezziDAO pmd=new Parco_mezziDAO(em);
-        Parco_mezzi bus1=new Bus(Stato.IN_SEVIZIO);
+        TrattaDAO trd = new TrattaDAO(em);
+        Parco_mezziDAO pmd = new Parco_mezziDAO(em);
+        Parco_mezzi bus1 = new Bus(Stato.IN_SEVIZIO);
 
         Tratta uno= new Tratta("Milano","Roma",120);
-//        bus1.insertTratta(uno);
-//        trd.save(uno);
-//        pmd.save(bus1);
+       //bus1.insertTratta(uno);
+       //trd.save(uno);
+       //pmd.save(bus1);
         trd.NummeroDiTrattaSingolMezzo("Milano","Roma");
 
         em.close();
