@@ -13,9 +13,9 @@ public class Bus extends Parco_mezzi{
     @Column(name="capienza")
     protected long capienza;
 
-    public Bus(Stato stato, List<LocalDate> giorniDiServizio, List<LocalDate> giorniDiManutenzione) {
-        super(stato, giorniDiServizio, giorniDiManutenzione);
-        this.capienza = 50;
+    public Bus(Stato stato, LocalDate data_inizio_servizio, long capienza) {
+        super(stato, data_inizio_servizio);
+        this.capienza = capienza;
     }
 
     public Bus(Stato stato) {
@@ -32,12 +32,11 @@ public class Bus extends Parco_mezzi{
 
     @Override
     public String toString() {
-        return "Tram{" +
+        return "Bus{" +
                 "capienza=" + capienza +
                 ", id=" + id +
                 ", stato=" + stato +
-                ", giorniDiServizio=" + giorniDiServizio +
-                ", giorniDiManutenzione=" + giorniDiManutenzione +
+                ", data_inizio_servizio=" + data_inizio_servizio +
                 '}';
     }
 }

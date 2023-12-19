@@ -21,7 +21,7 @@ public abstract class Tipi_vendita {
 
     @OneToMany(mappedBy = "tipi_vendita")
     private List<Biglietto> biglietti;
- @OneToMany(mappedBy = "tipi_vendita")
+    @OneToMany(mappedBy = "tipi_vendita")
     private List<Abbonamento> abbonamenti;
 
 
