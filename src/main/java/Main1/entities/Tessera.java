@@ -19,11 +19,11 @@ public class Tessera {
     public Tessera() {
     }
 
-    public Tessera(LocalDate emissione, LocalDate scadenza) {
-
+    public Tessera(LocalDate emissione) {
         this.emissione = emissione;
-        this.scadenza = scadenza;
+        this.scadenza = emissione.plusDays(365);
     }
+
 
     public LocalDate getEmissione() {
         return emissione;
