@@ -47,5 +47,40 @@ public class BigliettoDao {
             System.out.println("non esiste l'elemento");
         }
     }
+ public void checkTicketAndNull(long id){
+     EntityTransaction transaction=em.getTransaction();
+     Query getcheckTicketAndNull=em.createQuery("SELECT b FROM Biglietto b WHERE b.id =: id",Biglietto.class);
+     getcheckTicketAndNull.setParameter("id",id);
+
+    List<Biglietto> getcheckTicket=getcheckTicketAndNull.getResultList();
+    getcheckTicket.forEach(elm ->{
+        if(elm.isVidimazione()){
+            transaction.begin();
+            em.remove(elm);
+            transaction.commit();
+            System.out.println("il blietto con id "+elm.getId() +" eliminato");
+        }else{
+            System.out.println("il biglietto non è stato vidimato");
+        }
+    });
+ }
+ public void deleteAllTicketEndorsed(){
+     EntityTransaction transaction=em.getTransaction();
+     Query getdeleteAllTicketEndorsed=em.createQuery("SELECT b FROM Biglietto b WHERE b.vidimazione is true", Biglietto.class);
+     List<Biglietto>allTicketEndorsed =getdeleteAllTicketEndorsed.getResultList();
+     if (allTicketEndorsed.size()>0) {
+         allTicketEndorsed.forEach(elm -> {
+             transaction.begin();
+             em.remove(elm);
+             transaction.commit();
+
+         });
+         System.out.println("i biglietti vidimati sono stati eliminati");
+
+     }
+     else{
+         System.out.println("biglietti vidimati non presenti");
+     }
+    }
 
 }

@@ -19,6 +19,9 @@ public class Biglietto {
     @JoinColumn(name = "mezzi_id")
     private Parco_mezzi parco_mezzi;
 
+    public Biglietto() {
+    }
+
     public Biglietto(LocalDate emissione, LocalDate scadenza, boolean vidimazione) {
         this.emissione = emissione;
         this.scadenza = scadenza;
