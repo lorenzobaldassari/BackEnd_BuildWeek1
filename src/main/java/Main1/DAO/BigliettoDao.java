@@ -1,10 +1,13 @@
 package Main1.DAO;
 
 import Main1.entities.Biglietto;
+import Main1.entities.Distributore_automatico;
+import Main1.entities.Tipi_vendita;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import java.time.LocalDate;
 import java.util.List;
 
 public class BigliettoDao {
@@ -46,6 +49,14 @@ public class BigliettoDao {
         }else{
             System.out.println("non esiste l'elemento");
         }
+    }
+
+    public int numeroBigliettiEmmessi(LocalDate emissione, String puntoEmissione){
+        TypedQuery<Biglietto> numeroBiglietti = em.createQuery("SELECT b FROM Biglietto b JOIN b.tipi_vendita v WHERE b.emissione = :emissione AND v.puntoDiEmissione LIKE :punto_emissione", Biglietto.class);
+        numeroBiglietti.setParameter("emissione", emissione);
+        numeroBiglietti.setParameter("punto_emissione", puntoEmissione);
+        List<Biglietto> big = numeroBiglietti.getResultList();
+        return big.size();
     }
 
 }
