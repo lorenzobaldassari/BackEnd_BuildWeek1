@@ -32,11 +32,22 @@ public class Application {
 //        Tratta tratta2= new Tratta("Milano","Roma",120);
 //        Tratta tratta3= new Tratta("Milano","Palermo",120);
 
-        //inresimento tratte ni mezzi
+//        inserimento abbonamenti
+
+//        Abbonamento abbonamento1 = new Abbonamento(
+//                LocalDate.of(2023, 10, 16),
+//                true,
+//                Periodicità.Mensile,
+//                LocalDate.of(2023, 10, 16)
+//        );
+
+        //inserimento tratte ni mezzi
 //        bus1.insertTratta(tratta1);
 //        bus2.insertTratta(tratta1);
 //        bus1.insertTratta(tratta2);
 //        bus1.insertTratta(tratta3);
+
+
 
         //salvataggio in database
 //        trd.save(tratta1);
@@ -52,12 +63,7 @@ public class Application {
 
         TesseraDAO elemento = new TesseraDAO(em);
 
-        Abbonamento abbonamento1 = new Abbonamento(
-                LocalDate.of(2023, 10, 16),
-                true,
-                Periodicità.Mensile,
-                LocalDate.of(2023, 10, 16)
-        );
+
 
 //        abbonamento1.calcolaDataFine();
 //        elemento.save(abbonamento1);
