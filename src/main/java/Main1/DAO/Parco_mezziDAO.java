@@ -1,10 +1,13 @@
 package Main1.DAO;
+
+
 import Main1.entities.Parco_mezzi;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 public class Parco_mezziDAO {
+
     private final EntityManager em;
     public Parco_mezziDAO(EntityManager em) {
         this.em = em;

@@ -1,8 +1,16 @@
 package Main1;
 
+import Main1.DAO.Parco_mezziDAO;
+import Main1.DAO.TrattaDAO;
+import Main1.entities.Bus;
+import Main1.entities.Enum.Stato;
+import Main1.entities.Parco_mezzi;
+import Main1.entities.Tratta;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.time.LocalDate;
 
 
 public class Application {
@@ -12,6 +20,16 @@ public class Application {
 
     public static void main(String[] args) {
         EntityManager em = emf.createEntityManager();
+        TrattaDAO trd=new TrattaDAO(em);
+        Parco_mezziDAO pmd=new Parco_mezziDAO(em);
+        Parco_mezzi bus1=new Bus(Stato.IN_SEVIZIO);
+
+        Tratta uno= new Tratta("Milano","Roma",120);
+
+        //trd.save(uno);
+        //pmd.save(bus1);
+
+        trd.NummeroDiTrattaSingolMezzo("Milano","Roma");
 
         System.out.println("Hello World1!");
 
