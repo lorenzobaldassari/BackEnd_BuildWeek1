@@ -23,9 +23,10 @@ public class UtenteDAO {
         transaction.begin();
         em.persist(utente);
         transaction.commit();
-        System.out.println("NUovo utente inserito " + utente.getNome());
+        System.out.println("NUovo utente inserito " + utente.getNome() + " " + utente.getCognome());
 
     }
+
     public Utente findUtenteById(long id) {
 
         return (Utente) this.em.find(Utente.class, id);
@@ -42,7 +43,7 @@ public class UtenteDAO {
                 t.commit();
                 System.out.println("Utente Eliminato");
             } else {
-                System.out.println("Utente non trovata");
+                System.out.println("Utente non trovato");
             }
         } catch (Exception var5) {
             System.out.println(var5.getMessage());

@@ -2,16 +2,20 @@ package Main1;
 
 
 import Main1.DAO.TesseraDAO;
+import Main1.DAO.UtenteDAO;
 import Main1.entities.Abbonamento;
 import Main1.entities.Enum.Periodicità;
 
 import Main1.DAO.Parco_mezziDAO;
 import Main1.DAO.TrattaDAO;
+import Main1.entities.Utente;
+import com.github.javafaker.Faker;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.time.LocalDate;
+import java.util.Locale;
 import java.util.Random;
 
 
@@ -51,6 +55,19 @@ public class Application {
         //metodo quante volte un mezzo percorre una tratta
         System.out.println(trd.NummeroDiTrattaSingolMezzo("Milano", "Roma", 7));
 
+
+        Faker faker = new Faker(Locale.ITALY);
+
+
+        UtenteDAO utenteDAO = new UtenteDAO(em);
+        Random randomnascita = new Random();
+
+        Utente utente = new Utente(faker.name().firstName(), faker.name().lastName(), faker.internet().emailAddress(), LocalDate.of(randomnascita.nextInt(1930, 2022), randomnascita.nextInt(1, 12), randomnascita.nextInt(1, 30)));
+
+
+        utenteDAO.save(utente);
+
+
         TesseraDAO tesseraDAO = new TesseraDAO(em);
 
 
@@ -61,8 +78,8 @@ public class Application {
                 LocalDate.of(2023, random.nextInt(1, 12), random.nextInt(1, 30))
         );
 
-//        abbonamento.calcolaDataFine();
-//        tesseraDAO.save(abbonamento);
+        abbonamento.calcolaDataFine();
+        tesseraDAO.save(abbonamento);
 
 
         LocalDate checkDate = LocalDate.of(2023, 7, 24);
@@ -70,7 +87,7 @@ public class Application {
 
 
         boolean isValid1 = tesseraDAO.isValidAbbonamento(checkDate, 1);
-        boolean isValid2 = tesseraDAO.isValidAbbonamento(checkDate, 2);
+        boolean isValid2 = tesseraDAO.isValidAbbonamento(checkDate, 7);
 
 
         System.out.println("L'abbonamento è valido? " + isValid1);
