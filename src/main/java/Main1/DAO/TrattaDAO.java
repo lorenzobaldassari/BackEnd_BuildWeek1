@@ -44,13 +44,13 @@ public class TrattaDAO {
             System.out.println("la tratta con la zona di partenza" + zona_di_partenza + " non è stata trovata");
         }
     }
-    public void NummeroDiTrattaSingolMezzo(String partenza,String capolinea){
+    public int NummeroDiTrattaSingolMezzo(String partenza,String capolinea,long id){
         Query getNummeroDiTrattaSingolMezzo=em.createQuery("SELECT m FROM Parco_mezzi m JOIN m.tratte t WHERE t.zona_partenza=:partenza " + "AND t.capolinea=:capolinea");
         //Query getNummeroDiTrattaSingolMezzo=em.createQuery("SELECT t FROM Tratta t  WHERE t.zona_partenza=:partenza");
         getNummeroDiTrattaSingolMezzo.setParameter("partenza",partenza);
         getNummeroDiTrattaSingolMezzo.setParameter("capolinea",capolinea);
        List<Parco_mezzi> mezzo=getNummeroDiTrattaSingolMezzo.getResultList();
-       mezzo.forEach(elm->System.out.println("ciao"+elm.getId()));
+       return mezzo.stream().filter(elem-> elem.getId()==id).toList().size();
 //       System.out.println(mezzo);
     }
 
