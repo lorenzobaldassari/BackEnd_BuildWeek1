@@ -1,14 +1,10 @@
 package Main1.entities;
 
-
 import javax.persistence.*;
 import java.time.LocalDate;
 @Entity
 @Table(name="biglietti")
 public class Biglietto {
-
-
-
     @Id
     @GeneratedValue
     private long id;
@@ -18,6 +14,10 @@ public class Biglietto {
     @ManyToOne
     @JoinColumn(name="biglietto_id")
     private Tipi_vendita tipi_vendita;
+
+    @ManyToOne
+    @JoinColumn(name = "mezzi_id")
+    private Parco_mezzi parco_mezzi;
 
     public Biglietto(LocalDate emissione, LocalDate scadenza, boolean vidimazione) {
         this.emissione = emissione;

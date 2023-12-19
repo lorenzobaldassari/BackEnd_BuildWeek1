@@ -1,12 +1,11 @@
 package Main1.entities;
 
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.*;
 import java.util.List;
-
-
-
-
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="tipologia_venditore")
@@ -22,8 +21,10 @@ public abstract class Tipi_vendita {
 
     @OneToMany(mappedBy = "tipi_vendita")
     private List<Biglietto> biglietti;
- @OneToMany(mappedBy = "tipi_vendita")
+    @OneToMany(mappedBy = "tipi_vendita")
     private List<Abbonamento> abbonamenti;
+
+
 
 
 
