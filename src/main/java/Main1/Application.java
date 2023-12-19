@@ -10,7 +10,7 @@ import Main1.entities.Tratta;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.time.LocalDate;
+
 
 
 public class Application {
@@ -29,8 +29,6 @@ public class Application {
 //        trd.save(uno);
 //        pmd.save(bus1);
         trd.NummeroDiTrattaSingolMezzo("Milano","Roma");
-
-        System.out.println("Hello World1!");
 
         em.close();
         emf.close();
