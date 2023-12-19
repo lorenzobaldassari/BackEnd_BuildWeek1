@@ -1,9 +1,9 @@
 
-g	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ÓÑ”¶ùÿÿÿÿ
+g	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ÓÑ”¶ùÿÿÿÿ
 t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤éæªûÿÿÿÿ
-O
-java:S5993"9Change the visibility of this constructor to "protected".(Â‚¶´
-T
-java:S5993"9Change the visibility of this constructor to "protected".(ÙíÄüúÿÿÿÿ
-O
-java:S5993"9Change the visibility of this constructor to "protected".(³™¬¨
+V
+java:S5993"9Change the visibility of this constructor to "protected".(Â‚¶´8ùæÞŠÈ1
+[
+java:S5993"9Change the visibility of this constructor to "protected".(ÙíÄüúÿÿÿÿ8ùæÞŠÈ1
+V
+java:S5993$"9Change the visibility of this constructor to "protected".(³™¬¨8úæÞŠÈ1

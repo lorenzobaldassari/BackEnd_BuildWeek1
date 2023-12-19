@@ -9,6 +9,7 @@ import java.time.LocalDate;
 @Table(name = "abbonamenti")
 public class Abbonamento extends Tessera {
 
+
     private boolean validità;
 
     @Enumerated(EnumType.STRING)
@@ -18,16 +19,28 @@ public class Abbonamento extends Tessera {
     private LocalDate data_fine;
 
     @ManyToOne
-    @JoinColumn(name="abbonamento_id")
+    @JoinColumn(name = "abbonamento_id")
     private Tipi_vendita tipi_vendita;
 
 
-    public Abbonamento(LocalDate emissione, LocalDate scadenza, boolean validità, Periodicità periodicità, LocalDate data_inizio, LocalDate data_fine) {
-        super(emissione, scadenza);
+    public Abbonamento(LocalDate emissione, boolean validità, Periodicità periodicità, LocalDate data_inizio) {
+        super(emissione);
         this.validità = validità;
         this.periodicità = periodicità;
         this.data_inizio = data_inizio;
-        this.data_fine = data_fine;
+        calcolaDataFine();
+    }
+
+    public void calcolaDataFine() {
+        if (periodicità == Periodicità.Mensile) {
+            this.data_fine = data_inizio.plusDays(30);
+        } else {
+            this.data_fine = data_inizio.plusDays(7);
+        }
+    }
+
+
+    public Abbonamento() {
     }
 
 
@@ -64,7 +77,8 @@ public class Abbonamento extends Tessera {
     }
 
 
-    @Override
+
+
     public String toString() {
         return "Abbonamento{" +
                 "validità=" + validità +

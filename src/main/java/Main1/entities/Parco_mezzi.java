@@ -7,8 +7,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 @Entity
+
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="tipo_di_mezzo")
+
 public abstract class Parco_mezzi {
 @Id
 @GeneratedValue
@@ -23,6 +25,9 @@ public abstract class Parco_mezzi {
     private List<Tratta> tratte=new ArrayList<>();
     @OneToMany(mappedBy = "parco_mezzi")
     private List<Manutenzione> manutenzioni;
+
+    @OneToMany(mappedBy = "parco_mezzi")
+    private List<Biglietto> biglietto;
 
     public Parco_mezzi() {
     }
