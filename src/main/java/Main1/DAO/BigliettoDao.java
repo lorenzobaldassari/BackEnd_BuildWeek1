@@ -1,10 +1,11 @@
 package Main1.DAO;
 
-import Main1.entities.Biglietto;
+import Main1.entities.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
+import java.time.LocalDate;
 import java.util.List;
 
 public class BigliettoDao {
@@ -46,6 +47,24 @@ public class BigliettoDao {
         }else{
             System.out.println("non esiste l'elemento");
         }
+    }
+
+    public void numeroDiBigliettoPerPeriodoEDistributore(LocalDate inizio, String tipovendita){
+
+        if(tipovendita.equals("Rivenditori_autorizzati")){
+            Query getNummeroDiTrattaSingolMezzo=em.createQuery("SELECT b FROM Biglietto b JOIN TREAT(b.tipi_vendita AS Rivenditori_autorizzati) d " +
+                    "WHERE d.condizione is null  ", Biglietto.class);
+            List<Biglietto> abbo=getNummeroDiTrattaSingolMezzo.getResultList();
+            int numebrOfTickets = abbo.size();
+            System.out.println(numebrOfTickets);
+        } else if (tipovendita.equals("Distributore_automatico")) {
+            Query getNummeroDiTrattaSingolMezzo=em.createQuery("SELECT b FROM Biglietto b JOIN TREAT(b.tipi_vendita AS Distributore_automatico) d " +
+                    "WHERE d.condizione is not null  ", Biglietto.class);
+        List<Biglietto> abbo=getNummeroDiTrattaSingolMezzo.getResultList();
+        int numebrOfTickets = abbo.size();
+        System.out.println(numebrOfTickets);
+        }
+
     }
 
 }

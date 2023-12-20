@@ -16,6 +16,13 @@ public class Distributore_automatico extends  Tipi_vendita{
         this.condizione = condizione;
     }
 
+    public Distributore_automatico() {
+    }
+
+    public Distributore_automatico(String puntoDiEmissione) {
+        super(puntoDiEmissione);
+    }
+
     public Condizione getCondizione() {
         return condizione;
     }

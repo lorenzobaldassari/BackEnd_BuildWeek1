@@ -14,8 +14,6 @@ public abstract class Tipi_vendita {
     @GeneratedValue
     protected long id;
 
-
-
     @Column(name="punto_di_emissione")
     protected String puntoDiEmissione;
 

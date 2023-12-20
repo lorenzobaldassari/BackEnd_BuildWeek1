@@ -1,10 +1,15 @@
 package Main1.DAO;
 
+import Main1.entities.Abbonamento;
+import Main1.entities.Parco_mezzi;
 import Main1.entities.Tessera;
 import Main1.entities.Utente;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
+import java.util.List;
+import java.util.Objects;
 
 
 public class UtenteDAO {
@@ -48,6 +53,8 @@ public class UtenteDAO {
             System.out.println(var5.getMessage());
         }
     }
+
+
 }
 
 

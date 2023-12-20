@@ -1,10 +1,13 @@
 package Main1.DAO;
 
+import Main1.entities.Abbonamento;
 import Main1.entities.Tessera;
 import Main1.entities.Utente;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
+import java.util.List;
 import java.util.UUID;
 
 public class TesseraDAO {
@@ -48,6 +51,21 @@ public class TesseraDAO {
         } catch (Exception var5) {
             System.out.println(var5.getMessage());
         }
+    }
+
+    public void checkValidita(long numero_tessera){
+        Query getNummeroDiTrattaSingolMezzo=em.createQuery("SELECT b FROM Abbonamento b WHERE b.numero_tessera=:numero_tessera", Abbonamento.class);;
+        getNummeroDiTrattaSingolMezzo.setParameter("numero_tessera",numero_tessera);
+        List<Abbonamento> abbo=getNummeroDiTrattaSingolMezzo.getResultList();
+        abbo.forEach(el->{
+            if(abbo.size()>0){
+                if (el.isValidità()){
+
+                    System.out.println("utente con numero di tessera  "+el.getNumero_tessera()+" ha l'abbonamento valido");
+                }else{System.out.println("abbonamento non valido");}
+            }else{System.out.println("non esiste questo numero di tessera");}
+        });
+//
     }
 
 
