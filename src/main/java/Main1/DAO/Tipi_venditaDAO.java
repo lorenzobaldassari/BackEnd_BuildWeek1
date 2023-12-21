@@ -18,6 +18,8 @@ public class Tipi_venditaDAO {
         transaction.begin();
         em.persist(tipi_vendita);
         transaction.commit();
+
+        System.out.println("elemnto salvato tipovendita!");
     }
 
     public Tipi_vendita findByid(long id) {

@@ -7,6 +7,13 @@ import Main1.entities.Tipi_vendita;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
+
+import Main1.entities.*;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -51,7 +58,8 @@ public class BigliettoDao {
         }
     }
 
-    public int numeroBigliettiEmmessi(LocalDate emissione, String puntoEmissione){
+
+    public int numeroBigliettiEmmessi(LocalDate emissione, String puntoEmissione) {
         TypedQuery<Biglietto> numeroBiglietti = em.createQuery("SELECT b FROM Biglietto b JOIN b.tipi_vendita v WHERE b.emissione = :emissione AND v.puntoDiEmissione LIKE :punto_emissione", Biglietto.class);
         numeroBiglietti.setParameter("emissione", emissione);
         numeroBiglietti.setParameter("punto_emissione", puntoEmissione);
@@ -59,4 +67,22 @@ public class BigliettoDao {
         return big.size();
     }
 
-}
+        public void numeroDiBigliettoPerPeriodoEDistributore(LocalDate inizio, String tipovendita){
+
+            if (tipovendita.equals("Rivenditori_autorizzati")) {
+                Query getNummeroDiTrattaSingolMezzo = em.createQuery("SELECT b FROM Biglietto b JOIN TREAT(b.tipi_vendita AS Rivenditori_autorizzati) d " +
+                        "WHERE d.condizione is null  ", Biglietto.class);
+                List<Biglietto> abbo = getNummeroDiTrattaSingolMezzo.getResultList();
+                int numebrOfTickets = abbo.size();
+                System.out.println(numebrOfTickets);
+            } else if (tipovendita.equals("Distributore_automatico")) {
+                Query getNummeroDiTrattaSingolMezzo = em.createQuery("SELECT b FROM Biglietto b JOIN TREAT(b.tipi_vendita AS Distributore_automatico) d " +
+                        "WHERE d.condizione is not null  ", Biglietto.class);
+                List<Biglietto> abbo = getNummeroDiTrattaSingolMezzo.getResultList();
+                int numebrOfTickets = abbo.size();
+                System.out.println(numebrOfTickets);
+            }
+
+        }
+    }
+

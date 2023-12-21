@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "utenti")
-public class Utente {
+public class    Utente {
 
     @Id
     @GeneratedValue

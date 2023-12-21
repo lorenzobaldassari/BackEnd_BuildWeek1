@@ -25,8 +25,10 @@ public class Manutenzione {
         this.description = description;
     }
 
+
     public Manutenzione(){
     }
+
 
     public long getNumero_mezzo() {
         return numero_mezzo;
