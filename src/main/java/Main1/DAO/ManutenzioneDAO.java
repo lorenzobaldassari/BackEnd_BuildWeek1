@@ -39,9 +39,9 @@ public class ManutenzioneDAO {
             transaction.begin();
             em.remove(found);
             transaction.commit();
-            System.out.println("Il post è stato cancellato correttamente");
+            System.out.println("La manutenzione è stata cancellata correttamente");
         } else {
-            System.err.println("Il post con l'id " + id + " non è stato trovato");
+            System.err.println("La manutenzione con " + id + " non è stata trovat");
         }
 
     }

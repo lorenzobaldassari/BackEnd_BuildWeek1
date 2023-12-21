@@ -18,9 +18,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.time.LocalDate;
-import java.util.Locale;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 
 
 public class Application {
@@ -58,11 +56,20 @@ public class Application {
 //        trd.save(tratta3);
 
         //inresimento tratte ni mezzi
-//        bus1.insertTratta(tratta1);
-//        bus2.insertTratta(tratta1);
-//        bus1.insertTratta(tratta2);
-//        bus1.insertTratta(tratta3);
 
+        bus1.insertTratta(tratta1);
+        bus2.insertTratta(tratta1);
+        bus1.insertTratta(tratta2);
+        bus1.insertTratta(tratta3);
+
+
+
+        //salvataggio in database
+        trd.save(tratta1);
+        trd.save(tratta2);
+        trd.save(tratta3);
+        pmd.save(bus1);
+        pmd.save(bus2);
 
 
         //creazione Rivenditori
@@ -70,13 +77,13 @@ public class Application {
         Rivenditori_autorizzati vend2= new Rivenditori_autorizzati("Milano");
         Distributore_automatico auto1 = new Distributore_automatico("Milano",Condizione.ATTIVO);
         Distributore_automatico auto2 = new Distributore_automatico("Roma",Condizione.ATTIVO);
-
 //        tipidao.save(vend1);
 //        tipidao.save(vend2);
 //        tipidao.save(auto1);
 //        tipidao.save(auto2);
 
         //creazione utenti
+
         Faker faker= new Faker();
         Random random= new Random();
         Utente utente1 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
