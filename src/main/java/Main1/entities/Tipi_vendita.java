@@ -28,9 +28,9 @@ public abstract class Tipi_vendita {
 
     public Tipi_vendita(String puntoDiEmissione, List<Biglietto> biglietti, List<Abbonamento> abbonamenti) {
         this.puntoDiEmissione = puntoDiEmissione;
-        this.biglietti = biglietti;
-        this.abbonamenti = abbonamenti;
     }
+
+
 
     public Tipi_vendita(String puntoDiEmissione) {
         this.puntoDiEmissione = puntoDiEmissione;

@@ -22,10 +22,12 @@ public  class Tessera {
     public Tessera() {
     }
 
-    public Tessera(LocalDate emissione) {
+
+    public Tessera(LocalDate emissione, Utente utente) {
         this.numero_tessera = UUID.randomUUID();
         this.emissione = emissione;
         this.scadenza = emissione.plusDays(365);
+        this.utente = utente;
     }
 
     @Override

@@ -15,7 +15,7 @@ public class Manutenzione {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "tipo_di_mezzo")
+    @JoinColumn(name = "id_mezzo")
     private Parco_mezzi parco_mezzi;
 
     public Manutenzione(LocalDate giorno_inizio, LocalDate giorno_fine, String description) {
@@ -34,6 +34,11 @@ public class Manutenzione {
         this.giorno_inizio = giorno_inizio;
         this.giorno_stimato = giorno_inizio.plusDays(7);
         this.giorno_fine = giorno_fine;
+        this.description = description;
+        this.parco_mezzi = parco_mezzi;
+    }   public Manutenzione(LocalDate giorno_inizio, String description, Parco_mezzi parco_mezzi) {
+        this.giorno_inizio = giorno_inizio;
+        this.giorno_stimato = giorno_inizio.plusDays(7);
         this.description = description;
         this.parco_mezzi = parco_mezzi;
     }

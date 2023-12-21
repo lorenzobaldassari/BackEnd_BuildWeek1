@@ -85,7 +85,7 @@ public class BigliettoDao {
              transaction.commit();
 
          });
-         System.out.println("i biglietti vidimati sono stati eliminati");
+         System.out.println(allTicketEndorsed.size()+ " biglietti vidimati sono stati eliminati");
 
      }
      else{
@@ -95,10 +95,17 @@ public class BigliettoDao {
 
 
     public int numeroBigliettiEmmessi(LocalDate emissione, String puntoEmissione) {
-        TypedQuery<Biglietto> numeroBiglietti = em.createQuery("SELECT b FROM Biglietto b JOIN b.tipi_vendita v WHERE b.emissione = :emissione AND v.puntoDiEmissione LIKE :punto_emissione", Biglietto.class);
+        TypedQuery<Biglietto> numeroBiglietti = em.createQuery("SELECT b FROM Biglietto b JOIN b.tipi_vendita v " +
+                "WHERE b.emissione = :emissione AND v.puntoDiEmissione LIKE :punto_emissione", Biglietto.class);
         numeroBiglietti.setParameter("emissione", emissione);
         numeroBiglietti.setParameter("punto_emissione", puntoEmissione);
         List<Biglietto> big = numeroBiglietti.getResultList();
+        if(big.size()==0){
+            System.out.println("non sono stati venduti biglietti il "+ emissione+ "nel punto vendita a "+ puntoEmissione);
+        }else{
+            System.out.println("sono stati venduti "+big.size()+" biglietti il "+ emissione+
+                    "nel punto vendita a "+ puntoEmissione);
+        }
         return big.size();
     }
 

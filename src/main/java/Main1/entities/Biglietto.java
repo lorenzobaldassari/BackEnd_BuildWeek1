@@ -12,7 +12,7 @@ public class Biglietto {
     private LocalDate scadenza;
     private boolean vidimazione;
     @ManyToOne
-    @JoinColumn(name="biglietto_id")
+    @JoinColumn(name="id_punto_vendita")
     private Tipi_vendita tipi_vendita;
 
     @ManyToOne
@@ -23,23 +23,31 @@ public class Biglietto {
     public Biglietto() {
     }
 
-    public Biglietto(LocalDate emissione, LocalDate scadenza, boolean vidimazione) {
+    public Biglietto(LocalDate emissione, boolean vidimazione, Tipi_vendita tipi_vendita) {
 
         this.emissione = emissione;
-        this.scadenza = scadenza;
+        this.scadenza =  this.emissione.plusDays(60);
         this.vidimazione = vidimazione;
         this.tipi_vendita = tipi_vendita;
     }
 
 
-    public Biglietto(LocalDate emissione, LocalDate scadenza, boolean vidimazione, Tipi_vendita tipi_vendita, Parco_mezzi parco_mezzi) {
+    public Biglietto(LocalDate emissione, boolean vidimazione, Tipi_vendita tipi_vendita, Parco_mezzi parco_mezzi) {
         this.emissione = emissione;
-        this.scadenza = scadenza;
+        this.scadenza =  this.emissione.plusDays(60);
         this.vidimazione = vidimazione;
         this.tipi_vendita = tipi_vendita;
         this.parco_mezzi = parco_mezzi;
     }
 
+
+    public Parco_mezzi getParco_mezzi() {
+        return parco_mezzi;
+    }
+
+    public void setParco_mezzi(Parco_mezzi parco_mezzi) {
+        this.parco_mezzi = parco_mezzi;
+    }
 
     public LocalDate getEmissione() {
         return emissione;

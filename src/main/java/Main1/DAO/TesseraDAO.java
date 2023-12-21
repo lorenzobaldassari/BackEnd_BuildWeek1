@@ -77,6 +77,25 @@ public class TesseraDAO {
 
     }
 
+
+    //conferma la validita di un abbonamento controllando se la tessera non e' scaduta in base ad una data
+    public boolean isValidAbbonamento(LocalDate checkDate, long numeroTessera) {
+        Query query = em.createQuery("SELECT 1 FROM Abbonamento a " +
+                "WHERE a.emissione <= :checkDate " +
+                "AND a.data_inizio <= :checkDate " +
+                "AND a.data_fine >= :checkDate " +
+                "AND a.numero_tessera = :numeroTessera");
+
+        query.setParameter("checkDate", checkDate);
+        query.setParameter("numeroTessera", numeroTessera);
+
+        if(query.getResultList().size()==0){
+
+            System.out.println("non esiste abbonamento associato a questa tesseta");
+        }
+        return !query.getResultList().isEmpty();
+    }
+
 }
 
 

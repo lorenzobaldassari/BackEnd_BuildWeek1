@@ -46,10 +46,16 @@ public class ManutenzioneDAO {
 
     }
     public void vehicleUnderMaintenancebyId(long id){
-        Query getvehicleUnnderMaintenancebyId= em.createQuery("SELECT v FROM Manutenzione v JOIN v.parco_mezzi p  WHERE p.id = :id", Manutenzione.class);
+        Query getvehicleUnnderMaintenancebyId= em.createQuery("SELECT v FROM Manutenzione v JOIN " +
+                "v.parco_mezzi p  WHERE p.id = :id", Manutenzione.class);
         getvehicleUnnderMaintenancebyId.setParameter("id",id);
         List<Manutenzione>mezzi=getvehicleUnnderMaintenancebyId.getResultList();
+        if(mezzi.size()==0){
+            System.out.println("questo mezzo non e' in manutenzione o il mezzo non esiste");
+        }else{
+            System.out.println("le manutenzioni di questo mezzo sono:");
         mezzi.forEach(elm->System.out.println(elm));
+        }
 
     }
 }

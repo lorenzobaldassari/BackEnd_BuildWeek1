@@ -29,193 +29,151 @@ public class Application {
 
     public static void main(String[] args) {
         EntityManager em = emf.createEntityManager();
-
         TrattaDAO trd=new TrattaDAO(em);
         Parco_mezziDAO pmd=new Parco_mezziDAO(em);
-
         TesseraDAO td = new TesseraDAO(em);
         Tipi_venditaDAO tipidao= new Tipi_venditaDAO(em);
         BigliettoDao bd= new BigliettoDao(em);
-
-
-        // creazione mezzi
-        Parco_mezzi bus1=new Bus(Stato.IN_SEVIZIO);
-        Parco_mezzi bus2=new Bus(Stato.IN_SEVIZIO);
-/*
-
-        BigliettoDao bd=new BigliettoDao(em);
         ManutenzioneDAO md=new ManutenzioneDAO(em);
+        UtenteDAO ud= new UtenteDAO(em);
+
+
         // creazione mezzi
-//        Parco_mezzi bus1=new Bus(Stato.IN_SEVIZIO);
-//        Parco_mezzi bus2=new Bus(Stato.IN_SEVIZIO);
-          Parco_mezzi tram1=new Tram(Stato.IN_SEVIZIO);
+        Parco_mezzi bus1=new Bus(Stato.IN_SERVIZIO);
+        Parco_mezzi bus2=new Bus(Stato.IN_SERVIZIO);
+        Parco_mezzi tram1=new Tram(Stato.IN_SERVIZIO);
+        Parco_mezzi tram2=new Tram(Stato.IN_MANUTENZIONE);
+//        pmd.save(bus1);
+//        pmd.save(bus2);
+//        pmd.save(tram1);
+//        pmd.save(tram2);
 
 
         //creazione tratte
         Tratta tratta1= new Tratta("Milano","Roma",120);
         Tratta tratta2= new Tratta("Milano","Roma",120);
         Tratta tratta3= new Tratta("Milano","Palermo",120);
-
-
-
-        //creazione biglietti
-        //Biglietto ticket1=new Biglietto(LocalDate.of(2023,12,10),LocalDate.now(),true);
-        //Biglietto ticket2=new Biglietto(LocalDate.of(2023,12,10),LocalDate.now(),false);
-        //creazione manutenzione
-        Manutenzione man1=new Manutenzione(LocalDate.of(2023,11,18),LocalDate.of(2023,11,28),"guasto elettrico",tram1);
-        Manutenzione man2=new Manutenzione(LocalDate.of(2023,11,18),LocalDate.of(2023,11,28),"guasto meccanico",tram1);
-
+//        trd.save(tratta1);
+//        trd.save(tratta2);
+//        trd.save(tratta3);
 
         //inresimento tratte ni mezzi
-        bus1.insertTratta(tratta1);
-        bus2.insertTratta(tratta1);
-        bus1.insertTratta(tratta2);
-        bus1.insertTratta(tratta3);
-
-
-
-        //salvataggio in database
-        trd.save(tratta1);
-        trd.save(tratta2);
-        trd.save(tratta3);
-        pmd.save(bus1);
-        pmd.save(bus2);
-*/
-
-        //creazione Rivenditori
-        Rivenditori_autorizzati vend1= new Rivenditori_autorizzati("Roma");
-        Rivenditori_autorizzati vend2= new Rivenditori_autorizzati("Milano");
-        Distributore_automatico auto1 = new Distributore_automatico("Milano",Condizione.ATTIVO);
-        Distributore_automatico auto2 = new Distributore_automatico("Roma",Condizione.ATTIVO);
-//        tipidao.save(vend1);
-//        tipidao.save(vend2);
-//        tipidao.save(auto1);
-//        tipidao.save(auto2);
-
-
-        //creazione Biglietti
-       Tipi_vendita fixedFromDb= tipidao.findByid(1);
-       Tipi_vendita autoFromDb= tipidao.findByid(3);
-
-    /*    //metodo quante volte un mezzo percorre una tratta
-        System.out.println(trd.NummeroDiTrattaSingolMezzo("Milano","Roma",7));
-
-        //metodo quante volte un mezzo percorre una tratta
-//        System.out.println(trd.NummeroDiTrattaSingolMezzo("Milano", "Roma", 7));
-
-
-
-        Biglietto bigl1= new Biglietto(LocalDate.now(),LocalDate.now(),true,fixedFromDb);
-        Biglietto bigl2= new Biglietto(LocalDate.now(),LocalDate.now(),true,fixedFromDb);
-        Biglietto bigl3= new Biglietto(LocalDate.now(),LocalDate.now(),true,fixedFromDb);
-        Biglietto bigl4= new Biglietto(LocalDate.now(),LocalDate.now(),true,autoFromDb);
-        Biglietto bigl5= new Biglietto(LocalDate.now(),LocalDate.now(),true,autoFromDb);
-        Biglietto bigl6= new Biglietto(LocalDate.now(),LocalDate.now(),true,autoFromDb);
-//        bd.save(bigl1);
-//        bd.save(bigl2);
-//        bd.save(bigl3);
-//        bd.save(bigl4);
-//        bd.save(bigl5);
-//        bd.save(bigl6);
-//        creazione abbonamenti
-
-
-        Abbonamento abbonamento1 = new Abbonamento(
-                LocalDate.of(2023, 10, 16),
-                true,
-                Periodicità.Mensile,
-                LocalDate.of(2023, 10, 16)
-
-        // daos utente e tessera/abbonamento
-
-        UtenteDAO utenteDAO = new UtenteDAO(em);
-        TesseraDAO tesseraDAO = new TesseraDAO(em);
-
-        // faker e random per numeri e parole
-        Faker faker = new Faker(Locale.ITALY);
-        Random random = new Random();
-
-
-        Abbonamento abbonamento = new Abbonamento(
-                LocalDate.of(2023, random.nextInt(1, 12), random.nextInt(1, 30)),
-                Periodicità.getRandomPeriodicità(),
-                LocalDate.of(2023, random.nextInt(1, 12), random.nextInt(1, 30))
-
-        );
-        Abbonamento abbonamento2 = new Abbonamento(
-                LocalDate.of(2023, 10, 16),
-                false,
-                Periodicità.Mensile,
-                LocalDate.of(2023, 10, 16)
-        );
-
-        //inserimento tratte ni mezzi
 //        bus1.insertTratta(tratta1);
 //        bus2.insertTratta(tratta1);
 //        bus1.insertTratta(tratta2);
 //        bus1.insertTratta(tratta3);
 
 
-        //salvataggio in database
-//        trd.save(tratta1);
-//        trd.save(tratta2);
-//        trd.save(tratta3);
-//        pmd.save(bus1);
-//        pmd.save(bus2);
 
-//        td.save(abbonamento1);
-//        td.save(abbonamento2);
-//        td.checkValidita(1);
-//        td.checkValidita(2);
+        //creazione Rivenditori
+        Rivenditori_autorizzati vend1= new Rivenditori_autorizzati("Roma");
+        Rivenditori_autorizzati vend2= new Rivenditori_autorizzati("Milano");
+        Distributore_automatico auto1 = new Distributore_automatico("Milano",Condizione.ATTIVO);
+        Distributore_automatico auto2 = new Distributore_automatico("Roma",Condizione.ATTIVO);
+
+//        tipidao.save(vend1);
+//        tipidao.save(vend2);
+//        tipidao.save(auto1);
+//        tipidao.save(auto2);
+
+        //creazione utenti
+        Faker faker= new Faker();
+        Random random= new Random();
+        Utente utente1 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
+                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,30)));
+         Utente utente2 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
+                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,30)));
+         Utente utente3 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
+                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,30)));
+         Utente utente4 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
+                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,30)));
+//        ud.save(utente1);
+//        ud.save(utente2);
+//        ud.save(utente3);
+//        ud.save(utente4);
+
+
+
+        //creazione abbonamenti
+        Utente utente1FromDb = ud.findUtenteById(12);
+        Utente utente2FromDb = ud.findUtenteById(13);
+        Utente utente3FromDb = ud.findUtenteById(14);
+        Utente utente4FromDb =ud.findUtenteById(15);
+        Tipi_vendita tipo1FromDb = tipidao.findByid(8);
+        Tipi_vendita tipo2FromDb = tipidao.findByid(9);
+        Tipi_vendita tipo3FromDb = tipidao.findByid(10);
+        Tipi_vendita tipo4FromDb = tipidao.findByid(11);
+
+        Abbonamento abbo1= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,30)),utente1FromDb,Periodicità.getRandomPeriodicità(),true,
+                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,30)),tipo1FromDb);
+        Abbonamento abbo2= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,30)),utente2FromDb,Periodicità.getRandomPeriodicità(),true,
+                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,30)),tipo2FromDb);
+        Abbonamento abbo3= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,30)),utente3FromDb,Periodicità.getRandomPeriodicità(),false,
+                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,30)),tipo4FromDb);
+
+//        td.save(abbo1);
+//        td.save(abbo2);
+//        td.save(abbo3);
+
+
+//        creazione biglietti
+
+        Biglietto bigl1 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,30)),false,tipo1FromDb);
+        Biglietto bigl2 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,30)),true ,tipo1FromDb);
+        Biglietto bigl3 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,30)),true ,tipo2FromDb);
+        Biglietto bigl4 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,30)),true ,tipo2FromDb);
+
+//        bd.save(bigl1);
+//        bd.save(bigl2);
+//        bd.save(bigl3);
+//        bd.save(bigl4);
+
+//        creazione manutenzione
+        Parco_mezzi mezzo1FromDb= pmd.findById(41);
+        Parco_mezzi mezzo2FromDb= pmd.findById(42);
+        Parco_mezzi mezzo3FromDb= pmd.findById(43);
+        Parco_mezzi mezzo4FromDb= pmd.findById(44);
+
+        Manutenzione man1=new Manutenzione(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,30))
+                ,"guasto elettrico",mezzo1FromDb);
+        Manutenzione man2=new Manutenzione(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,30)),
+                LocalDate.of(2023,11,28),"guasto meccanico",mezzo2FromDb);
+        Manutenzione man3=new Manutenzione(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,30)),
+                LocalDate.of(2023,11,28),"guasto meccanico",mezzo4FromDb);
+
+//        md.save(man1);
+//        md.save(man2);
+//        md.save(man3);
+
+
+
+
         //prova metodi
 
         //metodo quante volte un mezzo percorre una tratta
 //        System.out.println(trd.NummeroDiTrattaSingolMezzo("Milano","Roma",7));
 
-//        abbonamento1.calcolaDataFine();
-//        elemento.save(abbonamento1);*/
-
-        //creazione biglietti
-        BigliettoDao bgDao = new BigliettoDao(em);
-        Tipi_venditaDAO tvDao = new Tipi_venditaDAO(em);
-
-        Distributore_automatico tipo = new Distributore_automatico("Milano", Condizione.ATTIVO);
-        tvDao.save(tipo);
-        Tipi_vendita id = tvDao.findByid(16);
-        Parco_mezzi b1 = pmd.findById(2);
-        Parco_mezzi b2 = pmd.findById(6);
-        Biglietto bg1 = new Biglietto(LocalDate.of(2023, 12, 19), LocalDate.of(2023, 12, 19), true,id, b1);
-        Biglietto bg2 = new Biglietto(LocalDate.now(), LocalDate.of(2023, 12, 19), true,id, b2);
-        //bgDao.save(bg1);
-        //bgDao.save(bg2);
-        long num = bgDao.numeroBigliettiEmmessi(LocalDate.of(2023, 12, 19), "Roma");
-
-        System.out.println(num);
-
-        bd.numeroDiBigliettoPerPeriodoEDistributore(LocalDate.now(),"Rivenditori_autorizzati");
-
-          //pmd.save(tram1);
-          //bd.save(ticket1);
-//        bd.save(ticket2);
-          //md.save(man1);
-          // md.save(man2);
-
-        //prova metodi
-
-        //metodo quante volte un mezzo percorre una tratta
-       // System.out.println(trd.NummeroDiTrattaSingolMezzo("Milano","Roma",7));
-
-        TesseraDAO elemento = new TesseraDAO(em);
-
-
-//        abbonamento1.calcolaDataFine();
-//        elemento.save(abbonamento1);
-     // bd.checkTicketAndNull(2);
-        // bd.deleteAllTicketEndorsed();
 
 
 
-
+        System.out.println("tutto bene!");
         em.close();
         emf.close();
     }

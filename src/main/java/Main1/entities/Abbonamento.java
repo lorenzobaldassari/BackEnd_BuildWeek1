@@ -20,11 +20,18 @@ public class Abbonamento extends Tessera {
     @JoinColumn(name = "abbonamento_id")
     private Tipi_vendita tipi_vendita;
 
-    public Abbonamento(LocalDate emissione, Periodicità periodicità, LocalDate data_inizio) {
-        super(emissione);
+
+    public Abbonamento(LocalDate emissione, Utente utente, Periodicità periodicità, boolean validità,
+                       LocalDate data_inizio,Tipi_vendita tipi_vendita) {
+        super(emissione, utente);
         this.periodicità = periodicità;
+        this.validità = validità;
         this.data_inizio = data_inizio;
         calcolaDataFine();
+        this.tipi_vendita = tipi_vendita;
+    }
+
+    public Abbonamento() {
     }
 
     public void calcolaDataFine() {

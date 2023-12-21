@@ -1,13 +1,11 @@
 package Main1.DAO;
 
-import Main1.entities.Abbonamento;
-import Main1.entities.Parco_mezzi;
-import Main1.entities.Tessera;
-import Main1.entities.Utente;
+import Main1.entities.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -53,6 +51,15 @@ public class UtenteDAO {
         } catch (Exception var5) {
             System.out.println(var5.getMessage());
         }
+    }
+
+    public void inin(){
+
+        List<Tratta> tratta= new ArrayList<>();
+        List<Integer> intlist= new ArrayList<>();
+        tratta.stream().forEach(elm-> intlist.add(elm.getTempoPercoreenzaInMinuti()));
+        intlist.stream().reduce(0,(tot,elem)->tot+elem);
+
     }
 
 
