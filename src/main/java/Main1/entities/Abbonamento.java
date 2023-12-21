@@ -12,7 +12,7 @@ public class Abbonamento extends Tessera {
 
     @Enumerated(EnumType.STRING)
     private Periodicità periodicità;
-
+    private boolean validità;
     private LocalDate data_inizio;
     private LocalDate data_fine;
 
@@ -57,6 +57,14 @@ public class Abbonamento extends Tessera {
 
     public void setData_fine(LocalDate data_fine) {
         this.data_fine = data_fine;
+    }
+
+    public boolean isValidità() {
+        return validità;
+    }
+
+    public void setValidità(boolean validità) {
+        this.validità = validità;
     }
 
     @Override
