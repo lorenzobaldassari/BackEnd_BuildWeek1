@@ -18,9 +18,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.time.LocalDate;
-import java.util.Locale;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 
 
 public class Application {
@@ -216,15 +214,19 @@ public class Application {
         Tratta tr1 = new Tratta("Ostuni", "Fasano", 140);
        TrattaDAO trDAO = new TrattaDAO(em);
        //trDAO.save(tr1);
-       Tratta id = trDAO.findByid(2);
-       System.out.println("Trovato " + id);
-       Turno tu1 = new Turno(12, 120);
+       Tratta id = trDAO.findByid(1);
+      // System.out.println("Trovato " + id);
+        List<Tratta> listaTratti=new ArrayList<>();
+        listaTratti.add(id);
+       //Turno tu1 = new Turno(12, 120,listaTratti);
        TurnoDAO tuDAO = new TurnoDAO(em);
-       Turno id2 = tuDAO.findById(5);
-        System.out.println("Trovato " + id2);
+       //Turno id2 = tuDAO.findById(2);
+       // System.out.println("Trovato " + id2);
        //tuDAO.save(tu1);
-       int tr = tuDAO.tempoEffettivoPercorrenzaTratta(id2, id);
-       System.out.println("ecco il tempo " + tr);
+       //int tr = tuDAO.tempoEffettivoPercorrenzaTratta(id2, id);
+       //System.out.println("ecco il tempo " + tr);
+        tuDAO.tempoEffettivoPercorrenzaTratta(3);
+
 
         em.close();
         emf.close();

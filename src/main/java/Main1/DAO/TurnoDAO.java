@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TurnoDAO {
@@ -51,12 +52,20 @@ public class TurnoDAO {
 
 
 
-    public int tempoEffettivoPercorrenzaTratta(Turno turno, Tratta tratta){
-        Query getTempoEffettivoPercorrenza = em.createQuery("SELECT t FROM Turno t JOIN t.tratta z WHERE t.tempo_effettivo_percorrenza = :turno AND z.tempoPercoreenzaInMinuti <= :tratta", Turno.class);
-        getTempoEffettivoPercorrenza.setParameter("turno", turno);
-        getTempoEffettivoPercorrenza.setParameter("tratta", tratta);
-       int tra = getTempoEffettivoPercorrenza.getFirstResult();
-        return  tra;
+    public void tempoEffettivoPercorrenzaTratta(long id){
+        Query getTempoEffettivoPercorrenza = em.createQuery("SELECT t FROM Turno t  WHERE t.id = :id",Turno.class);
+        //AND z.tempoPercoreenzaInMinuti <= :tratta",
+        getTempoEffettivoPercorrenza.setParameter("id", id);
+      List<Turno> turni=getTempoEffettivoPercorrenza.getResultList();
+        System.out.println(turni);
+      turni.forEach(elm->{
+
+          List<Integer> intlist= new ArrayList<>();
+          elm.getTratta().forEach(elmn-> intlist.add(elmn.getTempoPercoreenzaInMinuti()));
+          int somma= intlist.stream().reduce(0,(tot,elem)->tot+elem);
+        System.out.println(elm.getTempo_effettivo_percorrenza()-somma);
+      });
+
 
     }
 }
