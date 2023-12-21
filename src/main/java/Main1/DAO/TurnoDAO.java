@@ -1,6 +1,7 @@
 package Main1.DAO;
 
 import Main1.entities.Manutenzione;
+import Main1.entities.Tratta;
 import Main1.entities.Turno;
 
 import javax.persistence.EntityManager;
@@ -46,11 +47,11 @@ public class TurnoDAO {
 
     }
 
-    public int tempoEffettivoPercorrenzaTratta(int tempoEffettivo, int tempoPercorso){
-        Query getTempoEffettivoPercorrenza = em.createQuery("SELECT t FROM Turno t JOIN t.tratta z WHERE t.tempo_effettivo_percorrenza BETWEEN :tempoEffettivo AND z.tempoPercoreenzaInMinuti AND z.tempoPercoreenzaInMinuti <= :tempoPercorso", Turno.class);
-        getTempoEffettivoPercorrenza.setParameter("tempoEffettivo", tempoEffettivo);
-        getTempoEffettivoPercorrenza.setParameter("tempoPercorso", tempoPercorso);
-        return getTempoEffettivoPercorrenza.getFirstResult();
-
+    public int tempoEffettivoPercorrenzaTratta(Turno turno, Tratta tratta){
+        Query getTempoEffettivoPercorrenza = em.createQuery("SELECT t FROM Turno t JOIN t.tratta z WHERE t.tempo_effettivo_percorrenza = :turno AND z.tempoPercoreenzaInMinuti <= :tratta", Turno.class);
+        getTempoEffettivoPercorrenza.setParameter("turno", turno);
+        getTempoEffettivoPercorrenza.setParameter("tratta", tratta);
+       int tra = getTempoEffettivoPercorrenza.getFirstResult();
+        return  tra;
     }
 }
