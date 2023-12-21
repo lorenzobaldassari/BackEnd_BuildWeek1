@@ -19,15 +19,18 @@ public class Biglietto {
     @JoinColumn(name = "mezzi_id")
     private Parco_mezzi parco_mezzi;
 
-    public Biglietto(LocalDate emissione, LocalDate scadenza, boolean vidimazione, Tipi_vendita tipi_vendita) {
+
+    public Biglietto() {
+    }
+
+    public Biglietto(LocalDate emissione, LocalDate scadenza, boolean vidimazione) {
+
         this.emissione = emissione;
         this.scadenza = scadenza;
         this.vidimazione = vidimazione;
         this.tipi_vendita = tipi_vendita;
     }
 
-    public Biglietto() {
-    }
 
     public Biglietto(LocalDate emissione, LocalDate scadenza, boolean vidimazione, Tipi_vendita tipi_vendita, Parco_mezzi parco_mezzi) {
         this.emissione = emissione;
@@ -37,7 +40,6 @@ public class Biglietto {
         this.parco_mezzi = parco_mezzi;
     }
 
-    public Biglietto(){}
 
     public LocalDate getEmissione() {
         return emissione;

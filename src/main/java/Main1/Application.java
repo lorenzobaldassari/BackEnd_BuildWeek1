@@ -1,5 +1,4 @@
 package Main1;
-
 import Main1.DAO.*;
 import Main1.entities.*;
 import Main1.entities.Enum.Condizione;
@@ -33,6 +32,7 @@ public class Application {
 
         TrattaDAO trd=new TrattaDAO(em);
         Parco_mezziDAO pmd=new Parco_mezziDAO(em);
+
         TesseraDAO td = new TesseraDAO(em);
         Tipi_venditaDAO tipidao= new Tipi_venditaDAO(em);
         BigliettoDao bd= new BigliettoDao(em);
@@ -43,11 +43,27 @@ public class Application {
         Parco_mezzi bus2=new Bus(Stato.IN_SEVIZIO);
 /*
 
+        BigliettoDao bd=new BigliettoDao(em);
+        ManutenzioneDAO md=new ManutenzioneDAO(em);
+        // creazione mezzi
+//        Parco_mezzi bus1=new Bus(Stato.IN_SEVIZIO);
+//        Parco_mezzi bus2=new Bus(Stato.IN_SEVIZIO);
+          Parco_mezzi tram1=new Tram(Stato.IN_SEVIZIO);
+
+
         //creazione tratte
         Tratta tratta1= new Tratta("Milano","Roma",120);
         Tratta tratta2= new Tratta("Milano","Roma",120);
         Tratta tratta3= new Tratta("Milano","Palermo",120);
 
+
+
+        //creazione biglietti
+        //Biglietto ticket1=new Biglietto(LocalDate.of(2023,12,10),LocalDate.now(),true);
+        //Biglietto ticket2=new Biglietto(LocalDate.of(2023,12,10),LocalDate.now(),false);
+        //creazione manutenzione
+        Manutenzione man1=new Manutenzione(LocalDate.of(2023,11,18),LocalDate.of(2023,11,28),"guasto elettrico",tram1);
+        Manutenzione man2=new Manutenzione(LocalDate.of(2023,11,18),LocalDate.of(2023,11,28),"guasto meccanico",tram1);
 
 
         //inresimento tratte ni mezzi
@@ -140,13 +156,13 @@ public class Application {
 //        bus1.insertTratta(tratta3);
 
 
-
         //salvataggio in database
 //        trd.save(tratta1);
 //        trd.save(tratta2);
 //        trd.save(tratta3);
 //        pmd.save(bus1);
 //        pmd.save(bus2);
+
 //        td.save(abbonamento1);
 //        td.save(abbonamento2);
 //        td.checkValidita(1);
@@ -177,6 +193,27 @@ public class Application {
         System.out.println(num);
 
         bd.numeroDiBigliettoPerPeriodoEDistributore(LocalDate.now(),"Rivenditori_autorizzati");
+
+          //pmd.save(tram1);
+          //bd.save(ticket1);
+//        bd.save(ticket2);
+          //md.save(man1);
+          // md.save(man2);
+
+        //prova metodi
+
+        //metodo quante volte un mezzo percorre una tratta
+       // System.out.println(trd.NummeroDiTrattaSingolMezzo("Milano","Roma",7));
+
+        TesseraDAO elemento = new TesseraDAO(em);
+
+
+//        abbonamento1.calcolaDataFine();
+//        elemento.save(abbonamento1);
+     // bd.checkTicketAndNull(2);
+        // bd.deleteAllTicketEndorsed();
+
+
 
 
         em.close();

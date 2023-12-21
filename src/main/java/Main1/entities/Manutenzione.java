@@ -8,7 +8,7 @@ import java.time.LocalDate;
 public class Manutenzione {
     @Id
     @GeneratedValue
-    private long numero_mezzo;
+    private long numero_manutenzione;
     private LocalDate giorno_inizio;
     private LocalDate giorno_stimato;
     private LocalDate giorno_fine;
@@ -28,10 +28,19 @@ public class Manutenzione {
 
     public Manutenzione(){
     }
+    
 
+    public Manutenzione(LocalDate giorno_inizio,LocalDate giorno_fine, String description, Parco_mezzi parco_mezzi) {
+        this.giorno_inizio = giorno_inizio;
+        this.giorno_stimato = giorno_inizio.plusDays(7);
+        this.giorno_fine = giorno_fine;
+        this.description = description;
+        this.parco_mezzi = parco_mezzi;
+    }
 
-    public long getNumero_mezzo() {
-        return numero_mezzo;
+    public long getNumero_manutenzione() {
+        return numero_manutenzione;
+
     }
 
     public LocalDate getGiorno_inizio() {
@@ -74,10 +83,12 @@ public class Manutenzione {
         this.parco_mezzi = parco_mezzi;
     }
 
+
+
     @Override
     public String toString() {
         return "Manutenzione{" +
-                "numero_mezzo=" + numero_mezzo +
+                "numero_manutenzione=" + numero_manutenzione +
                 ", giorno_inizio=" + giorno_inizio +
                 ", giorno_stimato=" + giorno_stimato +
                 ", giorno_fine=" + giorno_fine +

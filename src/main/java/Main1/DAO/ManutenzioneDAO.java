@@ -5,6 +5,9 @@ import Main1.entities.Tessera;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
+import java.time.LocalDate;
+import java.util.List;
 
 public class ManutenzioneDAO {
     private final EntityManager em;
@@ -40,6 +43,13 @@ public class ManutenzioneDAO {
         } else {
             System.err.println("Il post con l'id " + id + " non è stato trovato");
         }
+
+    }
+    public void vehicleUnderMaintenancebyId(long id){
+        Query getvehicleUnnderMaintenancebyId= em.createQuery("SELECT v FROM Manutenzione v JOIN v.parco_mezzi p  WHERE p.id = :id", Manutenzione.class);
+        getvehicleUnnderMaintenancebyId.setParameter("id",id);
+        List<Manutenzione>mezzi=getvehicleUnnderMaintenancebyId.getResultList();
+        mezzi.forEach(elm->System.out.println(elm));
 
     }
 }
