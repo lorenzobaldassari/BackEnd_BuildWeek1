@@ -17,10 +17,15 @@ public class Tratta {
 
     @Column(name="tempo_percorso_in_minuti")
     private int tempoPercoreenzaInMinuti;
+
     @ManyToMany
     @JoinTable(name="mezzi_tratta",joinColumns =@JoinColumn(name="tratta_id"),
             inverseJoinColumns = @JoinColumn(name="mezzi_id"))
     private List<Parco_mezzi> mezzi;
+
+    @ManyToOne
+    @JoinColumn(name = "nome_tratta")
+    private Turno turno;
 
 
 
@@ -68,6 +73,15 @@ public class Tratta {
 
     public void setMezzi(List<Parco_mezzi> mezzi) {
         this.mezzi = mezzi;
+    }
+
+
+    public Turno getTurno() {
+        return turno;
+    }
+
+    public void setTurno(Turno turno) {
+        this.turno = turno;
     }
 
     @Override

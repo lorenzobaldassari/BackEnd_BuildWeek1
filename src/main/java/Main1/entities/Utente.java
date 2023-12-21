@@ -1,5 +1,7 @@
 package Main1.entities;
 
+import Main1.entities.Enum.TipoUtente;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.UUID;
@@ -11,6 +13,9 @@ public class    Utente {
     @Id
     @GeneratedValue
     private long id;
+
+    @Enumerated(EnumType.STRING)
+    private TipoUtente tipo_utente;
     private String nome;
     private String cognome;
     private String email;

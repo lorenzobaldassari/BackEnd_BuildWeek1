@@ -30,7 +30,7 @@ public class Application {
     public static void main(String[] args) {
         EntityManager em = emf.createEntityManager();
 
-        TrattaDAO trd=new TrattaDAO(em);
+/*        TrattaDAO trd=new TrattaDAO(em);
         Parco_mezziDAO pmd=new Parco_mezziDAO(em);
 
         TesseraDAO td = new TesseraDAO(em);
@@ -41,7 +41,7 @@ public class Application {
         // creazione mezzi
         Parco_mezzi bus1=new Bus(Stato.IN_SEVIZIO);
         Parco_mezzi bus2=new Bus(Stato.IN_SEVIZIO);
-/*
+*//*
 
         BigliettoDao bd=new BigliettoDao(em);
         ManutenzioneDAO md=new ManutenzioneDAO(em);
@@ -80,7 +80,7 @@ public class Application {
         trd.save(tratta3);
         pmd.save(bus1);
         pmd.save(bus2);
-*/
+*//*
 
         //creazione Rivenditori
         Rivenditori_autorizzati vend1= new Rivenditori_autorizzati("Roma");
@@ -97,7 +97,7 @@ public class Application {
        Tipi_vendita fixedFromDb= tipidao.findByid(1);
        Tipi_vendita autoFromDb= tipidao.findByid(3);
 
-    /*    //metodo quante volte un mezzo percorre una tratta
+    *//*    //metodo quante volte un mezzo percorre una tratta
         System.out.println(trd.NummeroDiTrattaSingolMezzo("Milano","Roma",7));
 
         //metodo quante volte un mezzo percorre una tratta
@@ -173,14 +173,14 @@ public class Application {
 //        System.out.println(trd.NummeroDiTrattaSingolMezzo("Milano","Roma",7));
 
 //        abbonamento1.calcolaDataFine();
-//        elemento.save(abbonamento1);*/
+//        elemento.save(abbonamento1);*//*
 
         //creazione biglietti
         BigliettoDao bgDao = new BigliettoDao(em);
         Tipi_venditaDAO tvDao = new Tipi_venditaDAO(em);
 
         Distributore_automatico tipo = new Distributore_automatico("Milano", Condizione.ATTIVO);
-        tvDao.save(tipo);
+        //tvDao.save(tipo);
         Tipi_vendita id = tvDao.findByid(16);
         Parco_mezzi b1 = pmd.findById(2);
         Parco_mezzi b2 = pmd.findById(6);
@@ -188,11 +188,11 @@ public class Application {
         Biglietto bg2 = new Biglietto(LocalDate.now(), LocalDate.of(2023, 12, 19), true,id, b2);
         //bgDao.save(bg1);
         //bgDao.save(bg2);
-        long num = bgDao.numeroBigliettiEmmessi(LocalDate.of(2023, 12, 19), "Roma");
+        //long num = bgDao.numeroBigliettiEmmessi(LocalDate.of(2023, 12, 19), "Roma");
 
-        System.out.println(num);
+        //System.out.println(num);
 
-        bd.numeroDiBigliettoPerPeriodoEDistributore(LocalDate.now(),"Rivenditori_autorizzati");
+        //bd.numeroDiBigliettoPerPeriodoEDistributore(LocalDate.now(),"Rivenditori_autorizzati");
 
           //pmd.save(tram1);
           //bd.save(ticket1);
@@ -211,9 +211,12 @@ public class Application {
 //        abbonamento1.calcolaDataFine();
 //        elemento.save(abbonamento1);
      // bd.checkTicketAndNull(2);
-        // bd.deleteAllTicketEndorsed();
+        // bd.deleteAllTicketEndorsed();*/
 
-
+        Tratta tr1 = new Tratta("Ostuni", "Fasano", 140);
+       TrattaDAO trDAO = new TrattaDAO(em);
+        
+       trDAO.findByid(2);
 
 
         em.close();
