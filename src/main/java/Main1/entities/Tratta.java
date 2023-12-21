@@ -23,9 +23,10 @@ public class Tratta {
             inverseJoinColumns = @JoinColumn(name="mezzi_id"))
     private List<Parco_mezzi> mezzi;
 
-    @ManyToOne
-    @JoinColumn(name = "nome_tratta")
-    private Turno turno;
+    @ManyToMany
+    @JoinTable(name="turno_tratta",joinColumns =@JoinColumn(name="tratta_id"),
+            inverseJoinColumns = @JoinColumn(name="turno_id"))
+    private List<Turno> turni;
 
 
 
@@ -75,13 +76,12 @@ public class Tratta {
         this.mezzi = mezzi;
     }
 
-
-    public Turno getTurno() {
-        return turno;
+    public List<Turno> getTurni() {
+        return turni;
     }
 
-    public void setTurno(Turno turno) {
-        this.turno = turno;
+    public void setTurni(List<Turno> turni) {
+        this.turni = turni;
     }
 
     @Override

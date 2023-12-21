@@ -210,22 +210,23 @@ public class Application {
 //        elemento.save(abbonamento1);
      // bd.checkTicketAndNull(2);
         // bd.deleteAllTicketEndorsed();*/
+        List<Tratta> listaTratti=new ArrayList<>();
 
+        Turno tu1 = new Turno(12, 120,listaTratti);
+        TurnoDAO tuDAO = new TurnoDAO(em);
         Tratta tr1 = new Tratta("Ostuni", "Fasano", 140);
        TrattaDAO trDAO = new TrattaDAO(em);
        //trDAO.save(tr1);
        Tratta id = trDAO.findByid(1);
-      // System.out.println("Trovato " + id);
-        List<Tratta> listaTratti=new ArrayList<>();
         listaTratti.add(id);
-       //Turno tu1 = new Turno(12, 120,listaTratti);
-       TurnoDAO tuDAO = new TurnoDAO(em);
+      // System.out.println("Trovato " + id);
+
        //Turno id2 = tuDAO.findById(2);
        // System.out.println("Trovato " + id2);
        //tuDAO.save(tu1);
        //int tr = tuDAO.tempoEffettivoPercorrenzaTratta(id2, id);
        //System.out.println("ecco il tempo " + tr);
-        tuDAO.tempoEffettivoPercorrenzaTratta(3);
+        tuDAO.tempoEffettivoPercorrenzaTratta(1);
 
 
         em.close();

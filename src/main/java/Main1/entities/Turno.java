@@ -13,7 +13,9 @@ public class Turno {
     private int inizio_servizio;
     private int tempo_effettivo_percorrenza;
 
-    @OneToMany(mappedBy = "turno")
+    @ManyToMany
+    @JoinTable(name="turno_tratta",joinColumns =@JoinColumn(name="turno_id"),
+            inverseJoinColumns = @JoinColumn(name="tratta_id"))
     private List<Tratta> tratta;
 
     public Turno (){}

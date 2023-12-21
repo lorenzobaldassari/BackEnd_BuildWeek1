@@ -49,19 +49,26 @@ public class TurnoDAO {
 
     }
     public void tempoEffettivoPercorrenzaTratta(long id){
-        Query getTempoEffettivoPercorrenza = em.createQuery("SELECT t FROM Turno t  WHERE t.id = :id",Turno.class);
+        Query getTempoEffettivoPercorrenza = em.createQuery("SELECT t FROM Turno t JOIN FETCH t.tratta z WHERE t.id = :id",Turno.class);
         //AND z.tempoPercoreenzaInMinuti <= :tratta",
         getTempoEffettivoPercorrenza.setParameter("id", id);
-      List<Turno> turni=getTempoEffettivoPercorrenza.getResultList();
-        System.out.println(turni);
-      turni.forEach(elm->{
+        List<Turno> turni = getTempoEffettivoPercorrenza.getResultList();
+        System.out.println("Numero di turni trovati: " + turni.size());
 
-          List<Integer> intlist= new ArrayList<>();
-          elm.getTratta().forEach(elmn-> intlist.add(elmn.getTempoPercoreenzaInMinuti()));
-          int somma= intlist.stream().reduce(0,(tot,elem)->tot+elem);
-        System.out.println(elm.getTempo_effettivo_percorrenza()-somma);
-      });
-      
+        turni.forEach(elm -> {
+            System.out.println("Turno ID: " + elm.getId());
+            System.out.println("Tratte associate: " + elm.getTratta().size());
+
+            List<Integer> intlist = new ArrayList<>();
+            elm.getTratta().forEach(elmn -> {
+                intlist.add(elmn.getTempoPercoreenzaInMinuti());
+                System.out.println("Tratta ID: " + elmn.getId() + ", Tempo: " + elmn.getTempoPercoreenzaInMinuti());
+            });
+
+            int somma = intlist.stream().reduce(0, Integer::sum);
+            System.out.println("Tempo effettivo - Somma tratta: " + (elm.getTempo_effettivo_percorrenza() - somma));
+        });
+
     }
 
 }
