@@ -18,7 +18,6 @@ public abstract class Parco_mezzi {
     @Column(name="stato")
     @Enumerated(EnumType.STRING)
     protected Stato stato;
-    protected LocalDate data_inizio_servizio;
     @ManyToMany
     @JoinTable(name="mezzi_tratta",joinColumns =@JoinColumn(name="mezzi_id"),
     inverseJoinColumns = @JoinColumn(name="tratta_id"))
@@ -32,23 +31,18 @@ public abstract class Parco_mezzi {
     public Parco_mezzi() {
     }
 
-    public Parco_mezzi(Stato stato, LocalDate data_inizio_servizio) {
+    public Parco_mezzi(Stato stato, List<Tratta> tratte, List<Manutenzione> manutenzioni, List<Biglietto> biglietto) {
         this.stato = stato;
-        this.data_inizio_servizio = data_inizio_servizio;
+        this.tratte = tratte;
+        this.manutenzioni = manutenzioni;
+        this.biglietto = biglietto;
     }
-
-    public LocalDate getData_inizio_servizio() {
-        return data_inizio_servizio;
-    }
-
-    public void setData_inizio_servizio(LocalDate data_inizio_servizio) {
-        this.data_inizio_servizio = data_inizio_servizio;
-    }
-
 
     public Parco_mezzi(Stato stato) {
         this.stato = stato;
     }
+
+
 
     public void setStato(Stato stato) {
         this.stato = stato;
@@ -88,7 +82,6 @@ public abstract class Parco_mezzi {
         return "Parco_mezzi{" +
                 "id=" + id +
                 ", stato=" + stato +
-                ", data_inizio_servizio=" + data_inizio_servizio +
                 ", tratte=" + tratte +
                 '}';
     }

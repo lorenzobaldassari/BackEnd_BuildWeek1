@@ -13,8 +13,8 @@ public class Tram extends Parco_mezzi{
     @Column(name="capienza")
     protected long capienza;
 
-    public Tram(Stato stato, LocalDate data_inizio_servizio, long capienza) {
-        super(stato, data_inizio_servizio);
+    public Tram(Stato stato, long capienza) {
+        super(stato);
         this.capienza = capienza;
     }
 
@@ -36,7 +36,6 @@ public class Tram extends Parco_mezzi{
                 "capienza=" + capienza +
                 ", id=" + id +
                 ", stato=" + stato +
-                ", data_inizio_servizio=" + data_inizio_servizio +
                 '}';
     }
 }

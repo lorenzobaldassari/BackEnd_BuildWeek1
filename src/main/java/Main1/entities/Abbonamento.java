@@ -21,11 +21,11 @@ public class Abbonamento extends Tessera {
     private Tipi_vendita tipi_vendita;
 
 
-    public Abbonamento(LocalDate emissione, Utente utente, Periodicità periodicità, boolean validità,
+    public Abbonamento(LocalDate emissione, Utente utente, Periodicità periodicità,
                        LocalDate data_inizio,Tipi_vendita tipi_vendita) {
         super(emissione, utente);
         this.periodicità = periodicità;
-        this.validità = validità;
+        this.validità = true;
         this.data_inizio = data_inizio;
         calcolaDataFine();
         this.tipi_vendita = tipi_vendita;

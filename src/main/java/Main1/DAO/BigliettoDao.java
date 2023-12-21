@@ -4,20 +4,18 @@ import Main1.entities.Biglietto;
 import Main1.entities.Distributore_automatico;
 import Main1.entities.Tipi_vendita;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 
 import Main1.entities.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Query;
 
 import java.time.LocalDate;
 import java.util.List;
 
 public class BigliettoDao {
+    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Trasporto_Pubblico");
 
     private final EntityManager em;
 
@@ -126,5 +124,15 @@ public class BigliettoDao {
             }
 
         }
+    public void update(long id_biglietto,long id_mezzo_da_inserire){
+        Parco_mezziDAO pmd=new Parco_mezziDAO(em);
+        Biglietto bi= this.findById(id_biglietto);
+        Parco_mezzi mac= pmd.findById(id_mezzo_da_inserire);
+        EntityTransaction transaction= em.getTransaction();
+        transaction.begin();
+        bi.setParco_mezzi(mac);
+        transaction.commit();
+        System.out.println("aggiunto correttamente");
+    }
     }
 

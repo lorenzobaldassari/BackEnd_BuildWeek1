@@ -13,8 +13,8 @@ public class Bus extends Parco_mezzi{
     @Column(name="capienza")
     protected long capienza;
 
-    public Bus(Stato stato, LocalDate data_inizio_servizio, long capienza) {
-        super(stato, data_inizio_servizio);
+    public Bus(Stato stato, long capienza) {
+        super(stato);
         this.capienza = capienza;
     }
 
@@ -36,7 +36,6 @@ public class Bus extends Parco_mezzi{
                 "capienza=" + capienza +
                 ", id=" + id +
                 ", stato=" + stato +
-                ", data_inizio_servizio=" + data_inizio_servizio +
                 '}';
     }
 }

@@ -22,19 +22,21 @@ import java.util.*;
 
 
 public class Application {
-
+    static Scanner input = new Scanner(System.in);
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Trasporto_Pubblico");
 
     public static void main(String[] args) {
         EntityManager em = emf.createEntityManager();
         TrattaDAO trd=new TrattaDAO(em);
         Parco_mezziDAO pmd=new Parco_mezziDAO(em);
-        TesseraDAO td = new TesseraDAO(em);
         Tipi_venditaDAO tipidao= new Tipi_venditaDAO(em);
-        BigliettoDao bd= new BigliettoDao(em);
+        BigliettoDao dg = new BigliettoDao(em);
         ManutenzioneDAO md=new ManutenzioneDAO(em);
-        UtenteDAO ud= new UtenteDAO(em);
-        TurnoDAO turDao= new TurnoDAO(em);
+
+          menu();
+
+
+
 
         // creazione mezzi
 
@@ -45,7 +47,7 @@ public class Application {
 //        pmd.save(bus1);
 //        pmd.save(bus2);
 //        pmd.save(tram1);
-//        pmd.save(tram2);
+     //pmd.save(tram2);
 
 
         //creazione tratte
@@ -68,7 +70,7 @@ public class Application {
 
         //creazione turni
 
-        Turno turno1= new Turno(10,80);
+     /*   Turno turno1= new Turno(10,80);
         Turno turno2= new Turno(20,100);
         Turno turno3= new Turno(9,200);
         Turno turno4= new Turno(7,50);
@@ -84,7 +86,7 @@ public class Application {
 //         turDao.save(turno1);
 //         turDao.save(turno2);
 //         turDao.save(turno3);
-//         turDao.save(turno4);
+//         turDao.save(turno4);*/
 
 
 
@@ -100,79 +102,19 @@ public class Application {
 //        tipidao.save(auto2);
 
 
-
-
-
-
-        //creazione utenti
-
-        // no!
-        Faker faker= new Faker();
-        Random random= new Random();
-        Utente utente1 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
-                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                        random.nextInt(1,30)));
-        Utente utente2 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
-                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                        random.nextInt(1,30)));
-        Utente utente3 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
-                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                        random.nextInt(1,30)));
-        Utente utente4 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
-                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                        random.nextInt(1,30)));
-//        ud.save(utente1);
-//        ud.save(utente2);
-//        ud.save(utente3);
-//        ud.save(utente4);
-
         //creazione abbonamenti
-        //no!
 
-        Utente utente1FromDb = ud.findUtenteById(12);
-        Utente utente2FromDb = ud.findUtenteById(13);
-        Utente utente3FromDb = ud.findUtenteById(14);
-        Utente utente4FromDb =ud.findUtenteById(15);
+
         Tipi_vendita tipo1FromDb = tipidao.findByid(8);
         Tipi_vendita tipo2FromDb = tipidao.findByid(9);
         Tipi_vendita tipo3FromDb = tipidao.findByid(10);
         Tipi_vendita tipo4FromDb = tipidao.findByid(11);
 
-        Abbonamento abbo1= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                random.nextInt(1,30)),utente1FromDb,Periodicità.getRandomPeriodicità(),true,
-                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                        random.nextInt(1,30)),tipo1FromDb);
-        Abbonamento abbo2= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                random.nextInt(1,30)),utente2FromDb,Periodicità.getRandomPeriodicità(),true,
-                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                        random.nextInt(1,30)),tipo2FromDb);
-        Abbonamento abbo3= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                random.nextInt(1,30)),utente3FromDb,Periodicità.getRandomPeriodicità(),false,
-                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                        random.nextInt(1,30)),tipo4FromDb);
+        Biglietto bg = new Biglietto(LocalDate.now(), tipo1FromDb);
+        //dg.save(bg);
+        //dg.update(3, 4);
 
-//        td.save(abbo1);
-//        td.save(abbo2);
-//        td.save(abbo3);
-
-
-//        creazione biglietti
-        //no!
-
-        Biglietto bigl1 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                random.nextInt(1,30)),false,tipo1FromDb);
-        Biglietto bigl2 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                        random.nextInt(1,30)),true ,tipo1FromDb);
-        Biglietto bigl3 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                        random.nextInt(1,30)),true ,tipo2FromDb);
-        Biglietto bigl4 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                random.nextInt(1,30)),true ,tipo2FromDb);
-
-//        bd.save(bigl1);
-//        bd.save(bigl2);
-//        bd.save(bigl3);
-//        bd.save(bigl4);
-
+        Random random = new Random();
 //        creazione manutenzione
         Parco_mezzi mezzo1FromDb= pmd.findById(1);
         Parco_mezzi mezzo2FromDb= pmd.findById(2);
@@ -193,54 +135,235 @@ public class Application {
 //        md.save(man2);
 //        md.save(man3);
 
-
-
-
-
-        //prova metodi
-
-
-
-        //biglietti emessi per punto di emissione
-
-//        bd.numeroBigliettiEmmessi(LocalDate.of(2007,3,25),"Roma");
-
-        //Validita di un abbonamento in base a id tessera
-
-//        td.checkValidita("61b193fb-a52d-4af8-a30b-85f78ff13666");
-
-        //numero di volte che un mezzo percorre una tappa
-
-//        System.out.println(trd.NummeroDiTrattaSingolMezzo("Milano","Roma",1));
-
-        //traccia dei periodi di servizio e manutenzione
-
-//        md.vehicleUnderMaintenancebyId(2);
-
-        // tenere traccia dei biglietti vidimati su un mezzo in un particoalre lasso di tempo
-//         standby
-
-        //biglietti vidimati cancellati
-
-//        bd.deleteAllTicketEndorsed();
-
-        //tempo effettivo di percorrenza della tratta
-
-//        turDao.tempoEffettivoPercorrenzaTratta(30);
-
-        //controllo se biglietto e valido e lo cancella
-
-//        bd.checkTicketAndNull(22);
-
-
-        //controlle se un abbonamento e' valido in base alla scadenza della tessera
-//        td.isValidAbbonamento(LocalDate.of(2013,3,4),"61b193fb-a52d-4af8-a30b-85f78ff13666");
-
-
-
-
-        System.out.println("tutto bene!");
         em.close();
         emf.close();
+    }
+
+    public static void menu(){
+        int choice = -1;
+
+        while (choice != 0){
+            System.out.println("Benvenuto nell'App Trasporti!");
+            System.out.println("Scegli tipo utente: ");
+            System.out.println("1 - Admin");
+            System.out.println("2 - Utente");
+            System.out.println("0 - Exit");
+            try {
+                choice = Integer.parseInt(input.nextLine());
+            } catch (NumberFormatException ex){
+                System.err.println(ex.getMessage());
+            }
+            switch (choice){
+                case 1:
+                    admin();
+                    break;
+                case 2:
+                    utente();
+                    break;
+                case 0:
+                    System.out.println("0");
+                    break;
+            }
+        }
+
+    }
+
+    public static void admin(){
+        EntityManager em = emf.createEntityManager();
+        TurnoDAO turDao= new TurnoDAO(em);
+        TrattaDAO trd=new TrattaDAO(em);
+        Parco_mezziDAO pmd=new Parco_mezziDAO(em);
+        ManutenzioneDAO md=new ManutenzioneDAO(em);
+        BigliettoDao bd= new BigliettoDao(em);
+
+        int choice = -1;
+
+        while (choice != 0){
+            System.out.println("Scegli cosa fare con il tuo mezzo!");
+            System.out.println("1 - Scegli il tuo turno e la tratta");
+            System.out.println("2 - Se il mezzo non funziona va in manutenzione");
+            System.out.println("3 - Controlla se il tuo mezzo è in manutenzione");
+            System.out.println("4 - Controlla i biglietti vidimati da eliminare");
+            System.out.println("5 - Cerca quanti biglietti sono stati emessi in quel punto di emissione");
+            System.out.println("6 - Cerca quante volte in un giorno è stata fatta una tratta");
+            System.out.println("7 - Cerca tempo effettivo di percorrenza della tua tratta");
+            System.out.println("8 - Cerca biglietti vidiamti su uno specifico mezzo");
+            System.out.println("0 - Exit");
+
+            try {
+                choice = Integer.parseInt(input.nextLine());
+            } catch (NumberFormatException ex){
+                System.err.println(ex.getMessage());
+            }
+            switch (choice){
+                case 1:
+                    System.out.println("Inserisci orario inizio del tuo servizio");
+                    int inizioServizio = Integer.parseInt(input.nextLine());
+                    System.out.println("In quanto tempo hai percorso la tua tratta");
+                    int tempoEffettivo = Integer.parseInt(input.nextLine());
+                    System.out.println("Inserisci id tratta");
+                    long id = Integer.parseInt(input.nextLine());
+                    Tratta tr = trd.findByid(id);
+                    Turno turno1 = new Turno(inizioServizio, tempoEffettivo);
+                    turno1.setTratta(tr);
+                    turDao.save(turno1);
+                    break;
+                case 2:
+                    System.out.println("Descrivi il tuo guasto al mezzo");
+                    System.out.println("Inserisci giorno inizio manutenzione - yyy-mm-dd");
+                    LocalDate start = LocalDate.parse(input.nextLine());
+                    System.out.println("Descrivi danno al mezzo");
+                    String descrizione = input.nextLine();
+                    System.out.println("Qual è il mezzo guasto inserisci id");
+                    long id2 = Integer.parseInt(input.nextLine());
+                    Parco_mezzi mezzo = pmd.findById(id2);
+                    Manutenzione manutenzione = new Manutenzione(start, descrizione, mezzo);
+                    md.save(manutenzione);
+                    break;
+                case 3:
+                    System.out.println("Inserisci id del tuo mezzo");
+                    long id3 = Integer.parseInt(input.nextLine());
+                    pmd.isUnderMaintenancebyId(id3);
+                    break;
+                case 4:
+                    System.out.println("Premi invio per cancellarli");
+                    bd.deleteAllTicketEndorsed();
+                case 5:
+                    System.out.println("Scegli in quale data vuoi fare il controllo");
+                    LocalDate data = LocalDate.parse(input.nextLine());
+                    System.out.println("Inserisci il puno di emissione");
+                    String puntoEmissione = input.nextLine();
+                    bd.numeroBigliettiEmmessi(data, puntoEmissione);
+                    break;
+                case 6:
+                    System.out.println("Scegli quale tratta vuoi fare controllo");
+                    System.out.println("Inserisci id tratta");
+                    long trattaId = Integer.parseInt(input.nextLine());
+                    System.out.println("Inserisci id del veicolo che ha percorso la tratta");
+                    long mezzoId = Integer.parseInt(input.nextLine());
+                    trd.NummeroDiTrattaSingolMezzo(trattaId, mezzoId);
+                    break;
+                case 7:
+                    System.out.println("Inserisci Id della tua tratta");
+                    long id4 = Integer.parseInt(input.nextLine());
+                    turDao.tempoEffettivoPercorrenzaTratta(id4);
+                    break;
+                case 8:
+                    System.out.println("Inserisci Id biglietto");
+                    long id5 = Integer.parseInt(input.nextLine());
+                    bd.findById(id5);
+                    System.out.println("Inserisci Id mezzo");
+                    long id6 = Integer.parseInt(input.nextLine());
+                    bd.findById(id6);
+                    bd.update(id5, id6);
+                    break;
+                case 0:
+                    System.out.println("0");
+                    break;
+            }
+        }
+    }
+
+    public static void utente(){
+        EntityManager em = emf.createEntityManager();
+        UtenteDAO ud= new UtenteDAO(em);
+        TesseraDAO td = new TesseraDAO(em);
+        BigliettoDao bd= new BigliettoDao(em);
+        Tipi_venditaDAO tipidao= new Tipi_venditaDAO(em);
+        int choice = -1;
+
+        while (choice != 0){
+            System.out.println("Inserisci i tuoi dati come nuovo utente");
+            System.out.println("Inserisci nome");
+            String nome = input.nextLine();
+            System.out.println("Inserisci cognome");
+            String cognome = input.nextLine();
+            System.out.println("Inserisci email");
+            String email = input.nextLine();
+            System.out.println("Inserisci la tua data di nascita");
+            LocalDate dataNascita = LocalDate.parse(input.nextLine());
+            Utente user = new Utente(nome, cognome, email, dataNascita);
+            ud.save(user);
+            System.out.println("Scegli se creare tessera o biglietto");
+            System.out.println("1 - Tessera");
+            System.out.println("2 - Biglietto");
+            System.out.println("3 - Controlla validità tessera");
+            System.out.println("4 - Elimina biglietto validato");
+            System.out.println("5 - Controlla validità abbonamento");
+            System.out.println("0 - Exit");
+
+            try {
+                choice = Integer.parseInt(input.nextLine());
+            } catch (NumberFormatException ex){
+                System.err.println(ex.getMessage());
+            }
+
+            switch (choice) {
+                case 1:
+                    System.out.println("Iserisci data emssione tessera");
+                    LocalDate dataEmissione = LocalDate.parse(input.nextLine());
+                    Tessera tessera = new Tessera(dataEmissione, user);
+                    td.save(tessera);
+                    System.out.println("Vuoi fare un abbonamento?");
+                    System.out.println("1 - si");
+                    System.out.println("2 - no");
+                    int id;
+                    if (choice == 1) {
+                 /*       System.out.println("Inerisci periodicità");
+                        System.out.println("1 - mensile");
+                        System.out.println("2 - settimanale");
+                        if (choice == 1){
+                            Periodicità periodicity2 = Periodicità.Mensile;
+                        } else {
+                            Periodicità periodicity1 = Periodicità.Settimanale;
+                        }*/
+                        System.out.println("Inserisci data inizio");
+                        LocalDate dataInizio = LocalDate.parse(input.nextLine());
+                        System.out.println("Inserisci id del punto vendita");
+                        id = Integer.parseInt(input.nextLine());
+                        Tipi_vendita vendita = tipidao.findByid(id);
+                        Abbonamento abb = new Abbonamento(dataEmissione, user, Periodicità.getRandomPeriodicità(), dataInizio, vendita);
+                        td.save(abb);
+
+                    } else {
+                        System.out.println("Premi Invio e continua la tua scelta");
+                        input.nextLine();
+                    }
+
+                    break;
+                case 2:
+                    System.out.println("Inserisci data emissione");
+                    LocalDate dataEmis = LocalDate.parse(input.nextLine());
+                    System.out.println("Inserisci il punto vendita in cui hai fatto biglietto");
+                    long id2 = Integer.parseInt(input.nextLine());
+                    Tipi_vendita ven = tipidao.findByid(id2);
+                    Biglietto biglietto = new Biglietto(dataEmis, ven);
+                    bd.save(biglietto);
+                    break;
+                case 3:
+                    System.out.println("Inserisci numero tessera");
+                    String isbnString = input.nextLine();
+                    UUID id3 = UUID.fromString(isbnString);
+                    td.checkValidita(String.valueOf(id3));
+                    break;
+                case 4:
+                    System.out.println("Inserisci Id biglietto");
+                    long id4 = Integer.parseInt(input.nextLine());
+                    bd.findById(id4);
+                    bd.checkTicketAndNull(id4);
+                    break;
+                case 5:
+                    System.out.println("Inserisci data biglietto");
+                    LocalDate data = LocalDate.parse(input.nextLine());
+                    System.out.println("Inserisci UUID");
+                    String is = input.nextLine();
+                    UUID id5 = UUID.fromString(is);
+                    td.isValidAbbonamento(data, String.valueOf(id5));
+                    break;
+                case 0:
+                    System.out.println("0");
+                    break;
+            }
+        }
     }
 }

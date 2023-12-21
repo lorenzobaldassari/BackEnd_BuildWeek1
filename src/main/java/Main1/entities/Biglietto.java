@@ -23,19 +23,19 @@ public class Biglietto {
     public Biglietto() {
     }
 
-    public Biglietto(LocalDate emissione, boolean vidimazione, Tipi_vendita tipi_vendita) {
+    public Biglietto(LocalDate emissione, Tipi_vendita tipi_vendita) {
 
         this.emissione = emissione;
         this.scadenza =  this.emissione.plusDays(60);
-        this.vidimazione = vidimazione;
+        this.vidimazione = false;
         this.tipi_vendita = tipi_vendita;
     }
 
 
-    public Biglietto(LocalDate emissione ,boolean vidimazione, Tipi_vendita tipi_vendita, Parco_mezzi parco_mezzi) {
+    public Biglietto(LocalDate emissione , Tipi_vendita tipi_vendita, Parco_mezzi parco_mezzi) {
         this.emissione = emissione;
         this.scadenza =  this.emissione.plusDays(60);
-        this.vidimazione = vidimazione;
+        this.vidimazione = false;
         this.tipi_vendita = tipi_vendita;
         this.parco_mezzi = parco_mezzi;
     }
@@ -47,6 +47,7 @@ public class Biglietto {
 
     public void setParco_mezzi(Parco_mezzi parco_mezzi) {
         this.parco_mezzi = parco_mezzi;
+        this.vidimazione= true;
     }
 
     public LocalDate getEmissione() {
@@ -83,5 +84,17 @@ public class Biglietto {
 
     public void setTipi_vendita(Tipi_vendita tipi_vendita) {
         this.tipi_vendita = tipi_vendita;
+    }
+
+    @Override
+    public String toString() {
+        return "Biglietto{" +
+                "id=" + id +
+                ", emissione=" + emissione +
+                ", scadenza=" + scadenza +
+                ", vidimazione=" + vidimazione +
+                ", tipi_vendita=" + tipi_vendita +
+                ", parco_mezzi=" + parco_mezzi +
+                '}';
     }
 }
