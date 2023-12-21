@@ -215,9 +215,14 @@ public class Application {
 
         Tratta tr1 = new Tratta("Ostuni", "Fasano", 140);
        TrattaDAO trDAO = new TrattaDAO(em);
-        
-       trDAO.findByid(2);
-
+       //trDAO.save(tr1);
+       Tratta id = trDAO.findByid(2);
+        System.out.println("Trovato " + id);
+       Turno tu1 = new Turno(12, 120);
+       TurnoDAO tuDAO = new TurnoDAO(em);
+       //tuDAO.save(tu1);
+      int tr = tuDAO.tempoEffettivoPercorrenzaTratta(120, 140);
+        System.out.println("ecco il tempo " + tr);
 
         em.close();
         emf.close();

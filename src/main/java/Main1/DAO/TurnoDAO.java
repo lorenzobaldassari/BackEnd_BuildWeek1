@@ -47,7 +47,7 @@ public class TurnoDAO {
     }
 
     public int tempoEffettivoPercorrenzaTratta(int tempoEffettivo, int tempoPercorso){
-        Query getTempoEffettivoPercorrenza = em.createQuery("SELECT t FROM Turno t JOIN t.tratta z WHERE t.tempo_effettivo_percorrenza = :tempoEffettivo <= z.tempoPercoreenzaInMinuti = :tempoPercorso", Turno.class);
+        Query getTempoEffettivoPercorrenza = em.createQuery("SELECT t FROM Turno t JOIN t.tratta z WHERE t.tempo_effettivo_percorrenza BETWEEN :tempoEffettivo AND z.tempoPercoreenzaInMinuti AND z.tempoPercoreenzaInMinuti <= :tempoPercorso", Turno.class);
         getTempoEffettivoPercorrenza.setParameter("tempoEffettivo", tempoEffettivo);
         getTempoEffettivoPercorrenza.setParameter("tempoPercorso", tempoPercorso);
         return getTempoEffettivoPercorrenza.getFirstResult();
