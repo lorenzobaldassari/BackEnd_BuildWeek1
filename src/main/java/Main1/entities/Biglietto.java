@@ -32,7 +32,7 @@ public class Biglietto {
     }
 
 
-    public Biglietto(LocalDate emissione, boolean vidimazione, Tipi_vendita tipi_vendita, Parco_mezzi parco_mezzi) {
+    public Biglietto(LocalDate emissione ,boolean vidimazione, Tipi_vendita tipi_vendita, Parco_mezzi parco_mezzi) {
         this.emissione = emissione;
         this.scadenza =  this.emissione.plusDays(60);
         this.vidimazione = vidimazione;

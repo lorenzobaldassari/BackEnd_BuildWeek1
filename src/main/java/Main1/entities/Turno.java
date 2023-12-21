@@ -1,6 +1,7 @@
 package Main1.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,15 +17,9 @@ public class Turno {
     @ManyToMany
     @JoinTable(name="turno_tratta",joinColumns =@JoinColumn(name="turno_id"),
             inverseJoinColumns = @JoinColumn(name="tratta_id"))
-    private List<Tratta> tratta;
+    private List<Tratta> tratta= new ArrayList<>();
 
     public Turno (){}
-
-    public Turno(int inizio_servizio, int tempo_effettivo_percorrenza, List<Tratta> tratta) {
-        this.inizio_servizio = inizio_servizio;
-        this.tempo_effettivo_percorrenza = tempo_effettivo_percorrenza;
-        this.tratta = tratta;
-    }
 
     public Turno(int inizio_servizio, int tempo_effettivo_percorrenza) {
         this.inizio_servizio = inizio_servizio;
@@ -55,8 +50,8 @@ public class Turno {
         return tratta;
     }
 
-    public void setTratta(List<Tratta> tratta) {
-        this.tratta = tratta;
+    public void setTratta(Tratta Tratta) {
+        this.tratta.add(Tratta);
     }
 
     @Override

@@ -34,9 +34,10 @@ public class Application {
         BigliettoDao bd= new BigliettoDao(em);
         ManutenzioneDAO md=new ManutenzioneDAO(em);
         UtenteDAO ud= new UtenteDAO(em);
-
+        TurnoDAO turDao= new TurnoDAO(em);
 
         // creazione mezzi
+
         Parco_mezzi bus1=new Bus(Stato.IN_SERVIZIO);
         Parco_mezzi bus2=new Bus(Stato.IN_SERVIZIO);
         Parco_mezzi tram1=new Tram(Stato.IN_SERVIZIO);
@@ -48,6 +49,7 @@ public class Application {
 
 
         //creazione tratte
+
         Tratta tratta1= new Tratta("Milano","Roma",120);
         Tratta tratta2= new Tratta("Milano","Roma",120);
         Tratta tratta3= new Tratta("Milano","Palermo",120);
@@ -55,21 +57,36 @@ public class Application {
 //        trd.save(tratta2);
 //        trd.save(tratta3);
 
+
+
         //inresimento tratte ni mezzi
 
-        bus1.insertTratta(tratta1);
-        bus2.insertTratta(tratta1);
-        bus1.insertTratta(tratta2);
-        bus1.insertTratta(tratta3);
+//        bus1.insertTratta(tratta1);
+//        bus2.insertTratta(tratta1);
+//        bus1.insertTratta(tratta2);
+//        bus1.insertTratta(tratta3);
+
+        //creazione turni
+
+        Turno turno1= new Turno(10,80);
+        Turno turno2= new Turno(20,100);
+        Turno turno3= new Turno(9,200);
+        Turno turno4= new Turno(7,50);
+        Tratta tratta1fromDb= trd.findByid(5);
+        Tratta tratta2fromDb= trd.findByid(6);
+        Tratta tratta3fromDb= trd.findByid(7);
+
+        turno1.setTratta(tratta1fromDb);
+        turno1.setTratta(tratta2fromDb);
+        turno1.setTratta(tratta3fromDb);
+        turno2.setTratta(tratta3fromDb);
+        turno3.setTratta(tratta2fromDb);
+//         turDao.save(turno1);
+//         turDao.save(turno2);
+//         turDao.save(turno3);
+//         turDao.save(turno4);
 
 
-
-        //salvataggio in database
-        trd.save(tratta1);
-        trd.save(tratta2);
-        trd.save(tratta3);
-        pmd.save(bus1);
-        pmd.save(bus2);
 
 
         //creazione Rivenditori
@@ -82,20 +99,26 @@ public class Application {
 //        tipidao.save(auto1);
 //        tipidao.save(auto2);
 
+
+
+
+
+
         //creazione utenti
 
+        // no!
         Faker faker= new Faker();
         Random random= new Random();
         Utente utente1 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
                 LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
                         random.nextInt(1,30)));
-         Utente utente2 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
+        Utente utente2 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
                 LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
                         random.nextInt(1,30)));
-         Utente utente3 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
+        Utente utente3 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
                 LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
                         random.nextInt(1,30)));
-         Utente utente4 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
+        Utente utente4 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
                 LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
                         random.nextInt(1,30)));
 //        ud.save(utente1);
@@ -103,9 +126,9 @@ public class Application {
 //        ud.save(utente3);
 //        ud.save(utente4);
 
-
-
         //creazione abbonamenti
+        //no!
+
         Utente utente1FromDb = ud.findUtenteById(12);
         Utente utente2FromDb = ud.findUtenteById(13);
         Utente utente3FromDb = ud.findUtenteById(14);
@@ -134,6 +157,7 @@ public class Application {
 
 
 //        creazione biglietti
+        //no!
 
         Biglietto bigl1 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
                 random.nextInt(1,30)),false,tipo1FromDb);
@@ -150,19 +174,19 @@ public class Application {
 //        bd.save(bigl4);
 
 //        creazione manutenzione
-        Parco_mezzi mezzo1FromDb= pmd.findById(41);
-        Parco_mezzi mezzo2FromDb= pmd.findById(42);
-        Parco_mezzi mezzo3FromDb= pmd.findById(43);
-        Parco_mezzi mezzo4FromDb= pmd.findById(44);
+        Parco_mezzi mezzo1FromDb= pmd.findById(1);
+        Parco_mezzi mezzo2FromDb= pmd.findById(2);
+        Parco_mezzi mezzo3FromDb= pmd.findById(3);
+        Parco_mezzi mezzo4FromDb= pmd.findById(4);
 
         Manutenzione man1=new Manutenzione(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                random.nextInt(1,30))
+                random.nextInt(1,28))
                 ,"guasto elettrico",mezzo1FromDb);
         Manutenzione man2=new Manutenzione(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                random.nextInt(1,30)),
+                random.nextInt(1,28)),
                 LocalDate.of(2023,11,28),"guasto meccanico",mezzo2FromDb);
         Manutenzione man3=new Manutenzione(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                random.nextInt(1,30)),
+                random.nextInt(1,28)),
                 LocalDate.of(2023,11,28),"guasto meccanico",mezzo4FromDb);
 
 //        md.save(man1);
@@ -172,10 +196,45 @@ public class Application {
 
 
 
+
         //prova metodi
 
-        //metodo quante volte un mezzo percorre una tratta
-//        System.out.println(trd.NummeroDiTrattaSingolMezzo("Milano","Roma",7));
+
+
+        //biglietti emessi per punto di emissione
+
+//        bd.numeroBigliettiEmmessi(LocalDate.of(2007,3,25),"Roma");
+
+        //Validita di un abbonamento in base a id tessera
+
+//        td.checkValidita("61b193fb-a52d-4af8-a30b-85f78ff13666");
+
+        //numero di volte che un mezzo percorre una tappa
+
+//        System.out.println(trd.NummeroDiTrattaSingolMezzo("Milano","Roma",1));
+
+        //traccia dei periodi di servizio e manutenzione
+
+//        md.vehicleUnderMaintenancebyId(2);
+
+        // tenere traccia dei biglietti vidimati su un mezzo in un particoalre lasso di tempo
+//         standby
+
+        //biglietti vidimati cancellati
+
+//        bd.deleteAllTicketEndorsed();
+
+        //tempo effettivo di percorrenza della tratta
+
+//        turDao.tempoEffettivoPercorrenzaTratta(30);
+
+        //controllo se biglietto e valido e lo cancella
+
+//        bd.checkTicketAndNull(22);
+
+
+        //controlle se un abbonamento e' valido in base alla scadenza della tessera
+//        td.isValidAbbonamento(LocalDate.of(2013,3,4),"61b193fb-a52d-4af8-a30b-85f78ff13666");
 
 
 

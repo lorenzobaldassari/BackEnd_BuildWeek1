@@ -53,20 +53,25 @@ public class TurnoDAO {
         //AND z.tempoPercoreenzaInMinuti <= :tratta",
         getTempoEffettivoPercorrenza.setParameter("id", id);
         List<Turno> turni = getTempoEffettivoPercorrenza.getResultList();
-        System.out.println("Numero di turni trovati: " + turni.size());
+//        System.out.println("Numero di turni trovati: " + turni.size());
 
         turni.forEach(elm -> {
-            System.out.println("Turno ID: " + elm.getId());
-            System.out.println("Tratte associate: " + elm.getTratta().size());
+//            System.out.println("Turno ID: " + elm.getId());
+//            System.out.println("Tratte associate: " + elm.getTratta().size());
 
             List<Integer> intlist = new ArrayList<>();
             elm.getTratta().forEach(elmn -> {
                 intlist.add(elmn.getTempoPercoreenzaInMinuti());
-                System.out.println("Tratta ID: " + elmn.getId() + ", Tempo: " + elmn.getTempoPercoreenzaInMinuti());
+//                System.out.println("Tratta ID: " + elmn.getId() + ", Tempo: " + elmn.getTempoPercoreenzaInMinuti());
             });
 
             int somma = intlist.stream().reduce(0, Integer::sum);
-            System.out.println("Tempo effettivo - Somma tratta: " + (elm.getTempo_effettivo_percorrenza() - somma));
+            if ((elm.getTempo_effettivo_percorrenza() - somma)>=0){
+                System.out.println("sei in ritardo di " + (elm.getTempo_effettivo_percorrenza() - somma)+" minuti");
+            }else{
+
+            System.out.println("sei in anticipo di " + (somma-elm.getTempo_effettivo_percorrenza())+" minuti");
+            }
         });
 
     }

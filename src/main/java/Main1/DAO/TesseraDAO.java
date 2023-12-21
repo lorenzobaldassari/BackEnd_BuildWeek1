@@ -57,10 +57,12 @@ public class TesseraDAO {
     }
 
 
-    public void checkValidita(long numero_tessera) {
+    public void checkValidita(String numero_tessera) {
+
         Query getNummeroDiTrattaSingolMezzo = em.createQuery("SELECT b FROM Abbonamento b WHERE b.numero_tessera=:numero_tessera", Abbonamento.class);
         ;
-        getNummeroDiTrattaSingolMezzo.setParameter("numero_tessera", numero_tessera);
+        UUID uuid= UUID.fromString(numero_tessera);
+        getNummeroDiTrattaSingolMezzo.setParameter("numero_tessera", uuid);
         List<Abbonamento> abbo = getNummeroDiTrattaSingolMezzo.getResultList();
         abbo.forEach(el -> {
             if (abbo.size() > 0) {
@@ -79,15 +81,17 @@ public class TesseraDAO {
 
 
     //conferma la validita di un abbonamento controllando se la tessera non e' scaduta in base ad una data
-    public boolean isValidAbbonamento(LocalDate checkDate, long numeroTessera) {
+    public boolean isValidAbbonamento(LocalDate checkDate, String numeroTessera) {
         Query query = em.createQuery("SELECT 1 FROM Abbonamento a " +
                 "WHERE a.emissione <= :checkDate " +
                 "AND a.data_inizio <= :checkDate " +
                 "AND a.data_fine >= :checkDate " +
                 "AND a.numero_tessera = :numeroTessera");
 
+
+        UUID uuid= UUID.fromString(numeroTessera);
         query.setParameter("checkDate", checkDate);
-        query.setParameter("numeroTessera", numeroTessera);
+        query.setParameter("numeroTessera", uuid);
 
         if(query.getResultList().size()==0){
 
