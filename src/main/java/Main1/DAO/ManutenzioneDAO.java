@@ -41,7 +41,7 @@ public class ManutenzioneDAO {
             transaction.commit();
             System.out.println("La manutenzione è stata cancellata correttamente");
         } else {
-            System.err.println("La manutenzione con " + id + " non è stata trovata");
+            System.err.println("La manutenzione con " + id + " non è stata trovat");
         }
 
     }

@@ -217,12 +217,14 @@ public class Application {
        TrattaDAO trDAO = new TrattaDAO(em);
        //trDAO.save(tr1);
        Tratta id = trDAO.findByid(2);
-        System.out.println("Trovato " + id);
+       System.out.println("Trovato " + id);
        Turno tu1 = new Turno(12, 120);
        TurnoDAO tuDAO = new TurnoDAO(em);
+       Turno id2 = tuDAO.findById(5);
+        System.out.println("Trovato " + id2);
        //tuDAO.save(tu1);
-      int tr = tuDAO.tempoEffettivoPercorrenzaTratta(120, 140);
-        System.out.println("ecco il tempo " + tr);
+       int tr = tuDAO.tempoEffettivoPercorrenzaTratta(id2, id);
+       System.out.println("ecco il tempo " + tr);
 
         em.close();
         emf.close();
