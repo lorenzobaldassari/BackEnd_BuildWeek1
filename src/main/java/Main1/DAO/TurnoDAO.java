@@ -6,7 +6,9 @@ import Main1.entities.Turno;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TurnoDAO {
@@ -46,5 +48,20 @@ public class TurnoDAO {
         }
 
     }
-    
+    public void tempoEffettivoPercorrenzaTratta(long id){
+        Query getTempoEffettivoPercorrenza = em.createQuery("SELECT t FROM Turno t  WHERE t.id = :id",Turno.class);
+        //AND z.tempoPercoreenzaInMinuti <= :tratta",
+        getTempoEffettivoPercorrenza.setParameter("id", id);
+      List<Turno> turni=getTempoEffettivoPercorrenza.getResultList();
+        System.out.println(turni);
+      turni.forEach(elm->{
+
+          List<Integer> intlist= new ArrayList<>();
+          elm.getTratta().forEach(elmn-> intlist.add(elmn.getTempoPercoreenzaInMinuti()));
+          int somma= intlist.stream().reduce(0,(tot,elem)->tot+elem);
+        System.out.println(elm.getTempo_effettivo_percorrenza()-somma);
+      });
+      
+    }
+
 }
