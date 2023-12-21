@@ -2,12 +2,15 @@ package Main1.DAO;
 
 import Main1.entities.Abbonamento;
 import Main1.entities.Tessera;
-import Main1.entities.Utente;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
+
 import java.util.List;
+
+import java.time.LocalDate;
+
 import java.util.UUID;
 
 public class TesseraDAO {
@@ -30,16 +33,16 @@ public class TesseraDAO {
 
     }
 
-    public Tessera findById(long id) {
+    public Tessera findByUUID(UUID numero_tessera) {
 
-        return (Tessera) this.em.find(Tessera.class, id);
+        return (Tessera) this.em.find(Tessera.class, numero_tessera);
 
     }
 
-    public void findByIdAndDelete(long id) {
+    public void findByUUIDAndDelete(UUID numero_tessera) {
         try {
             EntityTransaction t = this.em.getTransaction();
-            Tessera found = (Tessera) this.em.find(Tessera.class, id);
+            Tessera found = (Tessera) this.em.find(Tessera.class, numero_tessera);
             if (found != null) {
                 t.begin();
                 this.em.remove(found);
@@ -53,6 +56,7 @@ public class TesseraDAO {
         }
     }
 
+
     public void checkValidita(long numero_tessera){
         Query getNummeroDiTrattaSingolMezzo=em.createQuery("SELECT b FROM Abbonamento b WHERE b.numero_tessera=:numero_tessera", Abbonamento.class);;
         getNummeroDiTrattaSingolMezzo.setParameter("numero_tessera",numero_tessera);
@@ -65,8 +69,7 @@ public class TesseraDAO {
                 }else{System.out.println("abbonamento non valido");}
             }else{System.out.println("non esiste questo numero di tessera");}
         });
-//
-    }
+
 
 
 }

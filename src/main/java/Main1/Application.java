@@ -1,6 +1,5 @@
 package Main1;
 
-
 import Main1.DAO.*;
 import Main1.entities.*;
 import Main1.entities.Enum.Condizione;
@@ -8,11 +7,21 @@ import Main1.entities.Enum.Periodicità;
 
 import Main1.entities.Enum.Stato;
 
+import Main1.DAO.TesseraDAO;
+import Main1.DAO.UtenteDAO;
+import Main1.entities.Abbonamento;
+import Main1.entities.Enum.Periodicità;
+import Main1.entities.Utente;
+import com.github.javafaker.Faker;
+
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.time.LocalDate;
-
+import java.util.Locale;
+import java.util.Random;
+import java.util.UUID;
 
 
 public class Application {
@@ -21,11 +30,14 @@ public class Application {
 
     public static void main(String[] args) {
         EntityManager em = emf.createEntityManager();
+
         TrattaDAO trd=new TrattaDAO(em);
         Parco_mezziDAO pmd=new Parco_mezziDAO(em);
         TesseraDAO td = new TesseraDAO(em);
         Tipi_venditaDAO tipidao= new Tipi_venditaDAO(em);
         BigliettoDao bd= new BigliettoDao(em);
+
+
         // creazione mezzi
         Parco_mezzi bus1=new Bus(Stato.IN_SEVIZIO);
         Parco_mezzi bus2=new Bus(Stato.IN_SEVIZIO);
@@ -37,11 +49,14 @@ public class Application {
         Tratta tratta3= new Tratta("Milano","Palermo",120);
 
 
+
         //inresimento tratte ni mezzi
         bus1.insertTratta(tratta1);
         bus2.insertTratta(tratta1);
         bus1.insertTratta(tratta2);
         bus1.insertTratta(tratta3);
+
+
 
         //salvataggio in database
         trd.save(tratta1);
@@ -61,6 +76,7 @@ public class Application {
 //        tipidao.save(auto1);
 //        tipidao.save(auto2);
 
+
         //creazione Biglietti
        Tipi_vendita fixedFromDb= tipidao.findByid(1);
        Tipi_vendita autoFromDb= tipidao.findByid(3);
@@ -68,7 +84,10 @@ public class Application {
     /*    //metodo quante volte un mezzo percorre una tratta
         System.out.println(trd.NummeroDiTrattaSingolMezzo("Milano","Roma",7));
 
-        TesseraDAO elemento = new TesseraDAO(em);
+        //metodo quante volte un mezzo percorre una tratta
+//        System.out.println(trd.NummeroDiTrattaSingolMezzo("Milano", "Roma", 7));
+
+
 
         Biglietto bigl1= new Biglietto(LocalDate.now(),LocalDate.now(),true,fixedFromDb);
         Biglietto bigl2= new Biglietto(LocalDate.now(),LocalDate.now(),true,fixedFromDb);
@@ -90,6 +109,22 @@ public class Application {
                 true,
                 Periodicità.Mensile,
                 LocalDate.of(2023, 10, 16)
+
+        // daos utente e tessera/abbonamento
+
+        UtenteDAO utenteDAO = new UtenteDAO(em);
+        TesseraDAO tesseraDAO = new TesseraDAO(em);
+
+        // faker e random per numeri e parole
+        Faker faker = new Faker(Locale.ITALY);
+        Random random = new Random();
+
+
+        Abbonamento abbonamento = new Abbonamento(
+                LocalDate.of(2023, random.nextInt(1, 12), random.nextInt(1, 30)),
+                Periodicità.getRandomPeriodicità(),
+                LocalDate.of(2023, random.nextInt(1, 12), random.nextInt(1, 30))
+
         );
         Abbonamento abbonamento2 = new Abbonamento(
                 LocalDate.of(2023, 10, 16),
@@ -121,10 +156,6 @@ public class Application {
         //metodo quante volte un mezzo percorre una tratta
 //        System.out.println(trd.NummeroDiTrattaSingolMezzo("Milano","Roma",7));
 
-
-
-
-
 //        abbonamento1.calcolaDataFine();
 //        elemento.save(abbonamento1);*/
 
@@ -146,6 +177,7 @@ public class Application {
         System.out.println(num);
 
         bd.numeroDiBigliettoPerPeriodoEDistributore(LocalDate.now(),"Rivenditori_autorizzati");
+
 
         em.close();
         emf.close();

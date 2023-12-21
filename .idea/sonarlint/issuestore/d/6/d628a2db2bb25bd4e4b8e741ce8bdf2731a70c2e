@@ -1,9 +1,14 @@
 
-g	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ÓÑ”¶ùÿÿÿÿ
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤éæªûÿÿÿÿ
+r	java:S117#"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(šô™úÿÿÿÿ8™êó“È1
+r	java:S117,"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(é­Ïõøÿÿÿÿ8šêó“È1
+n	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ÓÑ”¶ùÿÿÿÿ8œêó“È1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤éæªûÿÿÿÿ8êó“È1
+€	java:S116"_Rename this field "data_inizio_servizio" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×ºéôşÿÿÿÿ8«êó“È1
 V
-java:S5993"9Change the visibility of this constructor to "protected".(Â‚¶´8ùæŞŠÈ1
+java:S5993 "9Change the visibility of this constructor to "protected".(Â‚¶´8¬êó“È1
 [
-java:S5993"9Change the visibility of this constructor to "protected".(ÙíÄüúÿÿÿÿ8ùæŞŠÈ1
+java:S5993#"9Change the visibility of this constructor to "protected".(šô™úÿÿÿÿ8¬êó“È1
 V
-java:S5993$"9Change the visibility of this constructor to "protected".(³™¬¨8úæŞŠÈ1
+java:S59931"9Change the visibility of this constructor to "protected".(³™¬¨8­êó“È1
+j	java:S100("NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ôâò÷8¿êó“È1
+o	java:S100,"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(é­Ïõøÿÿÿÿ8¿êó“È1
