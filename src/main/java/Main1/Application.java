@@ -34,8 +34,6 @@ public class Application {
         BigliettoDao dg = new BigliettoDao(em);
         ManutenzioneDAO md=new ManutenzioneDAO(em);
 
-          menu();
-          
 
         // creazione mezzi
 
@@ -94,7 +92,6 @@ public class Application {
         tipidao.save(auto1);
         tipidao.save(auto2);*/
 
-        //creazione abbonamenti
 
 
         Tipi_vendita tipo1FromDb = tipidao.findByid(8);
@@ -113,7 +110,7 @@ public class Application {
         dg.save(bg2);
         dg.save(bg3);
         dg.save(bg4);*/
-        
+        dg.updateTipoDiVenditore(28, 24);
 
 
 
@@ -139,7 +136,7 @@ public class Application {
         md.save(man3);*/
 
 
-
+        //menu();
 
         em.close();
         emf.close();
@@ -375,7 +372,6 @@ public class Application {
             System.out.println("1 - si");
             System.out.println("2 - no");
 
-
                  /*       System.out.println("Inerisci periodicità");
                         System.out.println("1 - mensile");
                         System.out.println("2 - settimanale");
@@ -394,8 +390,8 @@ public class Application {
                     System.out.println("Inserisci id User");
                     long id8 = Integer.parseInt(input.nextLine());
                     Utente utente = ud.findUtenteById(id8);
-                    Abbonamento abb = new Abbonamento(dataEmissione, utente, Periodicità.getRandomPeriodicità(), dataInizio, vendita);
-                    td.save(abb);
+                    //Abbonamento abb = new Abbonamento(dataEmissione, utente, Periodicità.getRandomPeriodicità(), dataInizio, vendita);
+                    //td.save(abb);
                     break;
                 case 2:
                     System.out.println("Premi Invio e continua la tua scelta");
