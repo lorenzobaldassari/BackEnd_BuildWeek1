@@ -57,9 +57,7 @@ public class Application {
         Tratta tratta2= new Tratta("Milano","Roma",120);
         Tratta tratta3= new Tratta("Milano","Palermo",120);
 
-//        trd.save(tratta1);
-//        trd.save(tratta2);
-//        trd.save(tratta3);
+
 
         //creazione turni
 
@@ -68,10 +66,6 @@ public class Application {
         Turno turno3= new Turno(9,200);
         Turno turno4= new Turno(7,50);
 
-//         turDao.save(turno1);
-//         turDao.save(turno2);
-//         turDao.save(turno3);
-//         turDao.save(turno4);
 
 
 
@@ -103,10 +97,6 @@ public class Application {
         Utente utente4 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
                 LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
                         random.nextInt(1,30)));
-//        ud.save(utente1);
-//        ud.save(utente2);
-//        ud.save(utente3);
-//        ud.save(utente4);
 
         //creazione abbonamenti
 
@@ -126,9 +116,6 @@ public class Application {
                 LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
                         random.nextInt(1,30)));
 
-//        td.save(abbo1);
-//        td.save(abbo2);
-//        td.save(abbo3);
 
 
 //        creazione biglietti
@@ -143,10 +130,6 @@ public class Application {
         Biglietto bigl4 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
                 random.nextInt(1,30)));
 
-//        bd.save(bigl1);
-//        bd.save(bigl2);
-//        bd.save(bigl3);
-//        bd.save(bigl4);
 
 //        creazione manutenzione
 
@@ -163,7 +146,29 @@ public class Application {
 //        md.save(man1);
 //        md.save(man2);
 //        md.save(man3);
-
+//        bd.save(bigl1);
+//        bd.save(bigl2);
+//        bd.save(bigl3);
+//        bd.save(bigl4);
+//        td.save(abbo1);
+//        td.save(abbo2);
+//        td.save(abbo3);
+//        ud.save(utente1);
+//        ud.save(utente2);
+//        ud.save(utente3);
+//        ud.save(utente4);
+//         turDao.save(turno1);
+//         turDao.save(turno2);
+//         turDao.save(turno3);
+//         turDao.save(turno4);
+//        trd.save(tratta1);
+//        trd.save(tratta2);
+//        trd.save(tratta3);
+//        pmd.save(bus1);
+//        pmd.save(bus2);
+//        pmd.save(tram1);
+//        pmd.save(tram2);
+//        pmd.save(tram3);
 
 
 
