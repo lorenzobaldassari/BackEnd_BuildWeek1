@@ -2,6 +2,7 @@ package Main1.DAO;
 
 import Main1.entities.Abbonamento;
 import Main1.entities.Tessera;
+import Main1.entities.Utente;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -103,6 +104,18 @@ public class TesseraDAO {
             System.out.println("l'abbonamento e' scaduto");
         }
 
+    }
+
+    public void inserireUtente(String id_abbonamento, long id_utente){
+        UUID uuid= UUID.fromString(id_abbonamento);
+        UtenteDAO utenteDAO= new UtenteDAO(em);
+        Tessera mac= this.findByUUID(uuid);
+        Utente utenteDaInserire = utenteDAO.findUtenteById(id_utente);
+        EntityTransaction transaction= em.getTransaction();
+        transaction.begin();
+        mac.setUtente(utenteDaInserire);
+        transaction.commit();
+        System.out.println("aggiunto correttamente");
     }
 
 }

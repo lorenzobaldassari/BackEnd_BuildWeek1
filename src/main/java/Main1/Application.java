@@ -36,204 +36,12 @@ public class Application {
         UtenteDAO ud = new UtenteDAO(em);
         TurnoDAO turDao = new TurnoDAO(em);
         TesseraDAO td = new TesseraDAO(em);
+        AbbonamentoDao abbonamentoDao= new AbbonamentoDao(em);
 
 
-        // creazione mezzi
+//        createDatabase();
 
-        Parco_mezzi bus1=new Bus(Stato.IN_SERVIZIO);
-        Parco_mezzi bus2=new Bus(Stato.IN_SERVIZIO);
-        Parco_mezzi tram1=new Tram(Stato.IN_SERVIZIO);
-        Parco_mezzi tram2=new Tram(Stato.IN_MANUTENZIONE);
-
-    /*   pmd.save(bus1);
-       pmd.save(bus2);
-       pmd.save(tram1);
-       pmd.save(tram2);*/
-
-        Parco_mezzi tram3=new Tram(Stato.IN_SERVIZIO);
-
-//
-//        pmd.save(bus1);
-//        pmd.save(bus2);
-//        pmd.save(tram1);
-//        pmd.save(tram2);
-//        pmd.save(tram3);
-
-
-
-        //creazione tratte
-
-        Tratta tratta1= new Tratta("Milano","Roma",120);
-        Tratta tratta2= new Tratta("Milano","Roma",120);
-        Tratta tratta3= new Tratta("Milano","Palermo",120);
-        /*trd.save(tratta1);
-        trd.save(tratta2);
-        trd.save(tratta3);
-*/
-
-
-
-        //creazione turni
-
-        Turno turno1= new Turno(10,80);
-        Turno turno2= new Turno(20,100);
-        Turno turno3= new Turno(9,200);
-        Turno turno4= new Turno(7,50);
-
-
-      /*  bus1.insertTratta(tratta1);
-        bus2.insertTratta(tratta1);
-        bus1.insertTratta(tratta2);
-        bus1.insertTratta(tratta3);
-        Tratta tratta1FromDb= trd.findByid(5);
-        tram3.insertTratta(tratta1FromDb);
-        tram3.insertTratta(tratta1FromDb);
-        tram3.insertTratta(tratta1FromDb);
-        tram3.insertTratta(tratta1FromDb);
-        pmd.save(bus1);
-        pmd.save(bus2);
-        pmd.save(tram1);
-        pmd.save(tram2);
-        pmd.save(tram3);*/
-
-
-
-        //creazione Rivenditori
-        Rivenditori_autorizzati vend1= new Rivenditori_autorizzati("Roma");
-        Rivenditori_autorizzati vend2= new Rivenditori_autorizzati("Milano");
-        Distributore_automatico auto1 = new Distributore_automatico("Milano",Condizione.ATTIVO);
-        Distributore_automatico auto2 = new Distributore_automatico("Roma",Condizione.ATTIVO);
-/*
-
-       tipidao.save(vend1);
-        tipidao.save(vend2);
-        tipidao.save(auto1);
-        tipidao.save(auto2);
-*/
-
-
-
-        Tipi_vendita tipo1FromDb = tipidao.findByid(8);
-        Tipi_vendita tipo2FromDb = tipidao.findByid(9);
-        Tipi_vendita tipo3FromDb = tipidao.findByid(10);
-        Tipi_vendita tipo4FromDb = tipidao.findByid(11);
-
-//        tipidao.save(vend1);
-//        tipidao.save(vend2);
-//        tipidao.save(auto1);
-//        tipidao.save(auto2);
-
-        //creazione utenti
-
-        // no!
-        Faker faker= new Faker();
-        Random random= new Random();
-        Utente utente1 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
-                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                        random.nextInt(1,30)));
-        Utente utente2 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
-                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                        random.nextInt(1,30)));
-        Utente utente3 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
-                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                        random.nextInt(1,30)));
-        Utente utente4 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
-                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                        random.nextInt(1,30)));
-
-        //creazione abbonamenti
-
-
-        Abbonamento abbo1= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                random.nextInt(1,28)),Periodicità.getRandomPeriodicità(),
-                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                        random.nextInt(1,28)));
-
-        Abbonamento abbo2= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                random.nextInt(1,30)),Periodicità.getRandomPeriodicità(),
-                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                        random.nextInt(1,28)));
-
-        Abbonamento abbo3= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                random.nextInt(1,30)),Periodicità.getRandomPeriodicità(),
-                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                        random.nextInt(1,28)));
-
-
-        // creazione biglietti
-        Biglietto bg1 = new Biglietto(LocalDate.now(), tipo1FromDb);
-        Biglietto bg2 = new Biglietto(LocalDate.now(), tipo2FromDb);
-        Biglietto bg3 = new Biglietto(LocalDate.now(), tipo3FromDb);
-        Biglietto bg4 = new Biglietto(LocalDate.now(), tipo4FromDb);
-       /* dg.save(bg1);
-        dg.save(bg2);
-        dg.save(bg3);
-        dg.save(bg4);*/
-
-        Biglietto bigl1 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                random.nextInt(1,30)));
-        Biglietto bigl2 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                        random.nextInt(1,30)));
-        Biglietto bigl3 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                        random.nextInt(1,30)));
-        Biglietto bigl4 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                random.nextInt(1,30)));
-
-
-
-//        creazione manutenzione
-
-        Manutenzione man1=new Manutenzione(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                random.nextInt(1,28))
-                ,"guasto elettrico");
-        Manutenzione man2=new Manutenzione(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                random.nextInt(1,28)),
-                LocalDate.of(2023,11,28),"guasto meccanico");
-        Manutenzione man3=new Manutenzione(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                random.nextInt(1,28)),
-                LocalDate.of(2023,11,28),"guasto meccanico");
-
-/*
-        md.save(man1);
-        md.save(man2);
-        md.save(man3);
-        bd.save(bigl1);
-        bd.save(bigl2);
-        bd.save(bigl3);
-        bd.save(bigl4);
-        td.save(abbo1);
-        td.save(abbo2);
-        td.save(abbo3);
-        ud.save(utente1);
-        ud.save(utente2);
-        ud.save(utente3);
-        ud.save(utente4);
-        turDao.save(turno1);
-        turDao.save(turno2);
-        turDao.save(turno3);
-        turDao.save(turno4);
-        trd.save(tratta1);
-        trd.save(tratta2);
-        trd.save(tratta3);
-        pmd.save(bus1);
-        pmd.save(bus2);
-        pmd.save(tram1);
-        pmd.save(tram2);
-        pmd.save(tram3);*/
-/*
-        bd.updateTipoDiVenditore(4, 24);
-        bd.updateTipoDiVenditore(5, 25);
-        bd.updateTipoDiVenditore(5, 26);*/
-
-        /*turDao.updateInsertTrattaInTurno(14, 17);
-        turDao.updateInsertTrattaInTurno(14, 18);*/
-        //bd.updateMezzoDaInserire(4, 23);
-
-
-//        menu();
-
-        td.isValidAbbonamento(LocalDate.of(2023,10,10),"c7d0755f-4f5e-4987-929e-a19f23160e01");
-
+        menu();
         em.close();
         emf.close();
     }
@@ -479,5 +287,176 @@ public class Application {
                     break;
             }
         }
+    }
+
+
+
+
+
+//    -----------DATABASE-------------Q
+    public static void createDatabase(){
+
+        EntityManager em = emf.createEntityManager();
+        TrattaDAO trd=new TrattaDAO(em);
+        Parco_mezziDAO pmd=new Parco_mezziDAO(em);
+        Tipi_venditaDAO tipidao= new Tipi_venditaDAO(em);
+        BigliettoDao bd = new BigliettoDao(em);
+        ManutenzioneDAO md=new ManutenzioneDAO(em);
+        UtenteDAO ud = new UtenteDAO(em);
+        TurnoDAO turDao = new TurnoDAO(em);
+        TesseraDAO td = new TesseraDAO(em);
+        AbbonamentoDao abbonamentoDao=new AbbonamentoDao(em);
+        // creazione mezzi
+
+        Parco_mezzi bus1=new Bus(Stato.IN_SERVIZIO);
+        Parco_mezzi bus2=new Bus(Stato.IN_SERVIZIO);
+        Parco_mezzi tram1=new Tram(Stato.IN_SERVIZIO);
+        Parco_mezzi tram2=new Tram(Stato.IN_MANUTENZIONE);
+        Parco_mezzi tram3=new Tram(Stato.IN_SERVIZIO);
+
+        //creazione tratte
+
+        Tratta tratta1= new Tratta("Milano","Roma",120);
+        Tratta tratta2= new Tratta("Milano","Roma",120);
+        Tratta tratta3= new Tratta("Milano","Palermo",120);
+
+        //creazione turni
+
+        Turno turno1= new Turno(10,80);
+        Turno turno2= new Turno(20,100);
+        Turno turno3= new Turno(9,200);
+        Turno turno4= new Turno(7,50);
+
+        //creazione Rivenditori
+        Rivenditori_autorizzati vend1= new Rivenditori_autorizzati("Roma");
+        Rivenditori_autorizzati vend2= new Rivenditori_autorizzati("Milano");
+        Distributore_automatico auto1 = new Distributore_automatico("Milano",Condizione.ATTIVO);
+        Distributore_automatico auto2 = new Distributore_automatico("Roma",Condizione.ATTIVO);
+
+
+
+        Faker faker= new Faker();
+        Random random= new Random();
+        Utente utente1 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
+                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,30)));
+        Utente utente2 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
+                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,30)));
+        Utente utente3 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
+                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,30)));
+        Utente utente4 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
+                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,30)));
+
+        //creazione abbonamenti
+
+
+        Abbonamento abbo1= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,28)),Periodicità.getRandomPeriodicità(),
+                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,28)));
+
+        Abbonamento abbo2= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,30)),Periodicità.getRandomPeriodicità(),
+                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,28)));
+
+        Abbonamento abbo3= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,30)),Periodicità.getRandomPeriodicità(),
+                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,28)));
+
+
+        // creazione biglietti
+
+
+
+        Biglietto bigl1 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,30)));
+        Biglietto bigl2 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,30)));
+        Biglietto bigl3 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,30)));
+        Biglietto bigl4 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,30)));
+
+
+//        creazione manutenzione
+
+        Manutenzione man1=new Manutenzione(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,28))
+                ,"guasto elettrico");
+        Manutenzione man2=new Manutenzione(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,28)),
+                LocalDate.of(2023,11,28),"guasto meccanico");
+        Manutenzione man3=new Manutenzione(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,28)),
+                LocalDate.of(2023,11,28),"guasto meccanico");
+
+
+//        md.save(man1);
+//        md.save(man2);
+//        md.save(man3);
+//        bd.save(bigl1);
+//        bd.save(bigl2);
+//        bd.save(bigl3);
+//        bd.save(bigl4);
+//        td.save(abbo1);
+//        td.save(abbo2);
+//        td.save(abbo3);
+//        ud.save(utente1);
+//        ud.save(utente2);
+//        ud.save(utente3);
+//        ud.save(utente4);
+//        turDao.save(turno1);
+//        turDao.save(turno2);
+//        turDao.save(turno3);
+//        turDao.save(turno4);
+//        trd.save(tratta1);
+//        trd.save(tratta2);
+//        trd.save(tratta3);
+//        pmd.save(bus1);
+//        pmd.save(bus2);
+//        pmd.save(tram1);
+//        pmd.save(tram2);
+//        pmd.save(tram3);
+//        bd.save(bigl1);
+//        bd.save(bigl2);
+//        bd.save(bigl3);
+//        bd.save(bigl4);
+//        tipidao.save(vend1);
+//        tipidao.save(vend2);
+//        tipidao.save(auto1);
+//        tipidao.save(auto2);
+
+
+//        td.inserireUtente("03478e42-c729-44af-95d2-5921d1954c7e",8);
+//        td.inserireUtente("8579def8-3eec-4710-96c5-7ec25dbe957c",9);
+//        td.inserireUtente("c892d80a-5c5d-4409-9cf7-0c57aff8c1fa",10);
+//        abbonamentoDao.updateVenditoreAssociato("03478e42-c729-44af-95d2-5921d1954c7e",24);
+//        abbonamentoDao.updateVenditoreAssociato("8579def8-3eec-4710-96c5-7ec25dbe957c",24);
+//        abbonamentoDao.updateVenditoreAssociato("c892d80a-5c5d-4409-9cf7-0c57aff8c1fa",25);
+//        md.insertVaichle(1,19);
+//        md.insertVaichle(2,19);
+//        md.insertVaichle(3,20);
+//        turDao.updateInsertTrattaInTurno(12,16);
+//        turDao.updateInsertTrattaInTurno(12,17);
+//        turDao.updateInsertTrattaInTurno(13,17);
+//        turDao.updateInsertTrattaInTurno(14,18);
+//        turDao.updateInsertTrattaInTurno(15,16);
+//        turDao.updateInsertTrattaInTurno(15,17);
+//        turDao.updateInsertTrattaInTurno(15,18);
+//         pmd.updateInsertTratta(19,16);
+//         pmd.updateInsertTratta(19,17);
+//         pmd.updateInsertTratta(20,18);
+//         pmd.updateInsertTratta(20,16);
+//         pmd.updateInsertTratta(20,19);
+//         pmd.updateInsertTratta(21,16);
+//         pmd.updateInsertTratta(22,16);
+//            bd.updateMezzoDaInserire(4,20);
+//            bd.updateMezzoDaInserire(5,20);
+
     }
 }

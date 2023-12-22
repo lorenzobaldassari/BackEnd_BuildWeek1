@@ -10,6 +10,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.time.LocalDate;
+import java.util.UUID;
 
 
 public class AbbonamentoDao {
@@ -28,7 +29,7 @@ public class AbbonamentoDao {
         System.out.println("elemento "+ abbbonamento.getNumero_tessera()+" salvato con successo");
     }
 
-    public Abbonamento findById(long id){
+    public Abbonamento findById(UUID   id){
         Abbonamento find= em.find(Abbonamento.class, id);
         if (find!=null){
             System.out.println("elemento trovato "+find );
@@ -39,7 +40,7 @@ public class AbbonamentoDao {
         }
     }
 
-    public void findByIdAndDelete(long id){
+    public void findByIdAndDelete(UUID id){
 
         EntityTransaction transaction=em.getTransaction();
         Abbonamento abbonamento = findById(id);
@@ -53,9 +54,9 @@ public class AbbonamentoDao {
         }
     }
 
-    public void updateDataInizioEScadenza(long id_abbonamento, LocalDate nuovaDataDiInzio__yyyy_m_dd){
-
-        Abbonamento mac= this.findById(id_abbonamento);
+    public void updateDataInizioEScadenza(String UUID_TESSERA, LocalDate nuovaDataDiInzio__yyyy_m_dd){
+        UUID uuid= UUID.fromString(UUID_TESSERA);
+        Abbonamento mac= this.findById(uuid);
         EntityTransaction transaction= em.getTransaction();
         transaction.begin();
         mac.setData_inizio(nuovaDataDiInzio__yyyy_m_dd);
@@ -64,9 +65,10 @@ public class AbbonamentoDao {
         System.out.println("aggiunto correttamente");
     }
 
-    public void updateVenditoreAssociato(long id_abbonamento, long id_venditoreDaInserire){
+    public void updateVenditoreAssociato(String UUID_TESSERA, long id_venditoreDaInserire){
+        UUID uuid= UUID.fromString(UUID_TESSERA);
         Tipi_venditaDAO tipiVenditaDAO= new Tipi_venditaDAO(em);
-        Abbonamento mac= this.findById(id_abbonamento);
+        Abbonamento mac= this.findById(uuid);
         Tipi_vendita tipo= tipiVenditaDAO.findByid(id_venditoreDaInserire);
         EntityTransaction transaction= em.getTransaction();
         transaction.begin();
@@ -75,8 +77,9 @@ public class AbbonamentoDao {
         transaction.commit();
         System.out.println("aggiunto correttamente");
     }
-    public void cambiareLaValidita(long id_abbonamento, boolean trueOrFalse){
-        Abbonamento mac= this.findById(id_abbonamento);
+    public void cambiareLaValidita(String UUID_TESSERA, boolean trueOrFalse){
+        UUID uuid= UUID.fromString(UUID_TESSERA);
+        Abbonamento mac= this.findById(uuid);
         EntityTransaction transaction= em.getTransaction();
         transaction.begin();
         mac.setValidità(trueOrFalse);
@@ -84,9 +87,10 @@ public class AbbonamentoDao {
         transaction.commit();
         System.out.println("aggiunto correttamente");
     }
-    public void inserireUtente(long id_abbonamento, long id_utente){
+    public void inserireUtente(String UUID_TESSERA, long id_utente){
+        UUID uuid= UUID.fromString(UUID_TESSERA);
         UtenteDAO utenteDAO= new UtenteDAO(em);
-        Abbonamento mac= this.findById(id_abbonamento);
+        Abbonamento mac= this.findById(uuid);
         Utente utenteDaInserire = utenteDAO.findUtenteById(id_utente);
         EntityTransaction transaction= em.getTransaction();
         transaction.begin();

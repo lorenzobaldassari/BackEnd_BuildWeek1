@@ -5,13 +5,13 @@ import Main1.entities.Parco_mezzi;
 import Main1.entities.Tessera;
 import Main1.entities.Tratta;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Query;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
 public class ManutenzioneDAO {
+    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Trasporto_Pubblico");
+
     private final EntityManager em;
 
     public ManutenzioneDAO(EntityManager em) {
@@ -66,6 +66,16 @@ public class ManutenzioneDAO {
         EntityTransaction transaction= em.getTransaction();
         transaction.begin();
         mac.setGiorno_fine(giornoDiFine__yyyy_m_dd);
+        transaction.commit();
+        System.out.println("aggiunto correttamente");
+    }
+    public void insertVaichle(long id_manutenzione,long id_veicolo){
+        Parco_mezziDAO mezziDAO= new Parco_mezziDAO(em);
+        Parco_mezzi mezzo= mezziDAO.findById(id_veicolo);
+        Manutenzione mac= this.findById(id_manutenzione);
+        EntityTransaction transaction= em.getTransaction();
+        transaction.begin();
+        mac.setParco_mezzi(mezzo);
         transaction.commit();
         System.out.println("aggiunto correttamente");
     }
