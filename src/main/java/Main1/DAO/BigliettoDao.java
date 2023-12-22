@@ -133,6 +133,6 @@ public class BigliettoDao {
         bi.setParco_mezzi(mac);
         transaction.commit();
         System.out.println("aggiunto correttamente");
-    }
+       }
     }
 

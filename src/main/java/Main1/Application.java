@@ -110,9 +110,6 @@ public class Application {
         Tipi_vendita tipo3FromDb = tipidao.findByid(10);
         Tipi_vendita tipo4FromDb = tipidao.findByid(11);
 
-        Biglietto bg = new Biglietto(LocalDate.now(), tipo1FromDb);
-        //dg.save(bg);
-        //dg.update(3, 4);
 
         Random random = new Random();
 //        creazione manutenzione
@@ -302,36 +299,11 @@ public class Application {
 
             switch (choice) {
                 case 1:
+
                     System.out.println("Iserisci data emssione tessera");
                     LocalDate dataEmissione = LocalDate.parse(input.nextLine());
                     Tessera tessera = new Tessera(dataEmissione, user);
                     td.save(tessera);
-                    System.out.println("Vuoi fare un abbonamento?");
-                    System.out.println("1 - si");
-                    System.out.println("2 - no");
-                    int id;
-                    if (choice != 0) {
-                 /*       System.out.println("Inerisci periodicità");
-                        System.out.println("1 - mensile");
-                        System.out.println("2 - settimanale");
-                        if (choice == 1){
-                            Periodicità periodicity2 = Periodicità.Mensile;
-                        } else {
-                            Periodicità periodicity1 = Periodicità.Settimanale;
-                        }*/
-                        System.out.println("Inserisci data inizio");
-                        LocalDate dataInizio = LocalDate.parse(input.nextLine());
-                        System.out.println("Inserisci id del punto vendita");
-                        id = Integer.parseInt(input.nextLine());
-                        Tipi_vendita vendita = tipidao.findByid(id);
-                        Abbonamento abb = new Abbonamento(dataEmissione, user, Periodicità.getRandomPeriodicità(), dataInizio, vendita);
-                        td.save(abb);
-
-                    } else {
-                        System.out.println("Premi Invio e continua la tua scelta");
-                        input.nextLine();
-                    }
-
                     break;
                 case 2:
                     System.out.println("Inserisci data emissione");
@@ -341,6 +313,7 @@ public class Application {
                     Tipi_vendita ven = tipidao.findByid(id2);
                     Biglietto biglietto = new Biglietto(dataEmis, ven);
                     bd.save(biglietto);
+                    sceltaAbb();
                     break;
                 case 3:
                     System.out.println("Inserisci numero tessera");
@@ -374,6 +347,49 @@ public class Application {
                     break;
                 case 0:
                     System.out.println("0");
+                    break;
+            }
+        }
+    }
+
+    public static void sceltaAbb(){
+        EntityManager em = emf.createEntityManager();
+        TesseraDAO td = new TesseraDAO(em);
+        Tipi_venditaDAO tipidao= new Tipi_venditaDAO(em);
+        UtenteDAO ud= new UtenteDAO(em);
+        int choice = -1;
+        while (choice != 0) {
+            System.out.println("Iserisci data emssione tessera");
+            LocalDate dataEmissione = LocalDate.parse(input.nextLine());
+            System.out.println("Vuoi fare un abbonamento?");
+            System.out.println("1 - si");
+            System.out.println("2 - no");
+
+
+                 /*       System.out.println("Inerisci periodicità");
+                        System.out.println("1 - mensile");
+                        System.out.println("2 - settimanale");
+                        if (choice == 1){
+                            Periodicità periodicity2 = Periodicità.Mensile;
+                        } else {
+                            Periodicità periodicity1 = Periodicità.Settimanale;
+                        }*/
+            switch (choice){
+                case 1:
+                    System.out.println("Inserisci data inizio");
+                    LocalDate dataInizio = LocalDate.parse(input.nextLine());
+                    System.out.println("Inserisci id del punto vendita");
+                    long id = Integer.parseInt(input.nextLine());
+                    Tipi_vendita vendita = tipidao.findByid(id);
+                    System.out.println("Inserisci id User");
+                    long id8 = Integer.parseInt(input.nextLine());
+                    Utente utente = ud.findUtenteById(id8);
+                    Abbonamento abb = new Abbonamento(dataEmissione, utente, Periodicità.getRandomPeriodicità(), dataInizio, vendita);
+                    td.save(abb);
+                    break;
+                case 2:
+                    System.out.println("Premi Invio e continua la tua scelta");
+                    input.nextLine();
                     break;
             }
         }
