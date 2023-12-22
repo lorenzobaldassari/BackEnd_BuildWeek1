@@ -1,7 +1,9 @@
 package Main1.DAO;
 
 import Main1.entities.Manutenzione;
+import Main1.entities.Parco_mezzi;
 import Main1.entities.Tessera;
+import Main1.entities.Tratta;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -57,5 +59,14 @@ public class ManutenzioneDAO {
         mezzi.forEach(elm->System.out.println(elm));
         }
 
+    }
+
+    public void updateGiornoDiFine(long id_manutenzione, LocalDate giornoDiFine__yyyy_m_dd){
+        Manutenzione mac= this.findById(id_manutenzione);
+        EntityTransaction transaction= em.getTransaction();
+        transaction.begin();
+        mac.setGiorno_fine(giornoDiFine__yyyy_m_dd);
+        transaction.commit();
+        System.out.println("aggiunto correttamente");
     }
 }

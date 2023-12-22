@@ -31,6 +31,22 @@ public class Abbonamento extends Tessera {
         this.tipi_vendita = tipi_vendita;
     }
 
+
+    public Abbonamento(Periodicità periodicità, boolean validità, LocalDate data_inizio, LocalDate data_fine) {
+        this.periodicità = periodicità;
+        this.validità = validità;
+        this.data_inizio = data_inizio;
+        this.data_fine = data_fine;
+    }
+
+    public Abbonamento(LocalDate emissione, Utente utente, Periodicità periodicità, boolean validità, LocalDate data_inizio, LocalDate data_fine) {
+        super(emissione, utente);
+        this.periodicità = periodicità;
+        this.validità = validità;
+        this.data_inizio = data_inizio;
+        this.data_fine = data_fine;
+    }
+
     public Abbonamento() {
     }
 
@@ -72,6 +88,15 @@ public class Abbonamento extends Tessera {
 
     public void setValidità(boolean validità) {
         this.validità = validità;
+    }
+
+
+    public Tipi_vendita getTipi_vendita() {
+        return tipi_vendita;
+    }
+
+    public void setTipi_vendita(Tipi_vendita tipi_vendita) {
+        this.tipi_vendita = tipi_vendita;
     }
 
     @Override

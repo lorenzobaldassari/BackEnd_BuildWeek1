@@ -19,6 +19,7 @@ public class BigliettoDao {
 
     private final EntityManager em;
 
+
     public BigliettoDao(EntityManager em){
         this.em= em;
     }
@@ -124,7 +125,10 @@ public class BigliettoDao {
             }
 
         }
-    public void update(long id_biglietto,long id_mezzo_da_inserire){
+
+
+    public void updateMezzoDaInserire(long id_biglietto,long id_mezzo_da_inserire){
+
         Parco_mezziDAO pmd=new Parco_mezziDAO(em);
         Biglietto bi= this.findById(id_biglietto);
         Parco_mezzi mac= pmd.findById(id_mezzo_da_inserire);
@@ -134,5 +138,7 @@ public class BigliettoDao {
         transaction.commit();
         System.out.println("aggiunto correttamente");
        }
+
     }
+
 

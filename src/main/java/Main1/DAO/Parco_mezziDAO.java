@@ -1,8 +1,8 @@
 package Main1.DAO;
 
-
 import Main1.entities.Enum.Stato;
 import Main1.entities.Parco_mezzi;
+import Main1.entities.Tratta;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import java.util.List;
 
 public class Parco_mezziDAO {
+
 
     private final EntityManager em;
     public Parco_mezziDAO(EntityManager em) {
@@ -63,4 +64,15 @@ public class Parco_mezziDAO {
             }
         });
     }
+
+
+    public void updateInsertTratta(long id_mezzo, Tratta trattaDaInserire){
+        Parco_mezzi mac= this.findById(id_mezzo);
+        EntityTransaction transaction= em.getTransaction();
+        transaction.begin();
+        mac.insertTratta(trattaDaInserire);
+        transaction.commit();
+        System.out.println("aggiunto correttamente");
+    }
+
 }

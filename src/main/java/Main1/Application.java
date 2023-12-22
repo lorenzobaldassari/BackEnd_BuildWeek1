@@ -16,6 +16,7 @@ import com.github.javafaker.Faker;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.time.LocalDate;
 import java.util.*;
@@ -44,10 +45,14 @@ public class Application {
         Parco_mezzi bus2=new Bus(Stato.IN_SERVIZIO);
         Parco_mezzi tram1=new Tram(Stato.IN_SERVIZIO);
         Parco_mezzi tram2=new Tram(Stato.IN_MANUTENZIONE);
+
 //        pmd.save(bus1);
 //        pmd.save(bus2);
 //        pmd.save(tram1);
      //pmd.save(tram2);
+
+        Parco_mezzi tram3=new Tram(Stato.IN_SERVIZIO);
+
 
 
         //creazione tratte
@@ -67,6 +72,16 @@ public class Application {
 //        bus2.insertTratta(tratta1);
 //        bus1.insertTratta(tratta2);
 //        bus1.insertTratta(tratta3);
+        Tratta tratta1FromDb= trd.findByid(5);
+        tram3.insertTratta(tratta1FromDb);
+        tram3.insertTratta(tratta1FromDb);
+        tram3.insertTratta(tratta1FromDb);
+        tram3.insertTratta(tratta1FromDb);
+//        pmd.save(bus1);
+//        pmd.save(bus2);
+//        pmd.save(tram1);
+//        pmd.save(tram2);
+//        pmd.save(tram3);
 
         //creazione turni
 
@@ -111,6 +126,14 @@ public class Application {
         Tipi_vendita tipo4FromDb = tipidao.findByid(11);
 
 
+
+//        td.save(abbo1);
+//        td.save(abbo2);
+//        td.save(abbo3);
+
+
+
+
         Random random = new Random();
 //        creazione manutenzione
         Parco_mezzi mezzo1FromDb= pmd.findById(1);
@@ -131,6 +154,9 @@ public class Application {
 //        md.save(man1);
 //        md.save(man2);
 //        md.save(man3);
+
+
+
 
         em.close();
         emf.close();
