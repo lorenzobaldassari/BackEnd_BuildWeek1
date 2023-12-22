@@ -9,14 +9,14 @@ import Main1.entities.Enum.Stato;
 import Main1.DAO.TesseraDAO;
 import Main1.DAO.UtenteDAO;
 import Main1.entities.Abbonamento;
-import Main1.entities.Enum.Periodicità;
+
 import Main1.entities.Utente;
-import com.github.javafaker.Faker;
+
 
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
+
 import javax.persistence.Persistence;
 import java.time.LocalDate;
 import java.util.*;
@@ -46,10 +46,10 @@ public class Application {
         Parco_mezzi tram1=new Tram(Stato.IN_SERVIZIO);
         Parco_mezzi tram2=new Tram(Stato.IN_MANUTENZIONE);
 
-//        pmd.save(bus1);
-//        pmd.save(bus2);
-//        pmd.save(tram1);
-     //pmd.save(tram2);
+    /*   pmd.save(bus1);
+       pmd.save(bus2);
+       pmd.save(tram1);
+       pmd.save(tram2);*/
 
         Parco_mezzi tram3=new Tram(Stato.IN_SERVIZIO);
 
@@ -60,28 +60,28 @@ public class Application {
         Tratta tratta1= new Tratta("Milano","Roma",120);
         Tratta tratta2= new Tratta("Milano","Roma",120);
         Tratta tratta3= new Tratta("Milano","Palermo",120);
-//        trd.save(tratta1);
-//        trd.save(tratta2);
-//        trd.save(tratta3);
-
+        /*trd.save(tratta1);
+        trd.save(tratta2);
+        trd.save(tratta3);
+*/
 
 
         //inresimento tratte ni mezzi
 
-//        bus1.insertTratta(tratta1);
-//        bus2.insertTratta(tratta1);
-//        bus1.insertTratta(tratta2);
-//        bus1.insertTratta(tratta3);
+      /*  bus1.insertTratta(tratta1);
+        bus2.insertTratta(tratta1);
+        bus1.insertTratta(tratta2);
+        bus1.insertTratta(tratta3);
         Tratta tratta1FromDb= trd.findByid(5);
         tram3.insertTratta(tratta1FromDb);
         tram3.insertTratta(tratta1FromDb);
         tram3.insertTratta(tratta1FromDb);
         tram3.insertTratta(tratta1FromDb);
-//        pmd.save(bus1);
-//        pmd.save(bus2);
-//        pmd.save(tram1);
-//        pmd.save(tram2);
-//        pmd.save(tram3);
+        pmd.save(bus1);
+        pmd.save(bus2);
+        pmd.save(tram1);
+        pmd.save(tram2);
+        pmd.save(tram3);*/
 
         //creazione turni
 
@@ -111,10 +111,10 @@ public class Application {
         Rivenditori_autorizzati vend2= new Rivenditori_autorizzati("Milano");
         Distributore_automatico auto1 = new Distributore_automatico("Milano",Condizione.ATTIVO);
         Distributore_automatico auto2 = new Distributore_automatico("Roma",Condizione.ATTIVO);
-//        tipidao.save(vend1);
-//        tipidao.save(vend2);
-//        tipidao.save(auto1);
-//        tipidao.save(auto2);
+  /*      tipidao.save(vend1);
+        tipidao.save(vend2);
+        tipidao.save(auto1);
+        tipidao.save(auto2);*/
 
 
         //creazione abbonamenti
@@ -127,10 +127,16 @@ public class Application {
 
 
 
-//        td.save(abbo1);
-//        td.save(abbo2);
-//        td.save(abbo3);
-
+        // creazione biglietti
+        Biglietto bg1 = new Biglietto(LocalDate.now(), tipo1FromDb);
+        Biglietto bg2 = new Biglietto(LocalDate.now(), tipo2FromDb);
+        Biglietto bg3 = new Biglietto(LocalDate.now(), tipo3FromDb);
+        Biglietto bg4 = new Biglietto(LocalDate.now(), tipo4FromDb);
+       /* dg.save(bg1);
+        dg.save(bg2);
+        dg.save(bg3);
+        dg.save(bg4);*/
+        
 
 
 
@@ -151,9 +157,9 @@ public class Application {
                 random.nextInt(1,28)),
                 LocalDate.of(2023,11,28),"guasto meccanico",mezzo4FromDb);
 
-//        md.save(man1);
-//        md.save(man2);
-//        md.save(man3);
+        /*md.save(man1);
+        md.save(man2);
+        md.save(man3);*/
 
 
 
@@ -251,6 +257,7 @@ public class Application {
                 case 4:
                     System.out.println("Premi invio per cancellarli");
                     bd.deleteAllTicketEndorsed();
+                    break;
                 case 5:
                     System.out.println("Scegli in quale data vuoi fare il controllo");
                     LocalDate data = LocalDate.parse(input.nextLine());
@@ -278,7 +285,7 @@ public class Application {
                     System.out.println("Inserisci Id mezzo");
                     long id6 = Integer.parseInt(input.nextLine());
                     bd.findById(id6);
-                    bd.update(id5, id6);
+                    bd.updateMezzoDaInserire(id5, id6);
                     break;
                 case 0:
                     System.out.println("0");
@@ -355,7 +362,7 @@ public class Application {
                     System.out.println("Inserisci id mezzo in cui hai vidimato");
                     long id7 = Integer.parseInt(input.nextLine());
                     pmd.findById(id7);
-                    bd.update(id6,id7);
+                    bd.updateMezzoDaInserire(id6,id7);
                     break;
                 case 5:
                     System.out.println("Inserisci Id biglietto");

@@ -57,17 +57,5 @@ public class TrattaDAO {
        return mezzo.size();
     }
 
-    public int NummeroDiTrattaSingolMezzo(long id_traccia,long id_mezzo){
-        Query getNummeroDiTrattaSingolMezzo=em.createQuery("SELECT m FROM Parco_mezzi m JOIN m.tratte t " +
-                "WHERE t.id=:id_traccia AND m.id=:id_mezzo");
-        getNummeroDiTrattaSingolMezzo.setParameter("id_traccia",id_traccia);
-        getNummeroDiTrattaSingolMezzo.setParameter("id_mezzo",id_mezzo);
-        List<Parco_mezzi> mezzo=getNummeroDiTrattaSingolMezzo.getResultList();
-        if(mezzo.size()==0){
-            System.out.println("questo mezzo non ha mai compiuto questa tratta");
-        }
-//       return mezzo.stream().filter(elem-> elem.getId()==id_mezzo).toList().size();
-        return mezzo.size();
-    }
 
 }
