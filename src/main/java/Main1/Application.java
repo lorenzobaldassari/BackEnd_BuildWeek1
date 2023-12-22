@@ -230,7 +230,9 @@ public class Application {
         //bd.updateMezzoDaInserire(4, 23);
 
 
-        menu();
+//        menu();
+
+        td.isValidAbbonamento(LocalDate.of(2023,10,10),"c7d0755f-4f5e-4987-929e-a19f23160e01");
 
         em.close();
         emf.close();
@@ -372,7 +374,6 @@ public class Application {
         Parco_mezziDAO pmd=new Parco_mezziDAO(em);
         int choice = -1;
 
-        while (choice != 0){
             System.out.println("Inserisci i tuoi dati come nuovo utente");
             System.out.println("Inserisci nome");
             String nome = input.nextLine();
@@ -384,6 +385,7 @@ public class Application {
             LocalDate dataNascita = LocalDate.parse(input.nextLine());
             Utente user = new Utente(nome, cognome, email, dataNascita);
             ud.save(user);
+        while (choice != 0){
             System.out.println("Scegli se creare tessera o biglietto");
             System.out.println("1 - Abbonamento + tessera");
             System.out.println("2 - Biglietto");
@@ -465,7 +467,7 @@ public class Application {
                     bd.checkTicketAndNull(id4);
                     break;
                 case 6:
-                    System.out.println("Inserisci data biglietto");
+                    System.out.println("Inserisci data di inizio abbonamento");
                     LocalDate data = LocalDate.parse(input.nextLine());
                     System.out.println("Inserisci UUID");
                     String is = input.nextLine();

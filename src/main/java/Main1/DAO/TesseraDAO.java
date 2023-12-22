@@ -68,7 +68,7 @@ public class TesseraDAO {
             if (abbo.size() > 0) {
                 if (el.isValidità()) {
 
-                    System.out.println("utente con numero di tessera  " + el.getNumero_tessera() + " ha l'abbonamento valido");
+                    System.out.println("tessera numero " + el.getNumero_tessera() + " ha l'abbonamento valido");
                 } else {
                     System.out.println("abbonamento non valido");
                 }
@@ -81,7 +81,7 @@ public class TesseraDAO {
 
 
     //conferma la validita di un abbonamento controllando se la tessera non e' scaduta in base ad una data
-    public boolean isValidAbbonamento(LocalDate checkDate, String numeroTessera) {
+    public void isValidAbbonamento(LocalDate checkDate, String numeroTessera) {
         Query query = em.createQuery("SELECT 1 FROM Abbonamento a " +
                 "WHERE a.emissione <= :checkDate " +
                 "AND a.data_inizio <= :checkDate " +
@@ -92,12 +92,17 @@ public class TesseraDAO {
         UUID uuid= UUID.fromString(numeroTessera);
         query.setParameter("checkDate", checkDate);
         query.setParameter("numeroTessera", uuid);
-
+        boolean trueorfalse=!query.getResultList().isEmpty();
         if(query.getResultList().size()==0){
 
             System.out.println("non esiste abbonamento associato a questa tesseta");
+        }else  if (trueorfalse){
+
+            System.out.println("l'abbonamento e' valido");
+        }else{
+            System.out.println("l'abbonamento e' scaduto");
         }
-        return !query.getResultList().isEmpty();
+
     }
 
 }
