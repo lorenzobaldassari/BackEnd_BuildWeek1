@@ -270,6 +270,7 @@ public class Application {
         TesseraDAO td = new TesseraDAO(em);
         BigliettoDao bd= new BigliettoDao(em);
         Tipi_venditaDAO tipidao= new Tipi_venditaDAO(em);
+        Parco_mezziDAO pmd=new Parco_mezziDAO(em);
         int choice = -1;
 
         while (choice != 0){
@@ -288,8 +289,9 @@ public class Application {
             System.out.println("1 - Tessera");
             System.out.println("2 - Biglietto");
             System.out.println("3 - Controlla validità tessera");
-            System.out.println("4 - Elimina biglietto validato");
-            System.out.println("5 - Controlla validità abbonamento");
+            System.out.println("4 - Vidima biglietto");
+            System.out.println("5 - Elimina biglietto validato");
+            System.out.println("6 - Controlla validità abbonamento");
             System.out.println("0 - Exit");
 
             try {
@@ -308,7 +310,7 @@ public class Application {
                     System.out.println("1 - si");
                     System.out.println("2 - no");
                     int id;
-                    if (choice == 1) {
+                    if (choice != 0) {
                  /*       System.out.println("Inerisci periodicità");
                         System.out.println("1 - mensile");
                         System.out.println("2 - settimanale");
@@ -347,12 +349,22 @@ public class Application {
                     td.checkValidita(String.valueOf(id3));
                     break;
                 case 4:
+                    System.out.println("Inserisci biglietto per vidimare");
+                    System.out.println("Inserisci id biglietto");
+                    long id6 = Integer.parseInt(input.nextLine());
+                    bd.findById(id6);
+                    System.out.println("Inserisci id mezzo in cui hai vidimato");
+                    long id7 = Integer.parseInt(input.nextLine());
+                    pmd.findById(id7);
+                    bd.update(id6,id7);
+                    break;
+                case 5:
                     System.out.println("Inserisci Id biglietto");
                     long id4 = Integer.parseInt(input.nextLine());
                     bd.findById(id4);
                     bd.checkTicketAndNull(id4);
                     break;
-                case 5:
+                case 6:
                     System.out.println("Inserisci data biglietto");
                     LocalDate data = LocalDate.parse(input.nextLine());
                     System.out.println("Inserisci UUID");
