@@ -35,9 +35,7 @@ public class Application {
         ManutenzioneDAO md=new ManutenzioneDAO(em);
 
           menu();
-
-
-
+          
 
         // creazione mezzi
 
@@ -52,6 +50,7 @@ public class Application {
        pmd.save(tram2);*/
 
         Parco_mezzi tram3=new Tram(Stato.IN_SERVIZIO);
+
 
 
 
@@ -83,27 +82,6 @@ public class Application {
         pmd.save(tram2);
         pmd.save(tram3);*/
 
-        //creazione turni
-
-     /*   Turno turno1= new Turno(10,80);
-        Turno turno2= new Turno(20,100);
-        Turno turno3= new Turno(9,200);
-        Turno turno4= new Turno(7,50);
-        Tratta tratta1fromDb= trd.findByid(5);
-        Tratta tratta2fromDb= trd.findByid(6);
-        Tratta tratta3fromDb= trd.findByid(7);
-
-        turno1.setTratta(tratta1fromDb);
-        turno1.setTratta(tratta2fromDb);
-        turno1.setTratta(tratta3fromDb);
-        turno2.setTratta(tratta3fromDb);
-        turno3.setTratta(tratta2fromDb);
-//         turDao.save(turno1);
-//         turDao.save(turno2);
-//         turDao.save(turno3);
-//         turDao.save(turno4);*/
-
-
 
 
         //creazione Rivenditori
@@ -115,7 +93,6 @@ public class Application {
         tipidao.save(vend2);
         tipidao.save(auto1);
         tipidao.save(auto2);*/
-
 
         //creazione abbonamenti
 

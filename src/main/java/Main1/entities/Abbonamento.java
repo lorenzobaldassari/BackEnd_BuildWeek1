@@ -15,36 +15,26 @@ public class Abbonamento extends Tessera {
     private boolean validità;
     private LocalDate data_inizio;
     private LocalDate data_fine;
-
     @ManyToOne
     @JoinColumn(name = "abbonamento_id")
     private Tipi_vendita tipi_vendita;
 
 
-    public Abbonamento(LocalDate emissione, Utente utente, Periodicità periodicità,
-                       LocalDate data_inizio,Tipi_vendita tipi_vendita) {
-        super(emissione, utente);
+    public Abbonamento(LocalDate emissione, LocalDate scadenza, Periodicità periodicità, boolean validità, LocalDate data_inizio) {
+        super(emissione, scadenza);
+
         this.periodicità = periodicità;
         this.validità = true;
         this.data_inizio = data_inizio;
         calcolaDataFine();
-        this.tipi_vendita = tipi_vendita;
     }
 
-
-    public Abbonamento(Periodicità periodicità, boolean validità, LocalDate data_inizio, LocalDate data_fine) {
+    public Abbonamento(LocalDate emissione, Utente utente, LocalDate scadenza, Periodicità periodicità, boolean validità, LocalDate data_inizio) {
+        super(emissione, utente, scadenza);
         this.periodicità = periodicità;
         this.validità = validità;
         this.data_inizio = data_inizio;
-        this.data_fine = data_fine;
-    }
-
-    public Abbonamento(LocalDate emissione, Utente utente, Periodicità periodicità, boolean validità, LocalDate data_inizio, LocalDate data_fine) {
-        super(emissione, utente);
-        this.periodicità = periodicità;
-        this.validità = validità;
-        this.data_inizio = data_inizio;
-        this.data_fine = data_fine;
+        calcolaDataFine();
     }
 
     public Abbonamento() {

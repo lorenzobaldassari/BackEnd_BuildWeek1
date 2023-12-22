@@ -3,6 +3,7 @@ package Main1.DAO;
 import Main1.entities.Abbonamento;
 import Main1.entities.Manutenzione;
 import Main1.entities.Tipi_vendita;
+import Main1.entities.Utente;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -79,6 +80,17 @@ public class AbbonamentoDao {
         EntityTransaction transaction= em.getTransaction();
         transaction.begin();
         mac.setValidità(trueOrFalse);
+        mac.calcolaDataFine();
+        transaction.commit();
+        System.out.println("aggiunto correttamente");
+    }
+    public void inserireUtente(long id_abbonamento, long id_utente){
+        UtenteDAO utenteDAO= new UtenteDAO(em);
+        Abbonamento mac= this.findById(id_abbonamento);
+        Utente utenteDaInserire = utenteDAO.findUtenteById(id_utente);
+        EntityTransaction transaction= em.getTransaction();
+        transaction.begin();
+        mac.setUtente(utenteDaInserire);
         mac.calcolaDataFine();
         transaction.commit();
         System.out.println("aggiunto correttamente");
