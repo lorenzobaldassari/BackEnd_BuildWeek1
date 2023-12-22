@@ -109,21 +109,22 @@ public class Application {
 //        ud.save(utente4);
 
         //creazione abbonamenti
-        //no!
 
 
-        Abbonamento abbo1= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                random.nextInt(1,30)),utente1FromDb,Periodicità.getRandomPeriodicità(),true,
-                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                        random.nextInt(1,30)),tipo1FromDb);
-        Abbonamento abbo2= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                random.nextInt(1,30)),utente2FromDb,Periodicità.getRandomPeriodicità(),true,
-                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                        random.nextInt(1,30)),tipo2FromDb);
-        Abbonamento abbo3= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                random.nextInt(1,30)),utente3FromDb,Periodicità.getRandomPeriodicità(),false,
-                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                        random.nextInt(1,30)),tipo4FromDb);
+//        Abbonamento abbo1= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+//                random.nextInt(1,30)),Periodicità.getRandomPeriodicità(),true,
+//                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+//                        random.nextInt(1,30)));
+//
+//        Abbonamento abbo2= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+//                random.nextInt(1,30)),Periodicità.getRandomPeriodicità(),true,
+//                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+//                        random.nextInt(1,30)));
+//
+//        Abbonamento abbo3= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+//                random.nextInt(1,30)),Periodicità.getRandomPeriodicità(),false,
+//                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+//                        random.nextInt(1,30)));
 
 //        td.save(abbo1);
 //        td.save(abbo2);

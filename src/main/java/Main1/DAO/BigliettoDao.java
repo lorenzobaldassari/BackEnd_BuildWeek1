@@ -135,6 +135,16 @@ public class BigliettoDao {
         transaction.commit();
         System.out.println("aggiunto correttamente");
     }
+    public void updateTipoDiVenditore(long id_biglietto,long id_venditore){
+        Tipi_venditaDAO pmd=new Tipi_venditaDAO(em);
+        Biglietto bi= this.findById(id_biglietto);
+        Tipi_vendita mac= pmd.findByid(id_venditore);
+        EntityTransaction transaction= em.getTransaction();
+        transaction.begin();
+        bi.setTipi_vendita(mac);
+        transaction.commit();
+        System.out.println("aggiunto correttamente");
+    }
 
 
     }
