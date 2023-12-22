@@ -93,9 +93,9 @@ public class BigliettoDao {
     }
 
 
-    public int numeroBigliettiEmmessi(LocalDate emissione, String puntoEmissione) {
+    public int numeroBigliettiEmmessi(LocalDate emissione, long puntoEmissione) {
         TypedQuery<Biglietto> numeroBiglietti = em.createQuery("SELECT b FROM Biglietto b JOIN b.tipi_vendita v " +
-                "WHERE b.emissione = :emissione AND v.puntoDiEmissione LIKE :punto_emissione", Biglietto.class);
+                "WHERE b.emissione = :emissione AND v.id = :punto_emissione", Biglietto.class);
         numeroBiglietti.setParameter("emissione", emissione);
         numeroBiglietti.setParameter("punto_emissione", puntoEmissione);
         List<Biglietto> big = numeroBiglietti.getResultList();

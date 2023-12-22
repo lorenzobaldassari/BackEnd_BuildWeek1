@@ -103,11 +103,13 @@ public class Application {
         Rivenditori_autorizzati vend2= new Rivenditori_autorizzati("Milano");
         Distributore_automatico auto1 = new Distributore_automatico("Milano",Condizione.ATTIVO);
         Distributore_automatico auto2 = new Distributore_automatico("Roma",Condizione.ATTIVO);
+/*
 
        tipidao.save(vend1);
         tipidao.save(vend2);
         tipidao.save(auto1);
         tipidao.save(auto2);
+*/
 
 
 
@@ -143,19 +145,19 @@ public class Application {
 
 
         Abbonamento abbo1= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                random.nextInt(1,30)),Periodicità.getRandomPeriodicità(),true,
+                random.nextInt(1,28)),Periodicità.getRandomPeriodicità(),
                 LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                        random.nextInt(1,30)));
+                        random.nextInt(1,28)));
 
         Abbonamento abbo2= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                random.nextInt(1,30)),Periodicità.getRandomPeriodicità(),true,
+                random.nextInt(1,30)),Periodicità.getRandomPeriodicità(),
                 LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                        random.nextInt(1,30)));
+                        random.nextInt(1,28)));
 
         Abbonamento abbo3= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                random.nextInt(1,30)),Periodicità.getRandomPeriodicità(),false,
+                random.nextInt(1,30)),Periodicità.getRandomPeriodicità(),
                 LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                        random.nextInt(1,30)));
+                        random.nextInt(1,28)));
 
 
         // creazione biglietti
@@ -218,10 +220,16 @@ public class Application {
         pmd.save(tram1);
         pmd.save(tram2);
         pmd.save(tram3);*/
+/*
+        bd.updateTipoDiVenditore(4, 24);
+        bd.updateTipoDiVenditore(5, 25);
+        bd.updateTipoDiVenditore(5, 26);*/
 
+        /*turDao.updateInsertTrattaInTurno(14, 17);
+        turDao.updateInsertTrattaInTurno(14, 18);*/
+        //bd.updateMezzoDaInserire(4, 23);
 
-
-        //menu();
+        menu();
 
         em.close();
         emf.close();
@@ -298,8 +306,7 @@ public class Application {
                     break;
                 case 2:
                     System.out.println("Descrivi il tuo guasto al mezzo");
-                    System.out.println("Inserisci giorno inizio manutenzione - yyy-mm-dd");
-                    LocalDate start = LocalDate.parse(input.nextLine());
+                    LocalDate start = LocalDate.now();
                     System.out.println("Descrivi danno al mezzo");
                     String descrizione = input.nextLine();
                     System.out.println("Qual è il mezzo guasto inserisci id");
@@ -307,6 +314,7 @@ public class Application {
                     Parco_mezzi mezzo = pmd.findById(id2);
                     Manutenzione manutenzione = new Manutenzione(start, descrizione, mezzo);
                     md.save(manutenzione);
+                    pmd.updateStatoMezzoManutenzione(id2);
                     break;
                 case 3:
                     System.out.println("Inserisci id del tuo mezzo");
@@ -321,7 +329,7 @@ public class Application {
                     System.out.println("Scegli in quale data vuoi fare il controllo");
                     LocalDate data = LocalDate.parse(input.nextLine());
                     System.out.println("Inserisci il puno di emissione");
-                    String puntoEmissione = input.nextLine();
+                    long puntoEmissione = Integer.parseInt(input.nextLine());
                     bd.numeroBigliettiEmmessi(data, puntoEmissione);
                     break;
                 case 6:
@@ -333,7 +341,7 @@ public class Application {
                     trd.NummeroDiTrattaSingolMezzo(trattaId, mezzoId);
                     break;
                 case 7:
-                    System.out.println("Inserisci Id della tua tratta");
+                    System.out.println("Inserisci Id del tuo turno");
                     long id4 = Integer.parseInt(input.nextLine());
                     turDao.tempoEffettivoPercorrenzaTratta(id4);
                     break;
@@ -396,6 +404,7 @@ public class Application {
                     LocalDate dataEmissione = LocalDate.parse(input.nextLine());
                     Tessera tessera = new Tessera(dataEmissione, user);
                     td.save(tessera);
+                    sceltaAbb();
                     break;
                 case 2:
                     System.out.println("Inserisci data emissione");
@@ -405,7 +414,6 @@ public class Application {
                     Tipi_vendita ven = tipidao.findByid(id2);
                     Biglietto biglietto = new Biglietto(dataEmis, ven);
                     bd.save(biglietto);
-                    sceltaAbb();
                     break;
                 case 3:
                     System.out.println("Inserisci numero tessera");
@@ -447,38 +455,34 @@ public class Application {
     public static void sceltaAbb(){
         EntityManager em = emf.createEntityManager();
         TesseraDAO td = new TesseraDAO(em);
-        Tipi_venditaDAO tipidao= new Tipi_venditaDAO(em);
         UtenteDAO ud= new UtenteDAO(em);
         int choice = -1;
         while (choice != 0) {
             System.out.println("Iserisci data emssione tessera");
             LocalDate dataEmissione = LocalDate.parse(input.nextLine());
-            System.out.println("Vuoi fare un abbonamento?");
-            System.out.println("1 - si");
-            System.out.println("2 - no");
+            System.out.println("Crea abbonamento");
+            System.out.println("1 - Abbonamento mensile");
+            System.out.println("2 - Abbonamento settimanale");
 
-                 /*       System.out.println("Inerisci periodicità");
-                        System.out.println("1 - mensile");
-                        System.out.println("2 - settimanale");
-                        if (choice == 1){
-                            Periodicità periodicity2 = Periodicità.Mensile;
-                        } else {
-                            Periodicità periodicity1 = Periodicità.Settimanale;
-                        }*/
             switch (choice){
                 case 1:
                     System.out.println("Inserisci data inizio");
                     LocalDate dataInizio = LocalDate.parse(input.nextLine());
-                    System.out.println("Inserisci id del punto vendita");
-                    long id = Integer.parseInt(input.nextLine());
-                    Tipi_vendita vendita = tipidao.findByid(id);
                     System.out.println("Inserisci id User");
                     long id8 = Integer.parseInt(input.nextLine());
                     Utente utente = ud.findUtenteById(id8);
-                    //Abbonamento abb = new Abbonamento(dataEmissione, utente, Periodicità.getRandomPeriodicità(), dataInizio, vendita);
-                    //td.save(abb);
+                    Abbonamento abb = new Abbonamento(dataEmissione, utente, Periodicità.Mensile, dataInizio);
+                    td.save(abb);
                     break;
                 case 2:
+                    LocalDate dataInizio1 = LocalDate.parse(input.nextLine());
+                    System.out.println("Inserisci id User");
+                    long id9 = Integer.parseInt(input.nextLine());
+                    Utente utente1 = ud.findUtenteById(id9);
+                    Abbonamento abb1 = new Abbonamento(dataEmissione, utente1, Periodicità.Settimanale, dataInizio1);
+                    td.save(abb1);
+                    break;
+                case 0:
                     System.out.println("Premi Invio e continua la tua scelta");
                     input.nextLine();
                     break;

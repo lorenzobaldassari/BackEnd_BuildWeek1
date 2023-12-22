@@ -21,7 +21,7 @@ public class Abbonamento extends Tessera {
 
 
 
-    public Abbonamento(LocalDate emissione, Periodicità periodicità, boolean validità, LocalDate data_inizio) {
+    public Abbonamento(LocalDate emissione, Periodicità periodicità, LocalDate data_inizio) {
         super(emissione);
         this.periodicità = periodicità;
         this.validità = true;
@@ -29,10 +29,10 @@ public class Abbonamento extends Tessera {
         calcolaDataFine();
     }
 
-    public Abbonamento(LocalDate emissione, Utente utente, Periodicità periodicità, boolean validità, LocalDate data_inizio) {
+    public Abbonamento(LocalDate emissione, Utente utente, Periodicità periodicità, LocalDate data_inizio) {
         super(emissione, utente);
         this.periodicità = periodicità;
-        this.validità = validità;
+        this.validità = true;
         this.data_inizio = data_inizio;
         calcolaDataFine();
     }
