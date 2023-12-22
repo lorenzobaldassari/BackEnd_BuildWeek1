@@ -77,4 +77,13 @@ public class Parco_mezziDAO {
         System.out.println("aggiunto correttamente");
     }
 
+    public void updateStatoMezzoManutenzione(long id){
+        Parco_mezzi mac = this.findById(id);
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        mac.setStato(Stato.IN_MANUTENZIONE);
+        transaction.commit();
+        System.out.println("Il tuo mezzo è in manutenzione");
+    }
+
 }

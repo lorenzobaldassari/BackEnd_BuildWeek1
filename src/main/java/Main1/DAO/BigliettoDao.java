@@ -93,9 +93,9 @@ public class BigliettoDao {
     }
 
 
-    public int numeroBigliettiEmmessi(LocalDate emissione, String puntoEmissione) {
+    public int numeroBigliettiEmmessi(LocalDate emissione, long puntoEmissione) {
         TypedQuery<Biglietto> numeroBiglietti = em.createQuery("SELECT b FROM Biglietto b JOIN b.tipi_vendita v " +
-                "WHERE b.emissione = :emissione AND v.puntoDiEmissione LIKE :punto_emissione", Biglietto.class);
+                "WHERE b.emissione = :emissione AND v.id = :punto_emissione", Biglietto.class);
         numeroBiglietti.setParameter("emissione", emissione);
         numeroBiglietti.setParameter("punto_emissione", puntoEmissione);
         List<Biglietto> big = numeroBiglietti.getResultList();
@@ -156,6 +156,14 @@ public class BigliettoDao {
         bi.setTipi_vendita(mac);
         transaction.commit();
         System.out.println("aggiunto correttamente");
+    }
+
+    public void bigliettoVidimatoSuUnMezzo(long id){
+        Query getBigliettoVidimatoSuMezzo=em.createQuery("SELECT b FROM Biglietto b JOIN b.parco_mezzi p WHERE p.id= :id", Biglietto.class);
+        getBigliettoVidimatoSuMezzo.setParameter("id",id);
+        List<Biglietto>bigliettiVidimati=getBigliettoVidimatoSuMezzo.getResultList();
+        bigliettiVidimati.size();
+        System.out.println("il numero di biglietti vidimati sono :"+bigliettiVidimati.size());
     }
 
     }

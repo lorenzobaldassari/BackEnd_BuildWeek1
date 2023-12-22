@@ -44,7 +44,7 @@ public class TrattaDAO {
             System.out.println("la tratta con la zona di partenza" + zona_di_partenza + " non è stata trovata");
         }
     }
-    public int NummeroDiTrattaSingolMezzo(long id_traccia,long id_mezzo){
+    public void NummeroDiTrattaSingolMezzo(long id_traccia,long id_mezzo){
         Query getNummeroDiTrattaSingolMezzo=em.createQuery("SELECT m FROM Parco_mezzi m JOIN m.tratte t " +
                 "WHERE t.id=:id_traccia AND m.id=:id_mezzo");
         getNummeroDiTrattaSingolMezzo.setParameter("id_traccia",id_traccia);
@@ -54,7 +54,7 @@ public class TrattaDAO {
            System.out.println("questo mezzo non ha mai compiuto questa tratta");
        }
 //       return mezzo.stream().filter(elem-> elem.getId()==id_mezzo).toList().size();
-       return mezzo.size();
+        System.out.println("La tratta è stata percorsa: " + mezzo.size() + " volte");
     }
 
 
