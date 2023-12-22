@@ -1,17 +1,17 @@
 package Main1.DAO;
 
 import Main1.entities.Manutenzione;
+import Main1.entities.Parco_mezzi;
 import Main1.entities.Tratta;
 import Main1.entities.Turno;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import javax.persistence.NoResultException;
-import javax.persistence.Query;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TurnoDAO {
+    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Trasporto_Pubblico");
+
 
     private final EntityManager em;
 
@@ -74,6 +74,16 @@ public class TurnoDAO {
             }
         });
 
+    }
+    public void updateInsertTrattaInTurno(long id_turno, long id_trattaDaInserire){
+        TrattaDAO trattaDAO= new TrattaDAO(em);
+        Tratta trattaDaInserire= trattaDAO.findByid(id_trattaDaInserire);
+        Turno mac= this.findById(id_turno);
+        EntityTransaction transaction= em.getTransaction();
+        transaction.begin();
+        mac.setTratta(trattaDaInserire);
+        transaction.commit();
+        System.out.println("aggiunto correttamente");
     }
 
 }

@@ -69,8 +69,10 @@ public class Parco_mezziDAO {
     }
 
 
-    public void updateInsertTratta(long id_mezzo, Tratta trattaDaInserire){
+    public void updateInsertTratta(long id_mezzo, long id_trattaDaInserire){
         Parco_mezzi mac= this.findById(id_mezzo);
+        TrattaDAO trattaDAO= new TrattaDAO(em);
+        Tratta trattaDaInserire= trattaDAO.findByid(id_trattaDaInserire);
         EntityTransaction transaction= em.getTransaction();
         transaction.begin();
         mac.insertTratta(trattaDaInserire);

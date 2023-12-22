@@ -45,35 +45,29 @@ public class Application {
         Parco_mezzi tram2=new Tram(Stato.IN_MANUTENZIONE);
         Parco_mezzi tram3=new Tram(Stato.IN_SERVIZIO);
 
+//        pmd.save(bus1);
+//        pmd.save(bus2);
+//        pmd.save(tram1);
+//        pmd.save(tram2);
+//        pmd.save(tram3);
 
 
         //creazione tratte
-
         Tratta tratta1= new Tratta("Milano","Roma",120);
         Tratta tratta2= new Tratta("Milano","Roma",120);
         Tratta tratta3= new Tratta("Milano","Palermo",120);
+
 //        trd.save(tratta1);
 //        trd.save(tratta2);
 //        trd.save(tratta3);
 
 
 
-        //inresimento tratte ni mezzi
 
-//        bus1.insertTratta(tratta1);
-//        bus2.insertTratta(tratta1);
-//        bus1.insertTratta(tratta2);
-//        bus1.insertTratta(tratta3);
-        Tratta tratta1FromDb= trd.findByid(5);
-        tram3.insertTratta(tratta1FromDb);
-        tram3.insertTratta(tratta1FromDb);
-        tram3.insertTratta(tratta1FromDb);
-        tram3.insertTratta(tratta1FromDb);
-//        pmd.save(bus1);
-//        pmd.save(bus2);
-//        pmd.save(tram1);
-//        pmd.save(tram2);
-//        pmd.save(tram3);
+
+
+
+
 
         //creazione turni
 
