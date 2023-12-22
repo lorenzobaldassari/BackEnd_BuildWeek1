@@ -61,29 +61,13 @@ public class Application {
 //        trd.save(tratta2);
 //        trd.save(tratta3);
 
-
-
-
-
-
-
-
-
         //creazione turni
 
         Turno turno1= new Turno(10,80);
         Turno turno2= new Turno(20,100);
         Turno turno3= new Turno(9,200);
         Turno turno4= new Turno(7,50);
-        Tratta tratta1fromDb= trd.findByid(5);
-        Tratta tratta2fromDb= trd.findByid(6);
-        Tratta tratta3fromDb= trd.findByid(7);
 
-        turno1.setTratta(tratta1fromDb);
-        turno1.setTratta(tratta2fromDb);
-        turno1.setTratta(tratta3fromDb);
-        turno2.setTratta(tratta3fromDb);
-        turno3.setTratta(tratta2fromDb);
 //         turDao.save(turno1);
 //         turDao.save(turno2);
 //         turDao.save(turno3);
@@ -101,11 +85,6 @@ public class Application {
 //        tipidao.save(vend2);
 //        tipidao.save(auto1);
 //        tipidao.save(auto2);
-
-
-
-
-
 
         //creazione utenti
 
@@ -132,14 +111,6 @@ public class Application {
         //creazione abbonamenti
         //no!
 
-        Utente utente1FromDb = ud.findUtenteById(12);
-        Utente utente2FromDb = ud.findUtenteById(13);
-        Utente utente3FromDb = ud.findUtenteById(14);
-        Utente utente4FromDb =ud.findUtenteById(15);
-        Tipi_vendita tipo1FromDb = tipidao.findByid(8);
-        Tipi_vendita tipo2FromDb = tipidao.findByid(9);
-        Tipi_vendita tipo3FromDb = tipidao.findByid(10);
-        Tipi_vendita tipo4FromDb = tipidao.findByid(11);
 
         Abbonamento abbo1= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
                 random.nextInt(1,30)),utente1FromDb,Periodicità.getRandomPeriodicità(),true,
