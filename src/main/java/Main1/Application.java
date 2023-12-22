@@ -229,6 +229,7 @@ public class Application {
         turDao.updateInsertTrattaInTurno(14, 18);*/
         //bd.updateMezzoDaInserire(4, 23);
 
+
         menu();
 
         em.close();
@@ -353,6 +354,7 @@ public class Application {
                     long id6 = Integer.parseInt(input.nextLine());
                     bd.findById(id6);
                     bd.updateMezzoDaInserire(id5, id6);
+                    bd.bigliettoVidimatoSuUnMezzo(id6);
                     break;
                 case 0:
                     System.out.println("0");
@@ -383,7 +385,7 @@ public class Application {
             Utente user = new Utente(nome, cognome, email, dataNascita);
             ud.save(user);
             System.out.println("Scegli se creare tessera o biglietto");
-            System.out.println("1 - Tessera");
+            System.out.println("1 - Abbonamento + tessera");
             System.out.println("2 - Biglietto");
             System.out.println("3 - Controlla validità tessera");
             System.out.println("4 - Vidima biglietto");
@@ -400,11 +402,36 @@ public class Application {
             switch (choice) {
                 case 1:
 
-                    System.out.println("Iserisci data emssione tessera");
-                    LocalDate dataEmissione = LocalDate.parse(input.nextLine());
-                    Tessera tessera = new Tessera(dataEmissione, user);
-                    td.save(tessera);
-                    sceltaAbb();
+                    while (choice != 0) {
+                        System.out.println("Iserisci data emssione tessera");
+                        LocalDate dataEmissione = LocalDate.parse(input.nextLine());
+                        System.out.println("Crea abbonamento");
+                        System.out.println("1 - Abbonamento mensile");
+                        System.out.println("2 - Abbonamento settimanale");
+
+                        choice = Integer.parseInt(input.nextLine());
+                        switch (choice){
+                            case 1:
+                                System.out.println("Inserisci data inizio");
+                                LocalDate dataInizio = LocalDate.parse(input.nextLine());
+                                System.out.println("Inserisci id User");
+                                long id8 = Integer.parseInt(input.nextLine());
+                                Utente utente = ud.findUtenteById(id8);
+                                Abbonamento abb = new Abbonamento(dataEmissione, utente, Periodicità.Mensile, dataInizio);
+                                td.save(abb);
+                                break;
+                            case 2:
+                                System.out.println("Inserisci data inizio");
+                                LocalDate dataInizio1 = LocalDate.parse(input.nextLine());
+                                System.out.println("Inserisci id User");
+                                long id9 = Integer.parseInt(input.nextLine());
+                                Utente utente1 = ud.findUtenteById(id9);
+                                Abbonamento abb1 = new Abbonamento(dataEmissione, utente1, Periodicità.Settimanale, dataInizio1);
+                                td.save(abb1);
+                                break;
+                        }
+                        break;
+                    }
                     break;
                 case 2:
                     System.out.println("Inserisci data emissione");
@@ -447,44 +474,6 @@ public class Application {
                     break;
                 case 0:
                     System.out.println("0");
-                    break;
-            }
-        }
-    }
-
-    public static void sceltaAbb(){
-        EntityManager em = emf.createEntityManager();
-        TesseraDAO td = new TesseraDAO(em);
-        UtenteDAO ud= new UtenteDAO(em);
-        int choice = -1;
-        while (choice != 0) {
-            System.out.println("Iserisci data emssione tessera");
-            LocalDate dataEmissione = LocalDate.parse(input.nextLine());
-            System.out.println("Crea abbonamento");
-            System.out.println("1 - Abbonamento mensile");
-            System.out.println("2 - Abbonamento settimanale");
-
-            switch (choice){
-                case 1:
-                    System.out.println("Inserisci data inizio");
-                    LocalDate dataInizio = LocalDate.parse(input.nextLine());
-                    System.out.println("Inserisci id User");
-                    long id8 = Integer.parseInt(input.nextLine());
-                    Utente utente = ud.findUtenteById(id8);
-                    Abbonamento abb = new Abbonamento(dataEmissione, utente, Periodicità.Mensile, dataInizio);
-                    td.save(abb);
-                    break;
-                case 2:
-                    LocalDate dataInizio1 = LocalDate.parse(input.nextLine());
-                    System.out.println("Inserisci id User");
-                    long id9 = Integer.parseInt(input.nextLine());
-                    Utente utente1 = ud.findUtenteById(id9);
-                    Abbonamento abb1 = new Abbonamento(dataEmissione, utente1, Periodicità.Settimanale, dataInizio1);
-                    td.save(abb1);
-                    break;
-                case 0:
-                    System.out.println("Premi Invio e continua la tua scelta");
-                    input.nextLine();
                     break;
             }
         }
