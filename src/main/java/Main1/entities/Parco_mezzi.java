@@ -66,6 +66,14 @@ public abstract class Parco_mezzi {
         return manutenzioni;
     }
 
+    public List<Biglietto> getBiglietto() {
+        return biglietto;
+    }
+
+    public void setBiglietto(List<Biglietto> biglietto) {
+        this.biglietto = biglietto;
+    }
+
     public void setManutenzioni(List<Manutenzione> manutenzioni) {
         this.manutenzioni = manutenzioni;
     }

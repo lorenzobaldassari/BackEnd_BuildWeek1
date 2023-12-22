@@ -1,7 +1,6 @@
 package Main1.DAO;
 
-import Main1.entities.Abbonamento;
-import Main1.entities.Tessera;
+import Main1.entities.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -98,6 +97,17 @@ public class TesseraDAO {
             System.out.println("non esiste abbonamento associato a questa tesseta");
         }
         return !query.getResultList().isEmpty();
+    }
+
+    public void updateUtenteCollegatoAllaTessera(UUID id_tessera,long id_utente){
+        UtenteDAO pmd=new UtenteDAO(em);
+        Tessera bi= this.findByUUID(id_tessera);
+        Utente mac= pmd.findUtenteById(id_utente);
+        EntityTransaction transaction= em.getTransaction();
+        transaction.begin();
+        bi.setUtente(mac);
+        transaction.commit();
+        System.out.println("aggiunto correttamente");
     }
 
 }

@@ -75,10 +75,7 @@ public class Application {
         Rivenditori_autorizzati vend2= new Rivenditori_autorizzati("Milano");
         Distributore_automatico auto1 = new Distributore_automatico("Milano",Condizione.ATTIVO);
         Distributore_automatico auto2 = new Distributore_automatico("Roma",Condizione.ATTIVO);
-//        tipidao.save(vend1);
-//        tipidao.save(vend2);
-//        tipidao.save(auto1);
-//        tipidao.save(auto2);
+
 
         //creazione utenti
 
@@ -169,63 +166,17 @@ public class Application {
 //        pmd.save(tram1);
 //        pmd.save(tram2);
 //        pmd.save(tram3);
-
-
-
-
-        //prova metodi
-
-//        pmd.isUnderMaintenancebyId(4);
-
-
-        //biglietti emessi per punto di emissione
-
-//        bd.numeroBigliettiEmmessi(LocalDate.of(2007,3,25),"Roma");
-
-        //Validita di un abbonamento in base a id tessera
-
-//        td.checkValidita("61b193fb-a52d-4af8-a30b-85f78ff13666");
-
-        //numero di volte che un mezzo percorre una tappa
-
-//        System.out.println(trd.NummeroDiTrattaSingolMezzo("Milano","Roma",1));
-
-        //traccia dei periodi di servizio e manutenzione
-
-//        md.vehicleUnderMaintenancebyId(2);
-
-        // tenere traccia dei biglietti vidimati su un mezzo in un particoalre lasso di tempo
-//         standby
-
-        //biglietti vidimati cancellati
-
-//        bd.deleteAllTicketEndorsed();
-
-        //tempo effettivo di percorrenza della tratta
-
-//        turDao.tempoEffettivoPercorrenzaTratta(30);
-
-        //controllo se biglietto e valido e lo cancella
-
-//        bd.checkTicketAndNull(22);
-
-
-        //controlle se un abbonamento e' valido in base alla scadenza della tessera
-//        td.isValidAbbonamento(LocalDate.of(2013,3,4),"61b193fb-a52d-4af8-a30b-85f78ff13666");
-
-//        System.out.println(trd.NummeroDiTrattaSingolMezzo(5,33  ));
-
-
-
-//            Biglietto bi= bd.findById(20);
-//            Parco_mezzi mac= pmd.findById(33);
-//            bd.update(20,33);
-
-
-
+//        tipidao.save(vend1);
+//        tipidao.save(vend2);
+//        tipidao.save(auto1);
+//        tipidao.save(auto2);
 
 
         em.close();
         emf.close();
+    }
+
+    public void databaseCreation (){
+
     }
 }

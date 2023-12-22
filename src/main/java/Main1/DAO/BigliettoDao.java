@@ -124,6 +124,16 @@ public class BigliettoDao {
             }
 
         }
+    public void numeroDiBigliettoPerMezzo(long id_mezzo){
+            Query getNummeroDiBigliettoSingolMezzo = em.createQuery("SELECT p FROM Parco-mezzi p JOIN p.parco-mezzi" +
+               " WHERE p.id=:id"  , Parco_mezzi.class);
+        getNummeroDiBigliettoSingolMezzo.setParameter("p.id",id_mezzo);
+            List<Parco_mezzi> abbo = getNummeroDiBigliettoSingolMezzo.getResultList();
+            abbo.forEach(elem->{
+               System.out.println("in questo mezzo sono stati vidimati "+
+                       elem.getBiglietto().size()+" biglietti");
+            });
+    }
 
     public void updateMezzoDaInserire(long id_biglietto,long id_mezzo_da_inserire){
         Parco_mezziDAO pmd=new Parco_mezziDAO(em);
