@@ -158,13 +158,7 @@ public class BigliettoDao {
         System.out.println("aggiunto correttamente");
     }
 
-    public void bigliettoVidimatoSuUnMezzo(long id){
-        Query getBigliettoVidimatoSuMezzo=em.createQuery("SELECT b FROM Biglietto b JOIN b.parco_mezzi p WHERE p.id= :id", Biglietto.class);
-        getBigliettoVidimatoSuMezzo.setParameter("id",id);
-        List<Biglietto>bigliettiVidimati=getBigliettoVidimatoSuMezzo.getResultList();
-        bigliettiVidimati.size();
-        System.out.println("il numero di biglietti vidimati sono :"+bigliettiVidimati.size());
-    }
+
 
     }
 
