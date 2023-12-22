@@ -44,7 +44,7 @@ public class Application {
         Parco_mezzi tram1=new Tram(Stato.IN_SERVIZIO);
         Parco_mezzi tram2=new Tram(Stato.IN_MANUTENZIONE);
         Parco_mezzi tram3=new Tram(Stato.IN_SERVIZIO);
-
+//
 //        pmd.save(bus1);
 //        pmd.save(bus2);
 //        pmd.save(tram1);
@@ -111,20 +111,20 @@ public class Application {
         //creazione abbonamenti
 
 
-//        Abbonamento abbo1= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-//                random.nextInt(1,30)),Periodicità.getRandomPeriodicità(),true,
-//                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-//                        random.nextInt(1,30)));
-//
-//        Abbonamento abbo2= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-//                random.nextInt(1,30)),Periodicità.getRandomPeriodicità(),true,
-//                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-//                        random.nextInt(1,30)));
-//
-//        Abbonamento abbo3= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-//                random.nextInt(1,30)),Periodicità.getRandomPeriodicità(),false,
-//                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-//                        random.nextInt(1,30)));
+        Abbonamento abbo1= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,30)),Periodicità.getRandomPeriodicità(),true,
+                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,30)));
+
+        Abbonamento abbo2= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,30)),Periodicità.getRandomPeriodicità(),true,
+                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,30)));
+
+        Abbonamento abbo3= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,30)),Periodicità.getRandomPeriodicità(),false,
+                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,30)));
 
 //        td.save(abbo1);
 //        td.save(abbo2);
@@ -134,14 +134,14 @@ public class Application {
 //        creazione biglietti
         //no!
 
-//        Biglietto bigl1 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-//                random.nextInt(1,30)),false,tipo1FromDb);
-//        Biglietto bigl2 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-//                        random.nextInt(1,30)),true ,tipo1FromDb);
-//        Biglietto bigl3 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-//                        random.nextInt(1,30)),true ,tipo2FromDb);
-//        Biglietto bigl4 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-//                random.nextInt(1,30)),true ,tipo2FromDb);
+        Biglietto bigl1 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,30)));
+        Biglietto bigl2 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,30)));
+        Biglietto bigl3 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,30)));
+        Biglietto bigl4 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,30)));
 
 //        bd.save(bigl1);
 //        bd.save(bigl2);
@@ -149,20 +149,16 @@ public class Application {
 //        bd.save(bigl4);
 
 //        creazione manutenzione
-        Parco_mezzi mezzo1FromDb= pmd.findById(1);
-        Parco_mezzi mezzo2FromDb= pmd.findById(2);
-        Parco_mezzi mezzo3FromDb= pmd.findById(3);
-        Parco_mezzi mezzo4FromDb= pmd.findById(4);
 
         Manutenzione man1=new Manutenzione(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
                 random.nextInt(1,28))
-                ,"guasto elettrico",mezzo1FromDb);
+                ,"guasto elettrico");
         Manutenzione man2=new Manutenzione(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
                 random.nextInt(1,28)),
-                LocalDate.of(2023,11,28),"guasto meccanico",mezzo2FromDb);
+                LocalDate.of(2023,11,28),"guasto meccanico");
         Manutenzione man3=new Manutenzione(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
                 random.nextInt(1,28)),
-                LocalDate.of(2023,11,28),"guasto meccanico",mezzo4FromDb);
+                LocalDate.of(2023,11,28),"guasto meccanico");
 
 //        md.save(man1);
 //        md.save(man2);

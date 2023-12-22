@@ -36,11 +36,17 @@ public class Manutenzione {
         this.giorno_fine = giorno_fine;
         this.description = description;
         this.parco_mezzi = parco_mezzi;
-    }   public Manutenzione(LocalDate giorno_inizio, String description, Parco_mezzi parco_mezzi) {
+    }
+    public Manutenzione(LocalDate giorno_inizio, String description, Parco_mezzi parco_mezzi) {
         this.giorno_inizio = giorno_inizio;
         this.giorno_stimato = giorno_inizio.plusDays(7);
         this.description = description;
         this.parco_mezzi = parco_mezzi;
+    }
+    public Manutenzione(LocalDate giorno_inizio, String description) {
+        this.giorno_inizio = giorno_inizio;
+        this.giorno_stimato = giorno_inizio.plusDays(7);
+        this.description = description;
     }
 
     public long getNumero_manutenzione() {

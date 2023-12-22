@@ -16,20 +16,20 @@ public  class Tessera {
     private LocalDate scadenza;
 
     @OneToOne
-    @JoinColumn(name = "utente_id") // Aggiungi questa riga
+    @JoinColumn(name = "numero_tessera") // Aggiungi questa riga
     private Utente utente;
 
     public Tessera() {
     }
 
 
-    public Tessera(LocalDate emissione, LocalDate scadenza) {
+    public Tessera(LocalDate emissione) {
         this.numero_tessera = UUID.randomUUID();
         this.emissione = emissione;
         this.scadenza = emissione.plusDays(365);
     }
 
-    public Tessera(LocalDate emissione, Utente utente,LocalDate scadenza) {
+    public Tessera(LocalDate emissione, Utente utente) {
         this.numero_tessera = UUID.randomUUID();
         this.emissione = emissione;
         this.scadenza = emissione.plusDays(365);

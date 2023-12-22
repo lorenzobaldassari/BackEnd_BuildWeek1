@@ -13,10 +13,7 @@ public class Bus extends Parco_mezzi{
     @Column(name="capienza")
     protected long capienza;
 
-    public Bus(Stato stato, LocalDate data_inizio_servizio, long capienza) {
-        super(stato, data_inizio_servizio);
-        this.capienza = capienza;
-    }
+
 
     public Bus(Stato stato) {
         super(stato);
