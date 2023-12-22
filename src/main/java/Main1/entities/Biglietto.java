@@ -30,6 +30,12 @@ public class Biglietto {
         this.vidimazione = false;
         this.tipi_vendita = tipi_vendita;
     }
+    public Biglietto(LocalDate emissione) {
+
+        this.emissione = emissione;
+        this.scadenza =  this.emissione.plusDays(60);
+        this.vidimazione = false;
+    }
 
 
     public Biglietto(LocalDate emissione , Tipi_vendita tipi_vendita, Parco_mezzi parco_mezzi) {

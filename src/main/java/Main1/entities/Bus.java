@@ -18,6 +18,7 @@ public class Bus extends Parco_mezzi{
         this.capienza = capienza;
     }
 
+
     public Bus(Stato stato) {
         super(stato);
         this.capienza = 50;

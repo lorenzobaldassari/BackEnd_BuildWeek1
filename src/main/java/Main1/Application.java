@@ -11,7 +11,7 @@ import Main1.DAO.UtenteDAO;
 import Main1.entities.Abbonamento;
 
 import Main1.entities.Utente;
-
+import com.github.javafaker.Faker;
 
 
 import javax.persistence.EntityManager;
@@ -31,8 +31,11 @@ public class Application {
         TrattaDAO trd=new TrattaDAO(em);
         Parco_mezziDAO pmd=new Parco_mezziDAO(em);
         Tipi_venditaDAO tipidao= new Tipi_venditaDAO(em);
-        BigliettoDao dg = new BigliettoDao(em);
+        BigliettoDao bd = new BigliettoDao(em);
         ManutenzioneDAO md=new ManutenzioneDAO(em);
+        UtenteDAO ud = new UtenteDAO(em);
+        TurnoDAO turDao = new TurnoDAO(em);
+        TesseraDAO td = new TesseraDAO(em);
 
 
         // creazione mezzi
@@ -49,6 +52,12 @@ public class Application {
 
         Parco_mezzi tram3=new Tram(Stato.IN_SERVIZIO);
 
+//
+//        pmd.save(bus1);
+//        pmd.save(bus2);
+//        pmd.save(tram1);
+//        pmd.save(tram2);
+//        pmd.save(tram3);
 
 
 
@@ -63,7 +72,14 @@ public class Application {
 */
 
 
-        //inresimento tratte ni mezzi
+
+        //creazione turni
+
+        Turno turno1= new Turno(10,80);
+        Turno turno2= new Turno(20,100);
+        Turno turno3= new Turno(9,200);
+        Turno turno4= new Turno(7,50);
+
 
       /*  bus1.insertTratta(tratta1);
         bus2.insertTratta(tratta1);
@@ -87,10 +103,11 @@ public class Application {
         Rivenditori_autorizzati vend2= new Rivenditori_autorizzati("Milano");
         Distributore_automatico auto1 = new Distributore_automatico("Milano",Condizione.ATTIVO);
         Distributore_automatico auto2 = new Distributore_automatico("Roma",Condizione.ATTIVO);
-  /*      tipidao.save(vend1);
+
+       tipidao.save(vend1);
         tipidao.save(vend2);
         tipidao.save(auto1);
-        tipidao.save(auto2);*/
+        tipidao.save(auto2);
 
 
 
@@ -99,6 +116,46 @@ public class Application {
         Tipi_vendita tipo3FromDb = tipidao.findByid(10);
         Tipi_vendita tipo4FromDb = tipidao.findByid(11);
 
+//        tipidao.save(vend1);
+//        tipidao.save(vend2);
+//        tipidao.save(auto1);
+//        tipidao.save(auto2);
+
+        //creazione utenti
+
+        // no!
+        Faker faker= new Faker();
+        Random random= new Random();
+        Utente utente1 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
+                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,30)));
+        Utente utente2 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
+                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,30)));
+        Utente utente3 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
+                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,30)));
+        Utente utente4 = new Utente(faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress(),
+                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,30)));
+
+        //creazione abbonamenti
+
+
+        Abbonamento abbo1= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,30)),Periodicità.getRandomPeriodicità(),true,
+                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,30)));
+
+        Abbonamento abbo2= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,30)),Periodicità.getRandomPeriodicità(),true,
+                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,30)));
+
+        Abbonamento abbo3= new Abbonamento(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,30)),Periodicità.getRandomPeriodicità(),false,
+                LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,30)));
 
 
         // creazione biglietti
@@ -110,30 +167,58 @@ public class Application {
         dg.save(bg2);
         dg.save(bg3);
         dg.save(bg4);*/
-        dg.updateTipoDiVenditore(28, 24);
+
+        Biglietto bigl1 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,30)));
+        Biglietto bigl2 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,30)));
+        Biglietto bigl3 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                        random.nextInt(1,30)));
+        Biglietto bigl4 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+                random.nextInt(1,30)));
 
 
 
-        Random random = new Random();
 //        creazione manutenzione
-        Parco_mezzi mezzo1FromDb= pmd.findById(1);
-        Parco_mezzi mezzo2FromDb= pmd.findById(2);
-        Parco_mezzi mezzo3FromDb= pmd.findById(3);
-        Parco_mezzi mezzo4FromDb= pmd.findById(4);
 
         Manutenzione man1=new Manutenzione(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
                 random.nextInt(1,28))
-                ,"guasto elettrico",mezzo1FromDb);
+                ,"guasto elettrico");
         Manutenzione man2=new Manutenzione(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
                 random.nextInt(1,28)),
-                LocalDate.of(2023,11,28),"guasto meccanico",mezzo2FromDb);
+                LocalDate.of(2023,11,28),"guasto meccanico");
         Manutenzione man3=new Manutenzione(LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
                 random.nextInt(1,28)),
-                LocalDate.of(2023,11,28),"guasto meccanico",mezzo4FromDb);
+                LocalDate.of(2023,11,28),"guasto meccanico");
 
-        /*md.save(man1);
+/*
+        md.save(man1);
         md.save(man2);
-        md.save(man3);*/
+        md.save(man3);
+        bd.save(bigl1);
+        bd.save(bigl2);
+        bd.save(bigl3);
+        bd.save(bigl4);
+        td.save(abbo1);
+        td.save(abbo2);
+        td.save(abbo3);
+        ud.save(utente1);
+        ud.save(utente2);
+        ud.save(utente3);
+        ud.save(utente4);
+        turDao.save(turno1);
+        turDao.save(turno2);
+        turDao.save(turno3);
+        turDao.save(turno4);
+        trd.save(tratta1);
+        trd.save(tratta2);
+        trd.save(tratta3);
+        pmd.save(bus1);
+        pmd.save(bus2);
+        pmd.save(tram1);
+        pmd.save(tram2);
+        pmd.save(tram3);*/
+
 
 
         //menu();

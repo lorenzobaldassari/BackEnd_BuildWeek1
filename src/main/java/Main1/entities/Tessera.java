@@ -16,7 +16,7 @@ public  class Tessera {
     private LocalDate scadenza;
 
     @OneToOne
-    @JoinColumn(name = "utente_id") // Aggiungi questa riga
+    @JoinColumn(name = "numero_tessera") // Aggiungi questa riga
     private Utente utente;
 
     public Tessera() {
