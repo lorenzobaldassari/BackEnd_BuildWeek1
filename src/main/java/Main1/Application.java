@@ -16,6 +16,7 @@ import com.github.javafaker.Faker;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.time.LocalDate;
 import java.util.*;
@@ -42,10 +43,8 @@ public class Application {
         Parco_mezzi bus2=new Bus(Stato.IN_SERVIZIO);
         Parco_mezzi tram1=new Tram(Stato.IN_SERVIZIO);
         Parco_mezzi tram2=new Tram(Stato.IN_MANUTENZIONE);
-//        pmd.save(bus1);
-//        pmd.save(bus2);
-//        pmd.save(tram1);
-//        pmd.save(tram2);
+        Parco_mezzi tram3=new Tram(Stato.IN_SERVIZIO);
+
 
 
         //creazione tratte
@@ -65,6 +64,16 @@ public class Application {
 //        bus2.insertTratta(tratta1);
 //        bus1.insertTratta(tratta2);
 //        bus1.insertTratta(tratta3);
+        Tratta tratta1FromDb= trd.findByid(5);
+        tram3.insertTratta(tratta1FromDb);
+        tram3.insertTratta(tratta1FromDb);
+        tram3.insertTratta(tratta1FromDb);
+        tram3.insertTratta(tratta1FromDb);
+//        pmd.save(bus1);
+//        pmd.save(bus2);
+//        pmd.save(tram1);
+//        pmd.save(tram2);
+//        pmd.save(tram3);
 
         //creazione turni
 
@@ -159,14 +168,14 @@ public class Application {
 //        creazione biglietti
         //no!
 
-        Biglietto bigl1 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                random.nextInt(1,30)),false,tipo1FromDb);
-        Biglietto bigl2 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                        random.nextInt(1,30)),true ,tipo1FromDb);
-        Biglietto bigl3 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                        random.nextInt(1,30)),true ,tipo2FromDb);
-        Biglietto bigl4 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
-                random.nextInt(1,30)),true ,tipo2FromDb);
+//        Biglietto bigl1 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+//                random.nextInt(1,30)),false,tipo1FromDb);
+//        Biglietto bigl2 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+//                        random.nextInt(1,30)),true ,tipo1FromDb);
+//        Biglietto bigl3 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+//                        random.nextInt(1,30)),true ,tipo2FromDb);
+//        Biglietto bigl4 = new Biglietto( LocalDate.of(random.nextInt(1990,2022),random.nextInt(1,12),
+//                random.nextInt(1,30)),true ,tipo2FromDb);
 
 //        bd.save(bigl1);
 //        bd.save(bigl2);
@@ -199,6 +208,7 @@ public class Application {
 
         //prova metodi
 
+//        pmd.isUnderMaintenancebyId(4);
 
 
         //biglietti emessi per punto di emissione
@@ -236,10 +246,18 @@ public class Application {
         //controlle se un abbonamento e' valido in base alla scadenza della tessera
 //        td.isValidAbbonamento(LocalDate.of(2013,3,4),"61b193fb-a52d-4af8-a30b-85f78ff13666");
 
+//        System.out.println(trd.NummeroDiTrattaSingolMezzo(5,33  ));
 
 
 
-        System.out.println("tutto bene!");
+//            Biglietto bi= bd.findById(20);
+//            Parco_mezzi mac= pmd.findById(33);
+//            bd.update(20,33);
+
+
+
+
+
         em.close();
         emf.close();
     }

@@ -36,7 +36,6 @@ public class Bus extends Parco_mezzi{
                 "capienza=" + capienza +
                 ", id=" + id +
                 ", stato=" + stato +
-                ", data_inizio_servizio=" + data_inizio_servizio +
                 '}';
     }
 }
